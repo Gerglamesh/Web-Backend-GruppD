@@ -1,28 +1,28 @@
 **Country**
 
-/country/name=\<name>
+/Country/name=\<name>
 
 
 
 **CountryInfo**
 
-/country/?Population=\<Population> 
+/Country/?Population=\<Population> 
 
-/country/?Governace=\<Governace> 
+/Country/?Governace=\<Governace> 
 
-/country/?BNP=\<BNP> 
+/Country/?BNP=\<BNP> 
 
-/country/?CapitalCity=\<CapitalCity> 
+/Country/?CapitalCity=\<CapitalCity> 
 
-/country/?Area=\<Area> 
+/Country/?Area=\<Area> 
 
-/country/?TimeZone=\<TimeZone> 
+/Country/?TimeZone=\<TimeZone> 
 
-/country/?NationalDay=\<NationalDay>
+/Country/?NationalDay=\<NationalDay>
 
-country/?RightHandTraffic=\<RightHandTraffic> 
+/Country/?RightHandTraffic=\<RightHandTraffic> 
 
-/country/?Language=\<Language> 
+/Country/?Language=\<Language> 
 
 
 
@@ -40,9 +40,9 @@ country/?RightHandTraffic=\<RightHandTraffic>
 
 
 
-**Popularcity**
+**City**
 
-/PopulareCity/?Name=\<Name> 
+/City/?Name=\<Name> 
 
  
 
@@ -50,15 +50,15 @@ country/?RightHandTraffic=\<RightHandTraffic>
 
 **Attraction**
 
-/attraction/?Name=\<name>
+/Attraction/?Name=\<name>
 
-/attraction/?Rating=\<rating>   
+/Attraction/?Rating=\<rating>   
 
-/attraction/?Rating=\<rating>  hämta inom intervall 
+/Attraction/?Rating=\<rating>  hämta inom intervall 
 
-/attraction/?ChildFrindly=\<ChildFrindly>
+/Attraction/?ChildFriendly=\<ChildFriendly>
 
-/attraction/?Info=\<Info>
+/Attraction/?Info=\<Info>
 
 
 

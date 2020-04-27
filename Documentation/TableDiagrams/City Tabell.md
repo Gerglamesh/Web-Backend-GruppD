@@ -1,4 +1,4 @@
-# PopularCity
+# City
 
 | Name                 | nvarchar(50) |
 | -------------------- | ------------ |
