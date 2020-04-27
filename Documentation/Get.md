@@ -1,48 +1,48 @@
 **Country**
 
-/country/name=<name>
+/country/name=\<name>
 
 
 
 **CountryInfo**
 
-/country/?Population=<Population> 
+/country/?Population=\<Population> 
 
-/country/?Governace=<Governace> 
+/country/?Governace=\<Governace> 
 
-/country/?BNP=<BNP> 
+/country/?BNP=\<BNP> 
 
-/country/?CapitalCity=<CapitalCity> 
+/country/?CapitalCity=\<CapitalCity> 
 
-/country/?Area=<Area> 
+/country/?Area=\<Area> 
 
-/country/?TimeZone=<TimeZone> 
+/country/?TimeZone=\<TimeZone> 
 
-/country/?NationalDay=<NationalDay>
+/country/?NationalDay=\<NationalDay>
 
-country/?RightHandTraffic=<RightHandTraffic> 
+country/?RightHandTraffic=\<RightHandTraffic> 
 
-/country/?Language=<Language> 
+/country/?Language=\<Language> 
 
 
 
 **TravelRestriction**
 
-/TravelRestriction/?NumInfected<NumInfected>
+/TravelRestriction/?NumInfected\<NumInfected>
 
-/TravelRestriction/?NumDead=<NumDead>
+/TravelRestriction/?NumDead=\<NumDead>
 
-/TravelRestriction/?RiskLevel  =<RiskLevel >
+/TravelRestriction/?RiskLevel  =\<RiskLevel >
 
-/TravelRestriction/?EntryAllowed =<EntryAllowed >
+/TravelRestriction/?EntryAllowed =\<EntryAllowed >
 
-/TravelRestriction/?CoronaInfo =<CoronaInfo>
+/TravelRestriction/?CoronaInfo =\<CoronaInfo>
 
 
 
 **Popularcity**
 
-/PopulareCity/?Name=<Name> 
+/PopulareCity/?Name=\<Name> 
 
  
 
@@ -50,15 +50,15 @@ country/?RightHandTraffic=<RightHandTraffic>
 
 **Attraction**
 
-/attraction/?Name=<name>
+/attraction/?Name=\<name>
 
-/attraction/?Rating=<rating>   
+/attraction/?Rating=\<rating>   
 
-/attraction/?Rating=<rating>  hämta inom intervall 
+/attraction/?Rating=\<rating>  hämta inom intervall 
 
-/attraction/?ChildFrindly=<ChildFrindly>
+/attraction/?ChildFrindly=\<ChildFrindly>
 
-/attraction/?Info=<Info>
+/attraction/?Info=\<Info>
 
 
 
