@@ -7,7 +7,7 @@
 | CapitolCity      | nvarchar(50) |      |
 | Area             | int          |      |
 | TimeZone         | Time         |      |
-| National Day     | date         |      |
+| NationalDay      | date         |      |
 | RightHandTraffic | bit          |      |
 | Language         | nvarchar(50) |      |
 
