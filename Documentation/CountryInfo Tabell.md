@@ -4,7 +4,7 @@
 | ---------------- | ------------ | ---- |
 | Governance       | nvarchar(50) |      |
 | BNP              | int          |      |
-| CapitolCity      | nvarchar(50) |      |
+| CapitalCity      | nvarchar(50) |      |
 | Area             | int          |      |
 | TimeZone         | Time         |      |
 | NationalDay      | date         |      |
