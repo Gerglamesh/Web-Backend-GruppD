@@ -1,5 +1,7 @@
 **Country**
 
+/Countries/
+
 /Country/name=\<name>
 
 
@@ -42,6 +44,8 @@
 
 **City**
 
+/Cities/
+
 /City/?Name=\<Name> 
 
  
@@ -49,6 +53,8 @@
 
 
 **Attraction**
+
+/Attractions/
 
 /Attraction/?Name=\<name>
 
