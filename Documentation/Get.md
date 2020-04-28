@@ -2,27 +2,27 @@
 
 /Countries/
 
-/Country/name=\<name>
+/Country/name =\<name>
 
 
 
 **CountryInfo**
 
-/Country/?Population=\<Population> 
+/Country/?Population =\<Population> 
 
-/Country/?Governace=\<Governace> 
+/Country/?Governace =\<Governace> 
 
-/Country/?BNP=\<BNP> 
+/Country/?BNP =\<BNP> 
 
-/Country/?CapitalCity=\<CapitalCity> 
+/Country/?CapitalCity =\<CapitalCity> 
 
-/Country/?Area=\<Area> 
+/Country/?Area =\<Area> 
 
 /Country/?TimeZone=\<TimeZone> 
 
 /Country/?NationalDay=\<NationalDay>
 
-/Country/?RightHandTraffic=\<RightHandTraffic> 
+/Country/?RightHandTraffic =\<RightHandTraffic> 
 
 /Country/?Language=\<Language> 
 
@@ -30,9 +30,9 @@
 
 **TravelRestriction**
 
-/TravelRestriction/?NumInfected\<NumInfected>
+/TravelRestriction/?NumInfected =\<NumInfected>
 
-/TravelRestriction/?NumDead=\<NumDead>
+/TravelRestriction/?NumDead =\<NumDead>
 
 /TravelRestriction/?RiskLevel  =\<RiskLevel >
 
@@ -46,9 +46,9 @@
 
 /Cities/
 
-/City/?Name=\<Name> 
+/City/?Name =\<Name> 
 
- 
+ /City/?Population =\<Population> 
 
 
 
@@ -56,15 +56,15 @@
 
 /Attractions/
 
-/Attraction/?Name=\<name>
+/Attraction/?Name =\<name>
 
-/Attraction/?Rating=\<rating>   
+/Attraction/?Rating =\<rating>   
 
-/Attraction/?Rating=\<rating>  hämta inom intervall 
+/Attraction/?Rating =\<rating>  hämta inom intervall 
 
-/Attraction/?ChildFriendly=\<ChildFriendly>
+/Attraction/?ChildFriendly =\<ChildFriendly>
 
-/Attraction/?Info=\<Info>
+/Attraction/?Info =\<Info>
 
 
 
