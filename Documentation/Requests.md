@@ -80,6 +80,8 @@
 
 **TravelRestriction**
 
+/TravelRestriction/
+
 /TravelRestriction/workTravel = \<bool>
 
 /TravelRestriction/tourism = \<bool>
