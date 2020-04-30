@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 
-namespace TravelAPI
+namespace TravelAPI.Models
 {
     public class PrototypeModel
     {

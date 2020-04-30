@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using EngineClasses;
-
+using TravelAPI.Models;
 
 namespace TravelAPI
 {
