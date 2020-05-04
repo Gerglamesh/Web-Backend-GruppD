@@ -80,23 +80,7 @@
 
 **TravelRestriction**
 
-/TravelRestriction/
-
-/TravelRestriction/workTravel = \<bool>
-
-/TravelRestriction/tourism = \<bool>
-
-/TravelRestriction/immigration = \<bool>
-
-/TravelRestriction/citizenship = \<bool>
-
-/TravelRestriction/familyVisit = \<bool>
-
-/TravelRestriction/isVisaNeeded = \<bool>
-
-/TravelRestriction/riskLevel = \<riskLevel>
-
-/TravelRestriction/minRiskLevel >= \<riskLevel> & maxRiskLevel <= \<maxRiskLevel>
+Travel restriction information only fetched when coupled with country. Therefor never needed to be fetched independently. This is because restrictions aren't that interesting by themselves.
 
 
 
