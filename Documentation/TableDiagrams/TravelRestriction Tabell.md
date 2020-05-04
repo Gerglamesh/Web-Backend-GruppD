@@ -1,14 +1,15 @@
 # TravelRestriction
 
-| NumInfected  | int           |
-| ------------ | ------------- |
-| NumDead      | int           |
-| RiskLevel    | nvarchar(50)  |
-| EntryAllowed | bit           |
-| CoronaInfo   | nvarchar(MAX) |
-|              |               |
-|              |               |
-|              |               |
-|              |               |
-|              |               |
+| ID                 | int        |
+| ------------------ | ---------- |
+| CountryId          | int        |
+| WorkTravelAllowed  | bit        |
+| TourismAllowed     | bit        |
+| ImmigrationAllowed | bit        |
+| CitizenshipAllowed | bit        |
+| FamilyVisitAllowed | bit        |
+| IsVisaNeeded       | bit        |
+| RiskLevel          | int 1 to 5 |
+|                    |            |
+|                    |            |
 
