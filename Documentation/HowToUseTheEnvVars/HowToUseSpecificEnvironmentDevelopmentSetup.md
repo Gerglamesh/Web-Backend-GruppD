@@ -24,6 +24,8 @@ to match your preferred connection string.
 
 
 
+This connection string is fetched by calling the method "GetConnectionString()" in the static class ConnectionSetup and is used in a DbContext setups "OnCofiguring" method.
+
 
 
 In the .gitignore file, all files with the end signature ".dev.json" and ".dev.cs" will be ignored so you don't have to worry about any of your personal info in those files being pushed to the remote repository. To be sure that this is actually happening, you can keep a lookout for the little red sign next to the file in visual studio (encertain if VS Code works exactly the same in this regard but it should be similar). That little red sign in Visual Studio means that the file is ignored.
