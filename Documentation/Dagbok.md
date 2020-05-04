@@ -15,3 +15,19 @@ Vi lärde oss hur man använder olika branch i git. sedan gjorde vi klart våra 
 4/29
 
 Vi började med att testa jira för att förstå programmet.  Sen började vi med att skriva riktiga backlog som vi behövde göra klart och även det vi redan var klara med. Vi kollade även på repetitions video.
+
+4/30
+
+Vi började med att skriva daliy stand up som är en slags planering för vad vi skulle göra idag.
+Sen följde vi planeringen bara och gjorde klart det vi skulle göra klart tsm i grupp som var:
+
+att skapa en sprint på jira och
+sen sätta upp development enviroment 
+
+sen planerade och gjore klart vad vi skulle göra i mindre grupper som var:
+
+ställa in local environment variables
+skapa en controller prototyp
+skapa en  Repo prototyp
+skapa en Model prototyp
+ställa in DbContex  prototyp i EF Core
