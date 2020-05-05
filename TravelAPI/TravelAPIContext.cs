@@ -10,5 +10,7 @@ namespace TravelAPI
     {
         public DbSet<CountryInfoController> CountryInfoController { get; set; }
         public DbSet<CountryInfoModel> CountryInfoModel { get; set; }
+
+        public DbSet<CityModel> CityModel { get; set; }
     }
 }
