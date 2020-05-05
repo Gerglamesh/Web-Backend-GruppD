@@ -16,6 +16,6 @@ namespace TravelAPI.Models
         //Relationships
         public List<CityModel> Cities { get; set; }
         public virtual CountryInfoModel CountryInfo { get; set; }
-
+        public virtual TravelRestrictionModel TravelRestriction { get; set; }
     }
 }
