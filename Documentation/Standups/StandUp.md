@@ -78,5 +78,32 @@ What we will do together today
 
 
 
+What will Irvin do today
+
+* Create a class for Attraction (TRAPI-133)
+* Create a model for Attraction (TRAPI-131)
+* Create controller for Attraction(TRAPI-128)
+
+What will Mirko do today
+
+* Create model for ContryInfo (TRAPI-134)
+
+* OWW SHEET git  (TRAPI-190) // IF git is being a dumb ass with him
+
+* Add model for Db-Context for ContryInfo (TRAPI-151)
+
+  
+
+What will Hampus do today
+
+* Create model for Country (TRAPI-122)
+* Create class for Country (TRAPI-123)
+* Add model to Db-Context for Country (TRAPI-126)
 
 
+
+What will Jakob do today
+
+* Create model for Cities (TRAPI-125)
+* Create class for Cities (TRAPI-130)
+* Create repo for Cities (TRAPI-173)
