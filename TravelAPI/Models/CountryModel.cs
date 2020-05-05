@@ -8,8 +8,12 @@ namespace TravelAPI.Models
 {
     public class CountryModel
     {
+        //Props
         [Key]
         public int CountryId { get; private set; }
         public string Name { get; private set; }
+
+        //Relationships
+        public List<CityModel> Cities { get; set; }
     }
 }
