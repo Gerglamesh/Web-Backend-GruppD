@@ -26,9 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Properties\appsettings.dev.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Update="Properties\appsettings.json">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
