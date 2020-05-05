@@ -52,3 +52,31 @@ What Irvin and Jakob will do today:
 - Create Model for prototype
 - Set up DbContext for prototype in EF Core
 - Couple model for prototype with DbContext
+- 
+
+
+
+
+
+# 05/5/2020
+
+What we did yesterday
+
+* filled backlog with issues 
+* Grouped the different issues into sprints
+* This was a day with lessons, didn't have much time.
+* 
+
+
+
+What we will do together today
+
+* Make a work schedule
+* set up rules for this project //have to work with branches
+* choose  next sprint
+* Come back and have a mini stand-up where we choose issues
+
+
+
+
+
