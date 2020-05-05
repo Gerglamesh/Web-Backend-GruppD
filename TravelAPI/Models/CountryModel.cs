@@ -10,6 +10,6 @@ namespace TravelAPI.Models
     {
         [Key]
         public int CountryId { get; private set; }
-
+        public string Name { get; private set; }
     }
 }
