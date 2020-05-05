@@ -19,18 +19,5 @@ namespace TravelAPI.Models
         public DateTime NationalDay { get; set; }
         public bool RightHandTraffic { get; set; }
         public string Language { get; set; }
-
-        public CountryInfoModel(int population, string governance, int bnp, string capitalcity, int area, DateTime timeZone, DateTime nationalDay, bool rightHandTraffic, string language)
-        {
-            this.Population = population;
-            this.Governance = governance;
-            this.BNP = bnp;
-            this.CapitalCity = capitalcity;
-            this.Area = area;
-            this.TimeZone = timeZone;
-            this.NationalDay = nationalDay;
-            this.RightHandTraffic = rightHandTraffic;
-            this.Language = language;
-        }
     }
 }
