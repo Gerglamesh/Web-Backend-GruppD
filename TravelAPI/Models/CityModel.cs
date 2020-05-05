@@ -12,6 +12,4 @@ namespace TravelAPI.Models
 
 
     }
-
-        
 }
