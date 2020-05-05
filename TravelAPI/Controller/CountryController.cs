@@ -1,11 +1,29 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace TravelAPI.Controller
 {
-    public class CountryController
+    [Route("api/v1.0/[controller]")]
+    [ApiController]
+    public class CountryController : ControllerBase     
     {
+        //Repo prop here
+        //private readonly TravelAPIContext context;
+
+        public CountryController()
+        {
+            //Inject repo
+            //this.context = context;
+        }
+
+        [HttpGet]
+        public string Get()
+        {
+            // Anrop till Fake Repo
+            return "Hi from CountryController";
+        }
     }
 }
