@@ -9,15 +9,15 @@ namespace TravelAPI.Services
 {
     public class CountryInfoRepo : ICountryInfoRepo
     {
-        private readonly TravelAPIContext dbcontext;
+        private readonly TravelAPIContext _travelApiContext;
         public CountryInfoRepo(TravelAPIContext Context)
         {
-            dbcontext = Context;
+            _travelApiContext = Context;
         }
 
         public async Task<CountryInfoModel> GetCountryInfoModel()
         {
-            var query = dbcontext.CountryInfoModel;
+            var query = _travelApiContext.CountryInfoModel;
             return await query.FirstOrDefaultAsync();
         }
     }
