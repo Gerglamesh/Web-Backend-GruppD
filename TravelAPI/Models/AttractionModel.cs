@@ -12,8 +12,8 @@ namespace TravelAPI.Models
         
         public string Name { get; set; }
         public string Location { get; set; }
-        public string Childfriendly { get; set; }
-        public bool Rating { get; set; }
+        public bool IsChildfriendly { get; set; }
+        public int Rating { get; set; }
         public CityModel City { get; private set; }
     }
 }

@@ -11,10 +11,10 @@ namespace TravelAPI
 {
     public class TravelAPIContext : DbContext
     {
-        private readonly IConfiguration _configuration;
+        private readonly IConfiguration _travelAPIContext;
         public TravelAPIContext (IConfiguration config, DbContextOptions options) : base(options)
         {
-            _configuration = config;
+            _travelAPIContext = config;
         }
 
         public DbSet<CountryModel> CountryModel { get; set; }
@@ -24,9 +24,8 @@ namespace TravelAPI
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(_configuration.GetConnectionString("TravelAPIContext"));
+            optionsBuilder.UseSqlServer(_travelAPIContext.GetConnectionString("TravelAPIContext"));
         }
-
 
     }
 }
