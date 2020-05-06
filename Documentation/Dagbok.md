@@ -46,3 +46,18 @@ Dagen flöt på bra och vi har hunnit med att göra nästan alla issues. Vi har 
 
 All kod har det gjorts pull request på innan merge till master och all kod har review:ats och godkänts innan den merge:ats.
 
+##### 6/5
+
+Började dagen med lektion.
+
+Färdigställde våran föregående sprint.
+
+Hade Standup med +Joakim.
+
+Startade en ny sprint men nya issues.
+
+Gjorde klart några issues och det flöt på bra.
+
+Studerande även Git Bash en stund.
+
+Vi alla har gjort kod-reviews och har mergat det. Tutti för idag.
