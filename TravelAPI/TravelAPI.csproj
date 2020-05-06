@@ -21,10 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Update="Properties\appsettings.json">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
