@@ -7,6 +7,8 @@ namespace TravelAPI.Models
     {
         [Key]
         public string Name { get; private set; }
+
+        
         public CountryModel Country { get; private set; }
         public  AttractionModel Attraction { get; private set; }
 
