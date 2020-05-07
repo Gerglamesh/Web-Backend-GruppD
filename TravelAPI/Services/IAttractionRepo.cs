@@ -8,12 +8,9 @@ namespace TravelAPI.Services
 {
     public interface IAttractionRepo
     {
-<<<<<<< Updated upstream
-        Task<AttractionModel> GetAttraction(string name);
-       
-=======
+
         Task<AttractionModel>GetAttraction(string name);
         Task<ICollection<AttractionModel>> GetIschildfriendly (bool IsChildFriendly);
->>>>>>> Stashed changes
+
     }
 }
