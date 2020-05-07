@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace TravelAPI.Models
@@ -10,7 +11,7 @@ namespace TravelAPI.Models
 
         
         public CountryModel Country { get; private set; }
-        public  AttractionModel Attraction { get; private set; }
+        public ICollection<AttractionModel> Attractions { get; private set; }
 
 
     }
