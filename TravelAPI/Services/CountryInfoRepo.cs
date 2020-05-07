@@ -15,10 +15,9 @@ namespace TravelAPI.Services
             _travelApiContext = Context;
         }
 
-        public async Task<CountryInfoModel> GetCountryInfoModel()
+        public async Task<ICollection<CountryInfoModel>> GetCountryInfos()
         {
-            var query = _travelApiContext.CountryInfoModel;
-            return await query.FirstOrDefaultAsync();
+            return await _travelApiContext.Set<CountryInfoModel>().ToListAsync();
         }
     }
 }
