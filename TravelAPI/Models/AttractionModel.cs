@@ -9,7 +9,6 @@ namespace TravelAPI.Models
     public class AttractionModel
     {
         [Key]
-        
         public string Name { get; set; }
         public string Location { get; set; }
         public bool IsChildfriendly { get; set; }
