@@ -15,14 +15,19 @@ namespace TravelAPI.Services
             _travelAPIContext = Context;
         }
 
-        public async Task<CountryModel> GetCity(string name)
+        public async Task<ICollection<CountryModel>> GetCountries()
+        {
+            return await _travelAPIContext.Set<CountryModel>().ToListAsync();  
+        }
+
+        public async Task<CountryModel> GetCountry(string name)
         {
             var query = _travelAPIContext.CountryModel
                 .Where(c => c.Name == name);
             return await query.FirstOrDefaultAsync();
         }
 
-        public async Task<CountryModel> GetCity(int id)
+        public async Task<CountryModel> GetCountry(int id)
         {
             var query = _travelAPIContext.CountryModel
                 .Where(c => c.CountryId == id);

@@ -8,7 +8,8 @@ namespace TravelAPI.Services
 {
     interface ICountryRepo
     {
-            Task<CountryModel> GetCity(string name);
-            Task<CountryModel> GetCity(int id);
+        Task<ICollection<CountryModel>> GetCountries();
+        Task<CountryModel> GetCountry(string name);
+        Task<CountryModel> GetCountry(int id);
     }
 }
