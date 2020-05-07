@@ -7,7 +7,7 @@ using TravelAPI.Models;
 
 namespace TravelAPI.Services
 {
-    public class CountryRepo
+    public class CountryRepo : ICountryRepo
     {
         private readonly TravelAPIContext _travelAPIContext;
         public CountryRepo(TravelAPIContext Context)
@@ -15,10 +15,30 @@ namespace TravelAPI.Services
             _travelAPIContext = Context;
         }
 
-        public async Task<CountryModel> GetCountryModel()
+        public async Task<ICollection<CountryModel>> GetCountries()
         {
-            var query = _travelAPIContext.CountryModel;
+            return await _travelAPIContext.Set<CountryModel>().ToListAsync();  
+        }
+
+        public async Task<CountryModel> GetCountry(string name)
+        {
+            var query = _travelAPIContext.CountryModel
+                .Where(c => c.Name == name);
             return await query.FirstOrDefaultAsync();
+        }
+
+        public async Task<CountryModel> GetCountry(int id)
+        {
+            var query = _travelAPIContext.CountryModel
+                .Where(c => c.CountryId == id);
+            return await query.FirstOrDefaultAsync();
+        }
+
+        public async Task<ICollection<CountryModel>> GetCountriesByLanguage(string language)
+        {
+            return await _travelAPIContext
+                .Set<CountryModel>()
+                .Where(c => c.CountryInfo.Language.Contains(language)).ToListAsync();
         }
     }
 }

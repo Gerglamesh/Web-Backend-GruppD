@@ -21,7 +21,7 @@ namespace TravelAPI.Services
                 .Where(q => q.Name == name);
             return await query.FirstOrDefaultAsync();
         }
-
+        
         public async Task<ICollection<AttractionModel>> GetIschildfriendly (bool IsChildFriendly)
         {
             return await _travelApiContext

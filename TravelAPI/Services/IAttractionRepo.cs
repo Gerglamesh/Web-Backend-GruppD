@@ -8,9 +8,7 @@ namespace TravelAPI.Services
 {
     public interface IAttractionRepo
     {
-
         Task<AttractionModel>GetAttraction(string name);
         Task<ICollection<AttractionModel>> GetIschildfriendly (bool IsChildFriendly);
-
     }
 }
