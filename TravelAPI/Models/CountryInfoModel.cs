@@ -19,7 +19,5 @@ namespace TravelAPI.Models
         public string NationalDay { get; set; }
         public bool RightHandTraffic { get; set; }
         public string Language { get; set; }
-
-        public CountryModel Country { get; set; }
     }
 }
