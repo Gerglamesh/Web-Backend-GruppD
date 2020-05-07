@@ -9,5 +9,9 @@ namespace TravelAPI.Services
     interface ICountryRepo
     {
             Task<CountryModel> GetCity(string name);
+<<<<<<< HEAD
+=======
+            Task<CountryModel> GetCity(int id);
+>>>>>>> TRAPI-67
     }
 }
