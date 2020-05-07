@@ -20,7 +20,7 @@ namespace TravelAPI
         public DbSet<CountryModel> CountryModel { get; set; }
         public DbSet<CountryInfoModel> CountryInfoModel { get; set; }
         public DbSet<AttractionModel> AttractionModel { get; set; }
-        public DbSet<CityModel> CityModel { get; set; }
+        public DbSet<CountryInfoModel> CityModel { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -53,7 +53,7 @@ namespace TravelAPI
                     Country = 1
                 });
 
-            modelBuilder.Entity<CityModel>()
+            modelBuilder.Entity<CountryInfoModel>()
                 .HasData(new
                 {
                     Name = "Kabul",
@@ -61,7 +61,7 @@ namespace TravelAPI
                     Country = 1
                 });
 
-            modelBuilder.Entity<CityModel>()
+            modelBuilder.Entity<CountryInfoModel>()
                 .HasData(new
                 {
                     Name = "Balkh",
@@ -69,7 +69,7 @@ namespace TravelAPI
                     Country = 1
                 });
 
-            modelBuilder.Entity<CityModel>()
+            modelBuilder.Entity<CountryInfoModel>()
                 .HasData(new
                 {
                     Name = "Kandahar",

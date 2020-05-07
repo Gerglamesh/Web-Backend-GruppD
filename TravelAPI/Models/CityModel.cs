@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TravelAPI.Models
 {
-    public class CityModel
+    public class CountryInfoModel
     {
         [Key]
         public string Name { get; private set; }
