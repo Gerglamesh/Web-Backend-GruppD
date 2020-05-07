@@ -200,3 +200,71 @@ What will Hampus do today
 
 
 
+### 06/05/2020
+
+### Yesterday
+
+What did All Do
+
+* Decide next Sprint-----Finished
+* Git bash walkthrough-----Finished
+* Create Test Data so we can test migration (TRAPI-200)-----Not finished
+
+What did Irvin yesterday
+
+* Create Atracttion Object in Model(TRAPI-198)-----Finished
+* Learn GitBash-----Finished
+* Create Repo for Attraction(TRAPI-171)----- Not finished
+* Yesterday we had class and we only had half the day to work with the projekt.
+
+What did Jakob yesterday
+
+* Create CountryObject in CityModel(TRAPI-197)-----Finished
+* Review how we named our DbContext(TRAPI-192)-----Finished
+* It was alright Yesterday didn't get that much done because we had class a large part of the day.
+
+What did Mirko yesterday
+
+* Create Country Object in CountryInformation Model(TRAPI-196)-----Finished
+* Create Repo for CountryInformation(TRAPI-Unknown)-----Finished
+* Yesterday we had class and we only had half the day to work with the projekt.
+
+What did Hampus yesterday
+
+* Review Model Relationship Config(TRAPI-191) ----- Not finished
+
+* Create Repo for Country(TRAPI-161)-----Finished
+
+* Yesterday i was busy  so i dident have much time for the projekt, will have more time 
+
+  
+
+=======================
+
+### Today
+
+What will All do today
+
+What will Irvin do today
+
+* Request: Get All Attractionname (TRAPI-72)
+* Request: Get All childfriendly (TRAPI-77)
+
+What will Mirko do today
+
+* Today i will not be available a couple of hours but the rest of the day i will be available.
+* Request: Get specific CountryInformation(TRAPI-69)
+* Request: Get all Country Information(TRAPI-68)
+*  Request:Get Specific Info(TRAPI-141)
+
+What will Jakob do today
+
+* Create DTO's for city TRAPI-132
+* Request:get Specific City TRAPI-71
+* Request: Get All Cities TRAPI-70
+
+What will Hampus do today
+
+* Review relationship configurations (TRAPI-191)
+* Try to get a couple of get requests done
+* Add testdata to Context (TRAPI-200)
