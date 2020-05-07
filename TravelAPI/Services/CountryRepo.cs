@@ -33,5 +33,12 @@ namespace TravelAPI.Services
                 .Where(c => c.CountryId == id);
             return await query.FirstOrDefaultAsync();
         }
+
+        public async Task<ICollection<CountryModel>> GetCountriesByLanguage(string language)
+        {
+            return await _travelAPIContext
+                .Set<CountryModel>()
+                .Where(c => c.CountryInfo.Language.Contains(language)).ToListAsync();
+        }
     }
 }
