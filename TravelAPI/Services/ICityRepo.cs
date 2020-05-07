@@ -8,6 +8,6 @@ namespace TravelAPI.Services
 {
     public interface ICityRepo
     {
-        Task<CityModel> GetCityModel();
+        Task<CityModel> GetCity(string Name);
     }
 }
