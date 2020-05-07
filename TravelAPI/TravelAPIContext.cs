@@ -43,13 +43,13 @@ namespace TravelAPI
                     CountryInfoModelId = 1,
                     Population = 50000000,
                     Governance = "Islamic Republic",
-                    BNP = 19360000000,
                     CapitalCity = "Kabul",
+                    BNP = 19360000000,
                     Area = 652000237,
                     TimeZone = "GMT+4:30",
-                    NationalDay = "8/19",
-                    RightHandTraffic = true,
+                    NationalDay = 08 / 19,
                     Language = "Dari/Pashtu/Iranian",
+                    RightHandTraffic = true,
                     Country = 1
                 });
 
