@@ -40,16 +40,16 @@ namespace TravelAPI
             modelBuilder.Entity<CountryInfoModel>()
                 .HasData(new
                 {
-                    CountryInfoModelID = 1,
+                    CountryInfoModelId = 1,
                     Population = 50000000,
-                ​	Governance = "Islamic Republic",
-                ​	CapitalCity = "Kabul",
-                ​	BNP = 19360000000,
-                ​	Area = 652000237,
-                ​	TimeZone = "GMT+4:30",
-                ​	NationalDay = 08 / 19,
-                ​	Language = "Dari/Pashtu/Iranian",
-                ​	RightHandTraffic = true,
+                    Governance = "Islamic Republic",
+                    BNP = 19360000000,
+                    CapitalCity = "Kabul",
+                    Area = 652000237,
+                    TimeZone = "GMT+4:30",
+                    NationalDay = "8/19",
+                    RightHandTraffic = true,
+                    Language = "Dari/Pashtu/Iranian",
                     Country = 1
                 });
 
