@@ -21,11 +21,5 @@ namespace TravelAPI.Services
                 .Where(q => q.Name == name);
             return await query.FirstOrDefaultAsync();
         }
-        public async Task<AttractionModel> GetAttraction(string location)
-        {
-            var query = _travelApiContext.AttractionModel
-                .Where(q => q.Location == location);
-            return await query.FirstOrDefaultAsync();
-        }
     }
 }

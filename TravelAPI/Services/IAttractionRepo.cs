@@ -8,7 +8,7 @@ namespace TravelAPI.Services
 {
     public interface IAttractionRepo
     {
-        Task<AttractionModel> GetAttraction(string name);
+        Task<AttractionModel>GetAttraction(string name);
        
     }
 }
