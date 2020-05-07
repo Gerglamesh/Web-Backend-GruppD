@@ -14,8 +14,8 @@ namespace TravelAPI.Models
         public string Name { get; private set; }
 
         //Relationships
-        public List<CityModel> Cities { get; set; }
-        public virtual CountryInfoModel CountryInfo { get; set; }
-        public virtual TravelRestrictionModel TravelRestriction { get; set; }
+        public ICollection<CityModel> Cities { get; set; }
+        public CountryInfoModel CountryInfo { get; set; }
+        //public TravelRestrictionModel TravelRestriction { get; set; } Model not ready yet
     }
 }
