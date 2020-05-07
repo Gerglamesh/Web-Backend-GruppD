@@ -20,5 +20,9 @@ namespace TravelAPI.Services
             .Where(s => s.Name == Name);
             return await query.FirstOrDefaultAsync();
         }
+        public async Task<ICollection<CityModel>> GetCities()
+        {
+            return await _travelApiContext.Set<CityModel>().ToListAsync();
+        }
     }
 }
