@@ -61,3 +61,15 @@ Gjorde klart några issues och det flöt på bra.
 Studerande även Git Bash en stund.
 
 Vi alla har gjort kod-reviews och har mergat det. Tutti för idag.
+
+**7/5**
+
+Dagens uppgifter har kretsat mycket kring sådant vi ännu inte riktigt ordentligt gått igenom ännu.
+
+Vi har försökt oss på att skapa get requests hela vägen genom repo och controller. 
+
+Vi har försökt att skapa DTO.
+
+Inget av detta är helt klart ännu men vi har fått värdefulla inblickar i vad det handlar om och kommit en bit på vägen.
+
+Vi har även finslipat koden och testat att öra en första migration med testdata. Det fungerar inte riktigt heller ännu men även där är vi en god bit påväg.

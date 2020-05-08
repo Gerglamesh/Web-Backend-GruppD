@@ -8,6 +8,6 @@ namespace TravelAPI.Services
 {
     public interface ICountryInfoRepo
     {
-        Task<CountryInfoModel> GetCountryInfoModel();
+        Task<ICollection<CountryInfoModel>> GetCountryInfos();
     }
 }

@@ -10,15 +10,23 @@ namespace TravelAPI.Services
 {
     public class AttractionRepo : IAttractionRepo
     {
-        private readonly TravelAPIContext dbcontext;
-        public AttractionRepo(TravelAPIContext Context)
+        private readonly TravelAPIContext _travelApiContext;
+        public AttractionRepo(TravelAPIContext context)
         {
-            dbcontext = Context;
+            _travelApiContext = context;
         }
-        public async Task<AttractionModel> GetAttractionModel()
+        public async Task<AttractionModel> GetAttraction(string name)
         {
-            var query = dbcontext.AttractionModel;
+            var query = _travelApiContext.AttractionModel
+                .Where(q => q.Name == name);
             return await query.FirstOrDefaultAsync();
+        }
+        
+        public async Task<ICollection<AttractionModel>> GetIschildfriendly (bool IsChildFriendly)
+        {
+            return await _travelApiContext
+              .Set<AttractionModel>()
+             .Where(a => a.IsChildFriendly == true).ToListAsync();
         }
     }
 }
