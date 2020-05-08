@@ -38,6 +38,7 @@ namespace TravelAPI.Services
         {
             return await _travelAPIContext.Set<CountryModel>().Where(s => s.CountryInfo.RightHandTraffic == true).ToListAsync();
 
+        }
         public async Task<ICollection<CountryModel>> GetCountriesByLanguage(string language)
         {
             return await _travelAPIContext
