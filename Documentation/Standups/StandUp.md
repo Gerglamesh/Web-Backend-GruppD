@@ -268,3 +268,297 @@ What will Hampus do today
 * Review relationship configurations (TRAPI-191)
 * Try to get a couple of get requests done
 * Add testdata to Context (TRAPI-200)
+
+
+
+### 08/05/2020
+
+### Yesterday
+
+What did All Do
+
+* 
+* 
+* 
+
+What did Irvin yesterday
+
+* Request: Get All Attractionname (TRAPI-72)----Finished
+* Request: Get All childfriendly (TRAPI-77) ----Finished
+* 
+
+What did Jakob yesterday
+
+* Create DTO's for city TRAPI-132----Not Finished
+* Request:get Specific City TRAPI-71----Finished
+* Request: Get All Cities TRAPI-70----Finished
+* Request: Get all countries that drives on either right or left side of road TRAPI-167 ----Finished
+
+What did Mirko yesterday
+
+* Request: Get specific CountryInformation(TRAPI-69)----Not Finished
+* Request: Get all Country Information(TRAPI-68)----Finished
+* Request: Get Specific Info(TRAPI-141)----Not Finished
+* Didn't know how to include and we were wondering if we really want to get specific info (TRAPI-69 and TRAPI-141)
+
+What did Hampus yesterday
+
+* Review relationship configurations (TRAPI-191)----Finished
+
+* Try to get a couple of get requests done----Finished
+
+  * TRAPI-67 
+  * TRAPI-66 
+  * TRAPI-169
+
+* Add testdata to Context (TRAPI-200)----Finished
+
+  * Have not done the requests concerning fetches that include data from other tables. Do not know how to do this yet.
+  * Have tested to do an initial migration and run the API through a browser and Postman but we have some trouble with our connection string setup which needs to be reviewed.
+
+  
+
+=======================
+
+### Today
+
+What will All do today
+
+* Create more issues in backlog
+* Plan next sprint
+* Review pull requests in github
+* Do sprint review (New sprint 6/5)
+
+What will Irvin do today
+
+* 
+
+What will Mirko do today
+
+* 
+
+What will Jakob do today
+
+* 
+
+What will Hampus do today
+
+* 
+* 
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------
+
+# SKRIV DATUM HÄR
+
+### Yesterday
+
+What did All Do
+
+* 
+* 
+* 
+
+What did Irvin yesterday
+
+* 
+* 
+
+What did Jakob yesterday
+
+* 
+
+What did Mirko yesterday
+
+* 
+
+What did Hampus yesterday
+
+* 
+
+  
+
+=======================
+
+### Today
+
+What will All do today
+
+What will Irvin do today
+
+* 
+
+What will Mirko do today
+
+* 
+
+What will Jakob do today
+
+* 
+
+What will Hampus do today
+
+* 
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+# SKRIV DATUM HÄR
+
+### Yesterday
+
+What did All Do
+
+* 
+* 
+* 
+
+What did Irvin yesterday
+
+* 
+* 
+
+What did Jakob yesterday
+
+* 
+
+What did Mirko yesterday
+
+* 
+
+What did Hampus yesterday
+
+* 
+
+  
+
+=======================
+
+### Today
+
+What will All do today
+
+What will Irvin do today
+
+* 
+
+What will Mirko do today
+
+* 
+
+What will Jakob do today
+
+* 
+
+What will Hampus do today
+
+* 
+
+
+
+# SKRIV DATUM HÄR
+
+### Yesterday
+
+What did All Do
+
+* 
+* 
+* 
+
+What did Irvin yesterday
+
+* 
+* 
+
+What did Jakob yesterday
+
+* 
+
+What did Mirko yesterday
+
+* 
+
+What did Hampus yesterday
+
+* 
+
+  
+
+=======================
+
+### Today
+
+What will All do today
+
+What will Irvin do today
+
+* 
+
+What will Mirko do today
+
+* 
+
+What will Jakob do today
+
+* 
+
+What will Hampus do today
+
+* 
+* 
+
+
+
+# SKRIV DATUM HÄR
+
+### Yesterday
+
+What did All Do
+
+* 
+* 
+* 
+
+What did Irvin yesterday
+
+* 
+* 
+
+What did Jakob yesterday
+
+* 
+
+What did Mirko yesterday
+
+* 
+
+What did Hampus yesterday
+
+* 
+
+  
+
+=======================
+
+### Today
+
+What will All do today
+
+What will Irvin do today
+
+* 
+
+What will Mirko do today
+
+* 
+
+What will Jakob do today
+
+* 
+
+What will Hampus do today
+
+* 
