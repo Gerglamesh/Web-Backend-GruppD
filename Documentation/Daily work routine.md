@@ -1,8 +1,10 @@
 # Daily work routine if no lessons
 
-*  08:30 Kaffe snack until 08:45
+*  08:30 Kaffe snack
 
-* 08:45 Stand-up
+* 08:45 prepare for Stand-up
+
+* 09:00 Stand-up
 
 * 09:45 Check-in
 
