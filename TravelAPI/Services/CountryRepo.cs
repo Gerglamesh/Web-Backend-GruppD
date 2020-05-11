@@ -35,14 +35,14 @@ namespace TravelAPI.Services
 
         public async Task<CountryModel> GetCountry(string name)
         {
-            var query = _travelAPIContext.CountryModel
+            var query = _travelAPIContext.Countries
                 .Where(c => c.Name == name);
             return await query.FirstOrDefaultAsync();
         }
 
         public async Task<CountryModel> GetCountry(int id)
         {
-            var query = _travelAPIContext.CountryModel
+            var query = _travelAPIContext.Countries
                 .Where(c => c.CountryId == id);
             return await query.FirstOrDefaultAsync();
         }

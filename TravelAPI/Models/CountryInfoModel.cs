@@ -9,7 +9,7 @@ namespace TravelAPI.Models
     public class CountryInfoModel
     {
         [Key]
-        public int CountryInfoModelId { get; set; }
+        public int CountryInfoId { get; set; }
         public int Population { get; set; }
         public string Governance { get; set; }
         public int BNP { get; set; }

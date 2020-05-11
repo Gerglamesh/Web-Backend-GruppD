@@ -26,12 +26,11 @@ namespace TravelAPI.Controller
             // Anrop till Test Repo
             return "hej irke";
         }
-                
+        
         //[HttpGet]
         //public async Task<ActionResult<IEnumerable<AttractionController>>> Get()
         //{
-        //    return await repository.GetAttraction(string);
-
+        //    return await repository.GetAttraction();
         //}
 
     }
