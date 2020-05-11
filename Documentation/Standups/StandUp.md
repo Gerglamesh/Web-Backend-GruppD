@@ -329,57 +329,20 @@ What will All do today
 * Review pull requests in github
 * Do sprint review (New sprint 6/5)
 
-What will Irvin do today
-
-* 
-
-What will Mirko do today
-
-* 
-
-What will Jakob do today
-
-* 
-
-What will Hampus do today
-
-* 
-* 
-
-
-
 
 
 ------------------------------------------------------------------------------------------------------------------------------
 
-# SKRIV DATUM HÄR
+# 11/5 2020 (Hampus)
 
-### Yesterday
+### Last time
 
 What did All Do
 
-* 
-* 
-* 
-
-What did Irvin yesterday
-
-* 
-* 
-
-What did Jakob yesterday
-
-* 
-
-What did Mirko yesterday
-
-* 
-
-What did Hampus yesterday
-
-* 
-
-  
+* Sprint review
+* Plan next sprint
+* Review pull requests
+* Created issues in backlog
 
 =======================
 
@@ -387,21 +350,41 @@ What did Hampus yesterday
 
 What will All do today
 
+* Finish planning sprint and starting it
+
+* Review TravelRestriction Table (TRAPI-78)
+
+  
+
 What will Irvin do today
 
-* 
+* Create CityID (TRAPI-232)
+
+* Create travel restriction controller (TRAPI-60)
+
+  
 
 What will Mirko do today
 
-* 
+* Set up generic repo (TRAPI-220)
+* Make sure our context is set up correctly in regards to how our teacher set it up (TRAPI-219)
+
+
 
 What will Jakob do today
 
-* 
+* Create model for travel restriction (TRAPI-88)
+* Create repo for travel restriction (TRAPI-214)
+* Add CountryID in citymodel (TRAPI-229)
+
+
 
 What will Hampus do today
 
-* 
+* Fix BUG regarding connection string (TRAPI-207)
+* Add TravelRestriction model to Context (TRAPI-184)
+  * Wait for Jakob to tell me the model is done
+* Add newtonsoft.Jason Nuget package to project (TRAPI-218)
 
 -----------------------------------------------------------------------------------------------------------------------------------------
 
