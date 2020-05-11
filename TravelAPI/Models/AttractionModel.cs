@@ -8,6 +8,7 @@ namespace TravelAPI.Models
 {
     public class AttractionModel
     {
+        //Props
         [Key]
         public int AttractionId { get; set; }
         public string Name { get; set; }
@@ -15,5 +16,8 @@ namespace TravelAPI.Models
         public bool IsChildFriendly { get; set; }
         public string Information { get; set; }
         public int Rating { get; set; }
+
+        //Relationships
+        public CityModel City { get; set; }
     }
 }
