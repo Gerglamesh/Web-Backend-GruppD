@@ -17,7 +17,7 @@ namespace TravelAPI.Services
         }
         public async Task<AttractionModel> GetAttraction(string name)
         {
-            var query = _travelApiContext.AttractionModel
+            var query = _travelApiContext.Attractions
                 .Where(q => q.Name == name);
             return await query.FirstOrDefaultAsync();
         }

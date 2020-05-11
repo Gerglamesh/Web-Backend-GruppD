@@ -8,11 +8,11 @@ namespace TravelAPI.Models
     {
         [Key]
         public int CityId { get; set; }
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
         
-        public CountryModel Country { get; private set; }
-        public ICollection<AttractionModel> Attractions { get; private set; }
+        public CountryModel Country { get; set; }
+        public ICollection<AttractionModel> Attractions { get; set; }
 
 
     }
