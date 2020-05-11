@@ -28,12 +28,12 @@ namespace TravelAPI.Controller
         }
         */
         
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<AttractionController>>> Get()
-        {
-            return await repository.GetAttraction(string);
+        //[HttpGet]
+        //public async Task<ActionResult<IEnumerable<AttractionController>>> Get()
+        //{
+        //    return await repository.GetAttraction();
 
-        }
+        //}
 
     }
 }

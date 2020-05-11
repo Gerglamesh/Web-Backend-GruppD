@@ -12,6 +12,9 @@ namespace TravelAPI
     public class TravelAPIContext : DbContext
     {
         private readonly IConfiguration _travelAPIContext;
+
+        public TravelAPIContext() {}
+
         public TravelAPIContext (IConfiguration config, DbContextOptions options) : base(options)
         {
             _travelAPIContext = config;
