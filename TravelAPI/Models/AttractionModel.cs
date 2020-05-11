@@ -16,8 +16,8 @@ namespace TravelAPI.Models
         public bool IsChildFriendly { get; set; }
         public string Information { get; set; }
         public int Rating { get; set; }
-     
+
         //Relationships
-        public int CityId { get; set; }
+        public CityModel City { get; set; }
     }
 }
