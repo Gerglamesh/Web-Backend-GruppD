@@ -18,7 +18,7 @@ namespace TravelAPI.Controller
             this.repository = repository;
         }
     
-        /*
+        
         [HttpGet]
      
         public string Get()
@@ -26,7 +26,6 @@ namespace TravelAPI.Controller
             // Anrop till Test Repo
             return "hej irke";
         }
-        */
         
         //[HttpGet]
         //public async Task<ActionResult<IEnumerable<AttractionController>>> Get()
