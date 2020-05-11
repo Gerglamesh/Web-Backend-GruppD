@@ -10,7 +10,6 @@ namespace TravelAPI.Services
 {
     public class CountryRepo : Repository, ICountryRepo
     {
-        private readonly TravelAPIContext _travelAPIContext;
         public CountryRepo(TravelAPIContext travelAPIContext, ILogger<CountryRepo> logger) : base (travelAPIContext, logger)
         {
         }
@@ -18,7 +17,7 @@ namespace TravelAPI.Services
         public async Task<CountryModel[]> GetCountries(bool includeCities = false)
         {
             _logger.LogInformation("Getting Country's");
-            IQueryable<CountryModel> query = _travelAPIContext.CountryModel
+            IQueryable<CountryModel> query = _travelAPIContext.Countries
                 .Include(i => i.CountryInfo);
             if(includeCities)
             {

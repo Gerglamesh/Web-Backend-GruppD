@@ -9,11 +9,12 @@ namespace TravelAPI.Services
     public class Repository : IRepository
     {
         protected readonly TravelAPIContext _travelAPIContext;
+        protected readonly TravelAPIContext tjoho;
         protected readonly ILogger<Repository> _logger;
         public Repository(TravelAPIContext context, ILogger<Repository> logger)
         {
             _travelAPIContext = context;
-            logger = _logger;
+            _logger = logger;
         }
         public void Add<T>(T entity) where T : class
         {

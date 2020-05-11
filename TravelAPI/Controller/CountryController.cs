@@ -23,10 +23,9 @@ namespace TravelAPI.Controller
         [HttpGet]
         public async Task<ActionResult<CountryModel[]>> GetCountry([FromQuery]bool IncludeCities = false)
         {
-            CountryModel[] results = null;
             try
             {
-                results = await _countryRepo.GetCountries(IncludeCities);
+                var results = await _countryRepo.GetCountries(IncludeCities);
                 return Ok(results);
             }
             catch (Exception e)
