@@ -13,5 +13,6 @@ namespace TravelAPI.Services
         Task<CountryModel> GetCountry(int id);
         Task<ICollection<CountryModel>> GetRightHandTraffic(bool rightHandTraffic);
         Task<ICollection<CountryModel>> GetCountriesByLanguage(string language);
+        Task<CountryModel[]> GetCountrys(bool includeCities);
     }
 }

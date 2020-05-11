@@ -25,5 +25,12 @@ namespace TravelAPI.Controller
             // Anrop till Fake Repo
             return "Hi from CountryController";
         }
+
+        [HttpGet]
+        public async Task<ActionResult<CountryController[]>> GetCountry()
+        {
+            var results = await _countryRepo
+            return true;
+        }
     }
 }
