@@ -22,11 +22,19 @@ namespace TravelAPI.Services
             return await query.FirstOrDefaultAsync();
         }
         
-        public async Task<ICollection<AttractionModel>> GetIschildfriendly (bool IsChildFriendly)
+        public async Task<ICollection<AttractionModel>>GetIschildfriendly(bool IsChildFriendly)
         {
             return await _travelApiContext
               .Set<AttractionModel>()
              .Where(a => a.IsChildFriendly == true).ToListAsync();
+        }
+
+
+        public async Task<ICollection<AttractionModel>>GetRating(int rating)
+        {
+            var query = _travelApiContext.AttractionModel
+                .Where(q => q.Rating == rating);
+            return await query.ToListAsync();
         }
     }
 }
