@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EngineClasses;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,8 @@ namespace TravelAPI
 {
     public class TravelAPIContext : DbContext
     {
+        //TODO: Do we need to change our setup to take advantage of this? 
+        //We have another solution going right now (See line 32)
         private readonly IConfiguration _travelAPIContext;
 
         public TravelAPIContext() {}
@@ -20,64 +23,66 @@ namespace TravelAPI
             _travelAPIContext = config;
         }
 
-        public DbSet<CountryModel> CountryModel { get; set; }
-        public DbSet<CountryInfoModel> CountryInfoModel { get; set; }
-        public DbSet<AttractionModel> AttractionModel { get; set; }
-        public DbSet<CityModel> CityModel { get; set; }
+        public DbSet<CountryModel> Countries { get; set; }
+        public DbSet<CountryInfoModel> CountryInfo { get; set; }
+        public DbSet<AttractionModel> Attractions { get; set; }
+        public DbSet<CityModel> Cities { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(_travelAPIContext.GetConnectionString("TravelAPIContext"));
+            optionsBuilder.UseSqlServer(ConnectionSetup.GetConnectionString());
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<CountryModel>()
-                .HasData(new
-                {
-                    CountryId = 1,
-                    Name = "Afghanistan",
-                    CountryInfo = 1,
-                });
+            .HasData(new
+            {
+                CountryId = 1,
+                Name = "Afghanistan",
+                CountryInfoId = 1
+            });
 
             modelBuilder.Entity<CountryInfoModel>()
-                .HasData(new
+            .HasData(new
                 {
-                    CountryInfoModelId = 1,
+                    CountryInfoId = 1,
                     Population = 50000000,
                     Governance = "Islamic Republic",
                     CapitalCity = "Kabul",
-                    BNP = 19360000000,
+                    BNP = 19360,
                     Area = 652000237,
                     TimeZone = "GMT+4:30",
-                    NationalDay = 08 / 19,
+                    NationalDay = "19/8",
                     Language = "Dari/Pashtu/Iranian",
-                    RightHandTraffic = true,
-                    Country = 1
+                    RightHandTraffic = true
                 });
 
             modelBuilder.Entity<CityModel>()
                 .HasData(new
                 {
+                    CityId = 1,
                     Name = "Kabul",
                     Population = 4222000000,
-                    Country = 1
+                    CountryId = 1
                 });
 
             modelBuilder.Entity<CityModel>()
                 .HasData(new
                 {
+                    CityId = 2,
                     Name = "Balkh",
                     Population = 1382200,
-                    Country = 1
+                    CountryId = 1
                 });
 
             modelBuilder.Entity<CityModel>()
                 .HasData(new
                 {
+                    CityId = 3,
                     Name = "Kandahar",
                     Population = 614118,
-                    Country = 1
+                    CountryId = 1
                 });
 
             modelBuilder.Entity<AttractionModel>()
@@ -89,7 +94,7 @@ namespace TravelAPI
                     Information = "The empty niches of the Buddha statues dominate the Bamiyan valley. Carved in the 6th century, the two statues, standing 38m and 55m respectively, were the tallest standing statues of Buddha ever made.",
                     IsChildFriendly = true,
                     Rating = 4,
-                    City = 1
+                    CityId = 1
                 });
 
             modelBuilder.Entity<AttractionModel>()
@@ -101,7 +106,7 @@ namespace TravelAPI
                     Information = "The Kabul Museum was once one of the greatest museums in the world. Its exhibits, ranging from Hellenistic gold coins to Buddhist statuary and Islamic bronzes, testified to Afghanistan’s location at the crossroads of Asia. After years of abuse during the civil war, help from the international community and the peerless dedication of its staff means the museum is slowly rising from the ashes. The museum opened in 1919, and was almost entirely stocked with items excavated in Afghanistan.",
                     IsChildFriendly = true,
                     Rating = 3,
-                    City = 1
+                    CityId = 1
                 });
         }
     }

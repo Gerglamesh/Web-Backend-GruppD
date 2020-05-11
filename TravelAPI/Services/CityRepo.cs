@@ -16,7 +16,7 @@ namespace TravelAPI.Services
 
         public async Task<CityModel> GetCity(string Name)
         {
-            var query = _travelApiContext.CityModel
+            var query = _travelApiContext.Cities
             .Where(s => s.Name == Name);
             return await query.FirstOrDefaultAsync();
         }

@@ -14,8 +14,9 @@ namespace TravelAPI.Models
         public string Name { get; private set; }
 
         //Relationships
-        public ICollection<CityModel> Cities { get; set; }
         public CountryInfoModel CountryInfo { get; set; }
-        //public TravelRestrictionModel TravelRestriction { get; set; } Model not ready yet
+        public ICollection<CityModel> Cities { get; set; }
+        
+        //public TravelRestrictionModel TravelRestriction { get; set; } //Model not ready yet
     }
 }
