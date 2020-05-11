@@ -13,10 +13,9 @@ namespace TravelAPI.Services
         private readonly TravelAPIContext _travelAPIContext;
         public CountryRepo(TravelAPIContext travelAPIContext, ILogger<CountryRepo> logger) : base (travelAPIContext, logger)
         {
-
         }
 
-        public async Task<CountryModel[]> GetCountrys(bool includeCities = false)
+        public async Task<CountryModel[]> GetCountries(bool includeCities = false)
         {
             _logger.LogInformation("Getting Country's");
             IQueryable<CountryModel> query = _travelAPIContext.CountryModel
