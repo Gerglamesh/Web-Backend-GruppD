@@ -27,6 +27,7 @@ namespace TravelAPI
         public DbSet<CountryInfoModel> CountryInfo { get; set; }
         public DbSet<AttractionModel> Attractions { get; set; }
         public DbSet<CityModel> Cities { get; set; }
+        public DbSet<TravelRestrictionModel> TravelRestrictions { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -41,6 +42,20 @@ namespace TravelAPI
                 CountryId = 1,
                 Name = "Afghanistan",
                 CountryInfoId = 1
+            });
+
+            modelBuilder.Entity<TravelRestrictionModel>()
+            .HasData(new
+            {
+                TravelRestrictionId = 1,
+                IsWorkTravelAllowed = true,
+                IsTourismAllowed = false,
+                IsImmigrationAllowed = true,
+                IsCitizenshipAllowed = true,
+                IsFamilyVisitAllowed = true,
+                IsVisaNeeded = true,
+                RiskLevel = 4,
+                CountryId = 1
             });
 
             modelBuilder.Entity<CountryInfoModel>()
