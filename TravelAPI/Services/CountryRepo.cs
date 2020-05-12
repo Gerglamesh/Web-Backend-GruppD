@@ -142,7 +142,6 @@ namespace TravelAPI.Services
         public async Task<ICollection<CountryModel>> GetRightHandTraffic(bool isRightHandTraffic)
         {
             return await _travelAPIContext.Set<CountryModel>().Where(s => s.CountryInfo.RightHandTraffic == true).ToListAsync();
-
         }
         public async Task<ICollection<CountryModel>> GetCountriesByLanguage(string language)
         {
@@ -150,7 +149,5 @@ namespace TravelAPI.Services
                 .Set<CountryModel>()
                 .Where(c => c.CountryInfo.Language.Contains(language)).ToListAsync();
         }
-
-
     }
 }

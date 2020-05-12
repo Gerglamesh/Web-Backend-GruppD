@@ -11,7 +11,7 @@ namespace TravelAPI.Controller
 {
     [Route("api/v1.0/[controller]")]
     [ApiController]
-    public class CountryController : ControllerBase     
+    public class CountryController : ControllerBase
     {
         private readonly ICountryRepo _countryRepo;
 
@@ -22,20 +22,20 @@ namespace TravelAPI.Controller
 
         [HttpGet]
         public async Task<ActionResult<CountryModel[]>> GetCountries(
-            [FromQuery]bool IncludeCities = false, 
-            [FromQuery]bool IncludeTravelRestrictions = false,
-            [FromQuery]bool IncludeAttractions = false,
-            [FromQuery]int AttractionsMinRating = 0,
-            [FromQuery]int AttractionsMaxRating = 5)
+            [FromQuery]bool includeCities = false,
+            [FromQuery]bool includeTravelRestrictions = false,
+            [FromQuery]bool includeAttractions = false,
+            [FromQuery]int attractionsMinRating = 0,
+            [FromQuery]int attractionsMaxRating = 5)
         {
             try
             {
                 var results = await _countryRepo.GetCountries(
-                    IncludeCities, 
-                    IncludeTravelRestrictions,
-                    IncludeAttractions,
-                    AttractionsMinRating,
-                    AttractionsMaxRating);
+                    includeCities,
+                    includeTravelRestrictions,
+                    includeAttractions,
+                    attractionsMinRating,
+                    attractionsMaxRating);
                 return Ok(results);
             }
             catch (Exception e)
@@ -45,21 +45,49 @@ namespace TravelAPI.Controller
         }
 
         [HttpGet]
-        public async Task<ActionResult<CountryModel[]>> GetCountry(
-            [FromQuery]bool IncludeCities = false,
-            [FromQuery]bool IncludeTravelRestrictions = false,
-            [FromQuery]bool IncludeAttractions = false,
-            [FromQuery]int AttractionsMinRating = 0,
-            [FromQuery]int AttractionsMaxRating = 5)
+        public async Task<ActionResult<CountryModel>> GetCountry(
+            [FromQuery]string name,
+            [FromQuery]bool includeCities = false,
+            [FromQuery]bool includeTravelRestrictions = false,
+            [FromQuery]bool includeAttractions = false,
+            [FromQuery]int attractionsMinRating = 0,
+            [FromQuery]int attractionsMaxRating = 5)
         {
             try
             {
-                var results = await _countryRepo.GetCountries(
-                    IncludeCities,
-                    IncludeTravelRestrictions,
-                    IncludeAttractions,
-                    AttractionsMinRating,
-                    AttractionsMaxRating);
+                var results = await _countryRepo.GetCountry(
+                    name,
+                    includeCities,
+                    includeTravelRestrictions,
+                    includeAttractions,
+                    attractionsMinRating,
+                    attractionsMaxRating);
+                return Ok(results);
+            }
+            catch (Exception e)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
+            }
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<CountryModel>> GetCountry(
+            [FromQuery]int id,
+            [FromQuery]bool includeCities = false,
+            [FromQuery]bool includeTravelRestrictions = false,
+            [FromQuery]bool includeAttractions = false,
+            [FromQuery]int attractionsMinRating = 0,
+            [FromQuery]int attractionsMaxRating = 5)
+        {
+            try
+            {
+                var results = await _countryRepo.GetCountry(
+                    id,
+                    includeCities,
+                    includeTravelRestrictions,
+                    includeAttractions,
+                    attractionsMinRating,
+                    attractionsMaxRating);
                 return Ok(results);
             }
             catch (Exception e)
