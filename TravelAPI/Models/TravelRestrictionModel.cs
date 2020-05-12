@@ -10,12 +10,12 @@ namespace TravelAPI.Models
     {
         
         [Key]
-        public int TravelRestrictionID { get; private set; }
-        public bool WorkTravelAllowed { get; private set; }
-        public bool TourismAllowed { get; private set; }
-        public bool ImmigrationAllowed { get; private set; }
-        public bool CitizenshipAllowed { get; private set; }
-        public bool FamilyVisitAllowed { get; private set; }
+        public int TravelRestrictionId { get; private set; }
+        public bool IsWorkTravelAllowed { get; private set; }
+        public bool IsTourismAllowed { get; private set; }
+        public bool IsImmigrationAllowed { get; private set; }
+        public bool IsCitizenshipAllowed { get; private set; }
+        public bool IsFamilyVisitAllowed { get; private set; }
         public bool IsVisaNeeded { get; private set; }
         public int RiskLevel { get; private set; }
 
