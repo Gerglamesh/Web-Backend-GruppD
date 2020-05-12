@@ -18,7 +18,5 @@ namespace TravelAPI.Models
         public bool IsFamilyVisitAllowed { get; private set; }
         public bool IsVisaNeeded { get; private set; }
         public int RiskLevel { get; private set; }
-
-        public CountryModel Country { get; set; }
     }
 }

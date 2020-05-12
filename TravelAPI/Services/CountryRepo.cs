@@ -28,6 +28,10 @@ namespace TravelAPI.Services
             {
                 query = query.Include(c => c.Cities);
             }
+            if (IncludeTravelRestrictions)
+            {
+                query = query.Include(c => c.);
+            }
             query = query.OrderBy(e => e.Name);
             return await query.ToArrayAsync();
         }

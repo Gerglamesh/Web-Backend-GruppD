@@ -16,7 +16,6 @@ namespace TravelAPI.Models
         //Relationships
         public CountryInfoModel CountryInfo { get; set; }
         public ICollection<CityModel> Cities { get; set; }
-        
-        //public TravelRestrictionModel TravelRestriction { get; set; } //Model not ready yet
+        public TravelRestrictionModel TravelRestriction { get; set; }
     }
 }
