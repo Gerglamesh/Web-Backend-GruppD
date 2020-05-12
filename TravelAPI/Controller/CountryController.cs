@@ -44,7 +44,7 @@ namespace TravelAPI.Controller
             }
         }
 
-        [HttpGet]
+        [HttpGet("{name}")]
         public async Task<ActionResult<CountryModel>> GetCountry(
             [FromQuery]string name,
             [FromQuery]bool includeCities = false,
@@ -70,14 +70,14 @@ namespace TravelAPI.Controller
             }
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<ActionResult<CountryModel>> GetCountry(
             [FromQuery]int id,
             [FromQuery]bool includeCities = false,
             [FromQuery]bool includeTravelRestrictions = false,
             [FromQuery]bool includeAttractions = false,
             [FromQuery]int attractionsMinRating = 0,
-            [FromQuery]int attractionsMaxRating = 5)
+            [FromQuery]int AttractionsMaxRating = 5)
         {
             try
             {
@@ -87,7 +87,7 @@ namespace TravelAPI.Controller
                     includeTravelRestrictions,
                     includeAttractions,
                     attractionsMinRating,
-                    attractionsMaxRating);
+                    AttractionsMaxRating);
                 return Ok(results);
             }
             catch (Exception e)
