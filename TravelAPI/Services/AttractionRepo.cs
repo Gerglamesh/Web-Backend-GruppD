@@ -33,7 +33,7 @@ namespace TravelAPI.Services
 
         public async Task<ICollection<AttractionModel>>GetRating(int rating)
         {
-            var query = _travelApiContext.AttractionModel
+            var query = _travelApiContext.Attractions
                 .Where(q => q.Rating == rating);
             return await query.ToListAsync();
         }
