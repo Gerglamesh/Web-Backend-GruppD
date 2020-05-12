@@ -10,13 +10,12 @@ namespace TravelAPI.Models
     {
         //Props
         [Key]
-        public int CountryId { get; private set; }
-        public string Name { get; private set; }
+        public int CountryId { get; set; }
+        public string Name { get; set; }
 
         //Relationships
         public CountryInfoModel CountryInfo { get; set; }
         public ICollection<CityModel> Cities { get; set; }
-        
-        //public TravelRestrictionModel TravelRestriction { get; set; } //Model not ready yet
+        public TravelRestrictionModel TravelRestriction { get; set; }
     }
 }
