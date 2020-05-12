@@ -8,7 +8,7 @@ using TravelAPI.Models;
 
 namespace TravelAPI.Services
 {
-    public class AttractionRepo : IAttractionRepo
+    public class AttractionRepo : Repository, IAttractionRepo
     {
         private readonly TravelAPIContext _travelApiContext;
         public AttractionRepo(TravelAPIContext context)

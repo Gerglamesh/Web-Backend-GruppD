@@ -6,12 +6,13 @@ using TravelAPI.Models;
 
 namespace TravelAPI.Services
 {
-    interface ICountryRepo
+    public interface ICountryRepo : IRepository
     {
         Task<ICollection<CountryModel>> GetCountries();
         Task<CountryModel> GetCountry(string name);
         Task<CountryModel> GetCountry(int id);
         Task<ICollection<CountryModel>> GetRightHandTraffic(bool rightHandTraffic);
         Task<ICollection<CountryModel>> GetCountriesByLanguage(string language);
+        Task<CountryModel[]> GetCountries(bool includeCities = false);
     }
 }

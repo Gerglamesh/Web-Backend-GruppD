@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TravelAPI.Models;
+using TravelAPI.Services;
 
 namespace TravelAPI.Controller
 {
@@ -10,20 +13,25 @@ namespace TravelAPI.Controller
     [ApiController]
     public class CountryController : ControllerBase     
     {
-        //Repo prop here
-        //private readonly TravelAPIContext context;
+        private readonly ICountryRepo _countryRepo;
 
-        public CountryController()
+        public CountryController(ICountryRepo countryRepo)
         {
-            //Inject repo
-            //this.context = context;
+            _countryRepo = countryRepo;
         }
 
         [HttpGet]
-        public string Get()
+        public async Task<ActionResult<CountryModel[]>> GetCountry([FromQuery]bool IncludeCities = false)
         {
-            // Anrop till Fake Repo
-            return "Hi from CountryController";
+            try
+            {
+                var results = await _countryRepo.GetCountries(IncludeCities);
+                return Ok(results);
+            }
+            catch (Exception e)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
+            }
         }
     }
 }

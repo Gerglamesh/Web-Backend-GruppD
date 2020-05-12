@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using TravelAPI.Models;
 namespace TravelAPI.Services
 {
-    public class CityRepo : ICityRepo
+    public class CityRepo : Repository, ICityRepo
     {
         private readonly TravelAPIContext _travelApiContext;
         public CityRepo(TravelAPIContext Context)

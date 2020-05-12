@@ -14,13 +14,13 @@ namespace TravelAPI
     {
         //TODO: Do we need to change our setup to take advantage of this? 
         //We have another solution going right now (See line 32)
-        private readonly IConfiguration _travelAPIContext;
+        private readonly IConfiguration _travelConfig;
 
         public TravelAPIContext() {}
 
         public TravelAPIContext (IConfiguration config, DbContextOptions options) : base(options)
         {
-            _travelAPIContext = config;
+            _travelConfig = config;
         }
 
         public DbSet<CountryModel> Countries { get; set; }

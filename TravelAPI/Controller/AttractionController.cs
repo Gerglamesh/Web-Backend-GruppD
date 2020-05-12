@@ -31,7 +31,6 @@ namespace TravelAPI.Controller
         //public async Task<ActionResult<IEnumerable<AttractionController>>> Get()
         //{
         //    return await repository.GetAttraction();
-
         //}
 
     }

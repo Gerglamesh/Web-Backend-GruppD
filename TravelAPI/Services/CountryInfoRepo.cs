@@ -7,7 +7,7 @@ using TravelAPI.Models;
 
 namespace TravelAPI.Services
 {
-    public class CountryInfoRepo : ICountryInfoRepo
+    public class CountryInfoRepo : Repository, ICountryInfoRepo
     {
         private readonly TravelAPIContext _travelApiContext;
         public CountryInfoRepo(TravelAPIContext Context)

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,12 +8,23 @@ using TravelAPI.Models;
 
 namespace TravelAPI.Services
 {
-    public class CountryRepo : ICountryRepo
+    public class CountryRepo : Repository, ICountryRepo
     {
-        private readonly TravelAPIContext _travelAPIContext;
-        public CountryRepo(TravelAPIContext Context)
+        public CountryRepo(TravelAPIContext travelAPIContext, ILogger<CountryRepo> logger) : base (travelAPIContext, logger)
         {
-            _travelAPIContext = Context;
+        }
+
+        public async Task<CountryModel[]> GetCountries(bool includeCities = false)
+        {
+            _logger.LogInformation("Getting Country's");
+            IQueryable<CountryModel> query = _travelAPIContext.Countries
+                .Include(i => i.CountryInfo);
+            if(includeCities)
+            {
+                query = query.Include(c => c.Cities);
+            }
+            query = query.OrderBy(e => e.Name);
+            return await query.ToArrayAsync();
         }
 
         public async Task<ICollection<CountryModel>> GetCountries()
@@ -44,7 +56,6 @@ namespace TravelAPI.Services
             return await _travelAPIContext
                 .Set<CountryModel>()
                 .Where(c => c.CountryInfo.Language.Contains(language)).ToListAsync();
-
         }
     }
 }
