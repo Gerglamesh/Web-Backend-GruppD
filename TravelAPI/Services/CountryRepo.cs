@@ -19,19 +19,37 @@ namespace TravelAPI.Services
             bool IncludeTravelRestrictions = false,
             bool IncludeAttractions = false,
             int AttractionsMinRating = 0,
-            int AttraxtionsMaxRating = 5)
+            int AttractionsMaxRating = 5)
         {
             _logger.LogInformation("Getting Country's");
             IQueryable<CountryModel> query = _travelAPIContext.Countries
                 .Include(i => i.CountryInfo);
+
             if(includeCities)
             {
                 query = query.Include(c => c.Cities);
             }
             if (IncludeTravelRestrictions)
             {
-                query = query.Include(c => c.);
+                query = query.Include(c => c.TravelRestriction);
             }
+            if (IncludeAttractions)
+            {
+                if (AttractionsMinRating < 0)
+                {
+                    AttractionsMinRating = 0;
+                }
+                if (AttractionsMaxRating > 5)
+                {
+                    AttractionsMinRating = 5;
+                }
+
+                query = query.Include(c => c.Cities)
+                    .ThenInclude(c => c.Attractions
+                    .Where(r => r.Rating <= AttractionsMaxRating &&
+                            r.Rating >= AttractionsMinRating));
+            }
+
             query = query.OrderBy(e => e.Name);
             return await query.ToArrayAsync();
         }

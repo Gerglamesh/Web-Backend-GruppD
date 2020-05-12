@@ -41,7 +41,8 @@ namespace TravelAPI
             {
                 CountryId = 1,
                 Name = "Afghanistan",
-                CountryInfoId = 1
+                CountryInfoId = 1,
+                TravelRestrictionId = 1
             });
 
             modelBuilder.Entity<TravelRestrictionModel>()
@@ -54,8 +55,7 @@ namespace TravelAPI
                 IsCitizenshipAllowed = true,
                 IsFamilyVisitAllowed = true,
                 IsVisaNeeded = true,
-                RiskLevel = 4,
-                CountryId = 1
+                RiskLevel = 4
             });
 
             modelBuilder.Entity<CountryInfoModel>()
