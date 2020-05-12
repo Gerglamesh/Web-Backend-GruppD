@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,9 @@ namespace TravelAPI.Services
     public class CityRepo : Repository, ICityRepo
     {
         private readonly TravelAPIContext _travelApiContext;
-        public CityRepo(TravelAPIContext Context)
+        public CityRepo(TravelAPIContext travelAPIContext, ILogger<CountryRepo> logger) : base(travelAPIContext, logger)
         {
-            _travelApiContext = Context;
+            _travelApiContext = travelAPIContext;
         }
 
         public async Task<CityModel> GetCity(string Name)
