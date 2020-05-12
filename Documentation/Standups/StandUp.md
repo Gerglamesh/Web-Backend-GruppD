@@ -388,32 +388,48 @@ What will Hampus do today
 
 -----------------------------------------------------------------------------------------------------------------------------------------
 
-# SKRIV DATUM HÄR
+# 12/5 Irvin
 
 ### Yesterday
 
 What did All Do
 
-* 
-* 
-* 
+* Finish planning sprint and starting it ----Finished
+
+* Review TravelRestriction Table (TRAPI-78)----Finished
+
+  
 
 What did Irvin yesterday
 
-* 
-* 
+* Create CityID (TRAPI-232)----Finished
+* Create travel restriction controller (TRAPI-60)----Finished
+* Request: Get all rating (TRAPI-79)----Finished
 
 What did Jakob yesterday
 
-* 
+* Create model for travel restriction (TRAPI-88)----Finished
+* Create repo for travel restriction (TRAPI-214)----Finished
+* Add CountryID in citymodel (TRAPI-229)---- Not needed
 
 What did Mirko yesterday
 
-* 
+* Set up generic repo (TRAPI-220)---- Not finished
+* Make sure our context is set up correctly in regards to how our teacher set it up (TRAPI-219)----not finished
 
 What did Hampus yesterday
 
-* 
+* Fix BUG regarding connection string (TRAPI-207)----Finished
+
+* Add TravelRestriction model to Context (TRAPI-184)----Finished
+
+  * Wait for Jakob to tell me the model is done
+
+* Add newtonsoft.Jason Nuget package to project (TRAPI-218)----Finished
+
+* Change name travelapi context to plural TRAPI-201----Finished
+
+* Fix documentation for connectionstrig setup TRAPI-234----Finished
 
   
 
@@ -425,19 +441,34 @@ What will All do today
 
 What will Irvin do today
 
-* 
+* set up unit test TRAPI-226
+* Create logger TRAPI-236
 
 What will Mirko do today
 
-* 
+* Set up generic repo (TRAPI-220)
+* Make sure our context is set up correctly in regards to how our teacher set it up (TRAPI-219)
+* Create unit test for countryinfo (TRAPI-212)
 
 What will Jakob do today
 
-* 
+* Create logger for travelrestiction repo (TRAPI-235)
+*  Create logger for city repo (TRAPI-237)
+* Create unit test for city (TRAPI-210)
 
 What will Hampus do today
 
-* 
+* Get request TRAPI :
+
+  * 162
+  * 163
+  * 164
+  * 165
+  * 166
+
+* Create logger (TRAPI-228)
+
+  
 
 
 
