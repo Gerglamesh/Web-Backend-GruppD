@@ -19,7 +19,7 @@ namespace TravelAPI.Controller
             _cityRepo = cityRepo;
         }
         [HttpGet]
-        public async Task<ActionResult<CityModel[]>> GetCities([FromQuery]bool IncludeAttractions = false)
+        public async Task<ActionResult<CityModel[]>> GetCities([FromQuery]bool includeAttractions = false)
         {
             try
             {
