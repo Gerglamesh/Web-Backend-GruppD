@@ -14,7 +14,12 @@ namespace TravelAPI.Services
         {
         }
 
-        public async Task<CountryModel[]> GetCountries(bool includeCities = false)
+        public async Task<ICollection<CountryModel>> GetCountries(
+            bool includeCities = false,
+            bool IncludeTravelRestrictions = false,
+            bool IncludeAttractions = false,
+            int AttractionsMinRating = 0,
+            int AttraxtionsMaxRating = 5)
         {
             _logger.LogInformation("Getting Country's");
             IQueryable<CountryModel> query = _travelAPIContext.Countries
@@ -25,11 +30,6 @@ namespace TravelAPI.Services
             }
             query = query.OrderBy(e => e.Name);
             return await query.ToArrayAsync();
-        }
-
-        public async Task<ICollection<CountryModel>> GetCountries()
-        {
-            return await _travelAPIContext.Set<CountryModel>().ToListAsync();  
         }
 
         public async Task<CountryModel> GetCountry(string name)

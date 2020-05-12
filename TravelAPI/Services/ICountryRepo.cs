@@ -8,11 +8,15 @@ namespace TravelAPI.Services
 {
     public interface ICountryRepo : IRepository
     {
-        Task<ICollection<CountryModel>> GetCountries();
+        Task<ICollection<CountryModel>> GetCountries(
+            bool IncludeCities = false,
+            bool IncludeTravelRestrictions = false,
+            bool IncludeAttractions = false,
+            int AttractionsMinRating = 0,
+            int AttractionsMaxRating = 5);
         Task<CountryModel> GetCountry(string name);
         Task<CountryModel> GetCountry(int id);
         Task<ICollection<CountryModel>> GetRightHandTraffic(bool rightHandTraffic);
         Task<ICollection<CountryModel>> GetCountriesByLanguage(string language);
-        Task<CountryModel[]> GetCountries(bool includeCities = false);
     }
 }

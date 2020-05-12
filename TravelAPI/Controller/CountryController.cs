@@ -21,7 +21,12 @@ namespace TravelAPI.Controller
         }
 
         [HttpGet]
-        public async Task<ActionResult<CountryModel[]>> GetCountry([FromQuery]bool IncludeCities = false)
+        public async Task<ActionResult<CountryModel[]>> GetCountry(
+            [FromQuery]bool IncludeCities = false, 
+            [FromQuery]bool IncludeTravelRestrictions = false,
+            [FromQuery]bool IncludeAttractions = false,
+            [FromQuery]int AttractionsMinRating = 0,
+            [FromQuery]int AttractionsMaxRating = 5)
         {
             try
             {
