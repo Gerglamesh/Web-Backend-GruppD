@@ -21,7 +21,7 @@ namespace TravelAPI.Controller
         }
 
         [HttpGet]
-        public async Task<ActionResult<CountryModel[]>> GetCountry(
+        public async Task<ActionResult<CountryModel[]>> GetCountries(
             [FromQuery]bool IncludeCities = false, 
             [FromQuery]bool IncludeTravelRestrictions = false,
             [FromQuery]bool IncludeAttractions = false,
@@ -30,7 +30,36 @@ namespace TravelAPI.Controller
         {
             try
             {
-                var results = await _countryRepo.GetCountries(IncludeCities);
+                var results = await _countryRepo.GetCountries(
+                    IncludeCities, 
+                    IncludeTravelRestrictions,
+                    IncludeAttractions,
+                    AttractionsMinRating,
+                    AttractionsMaxRating);
+                return Ok(results);
+            }
+            catch (Exception e)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
+            }
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<CountryModel[]>> GetCountry(
+            [FromQuery]bool IncludeCities = false,
+            [FromQuery]bool IncludeTravelRestrictions = false,
+            [FromQuery]bool IncludeAttractions = false,
+            [FromQuery]int AttractionsMinRating = 0,
+            [FromQuery]int AttractionsMaxRating = 5)
+        {
+            try
+            {
+                var results = await _countryRepo.GetCountries(
+                    IncludeCities,
+                    IncludeTravelRestrictions,
+                    IncludeAttractions,
+                    AttractionsMinRating,
+                    AttractionsMaxRating);
                 return Ok(results);
             }
             catch (Exception e)
