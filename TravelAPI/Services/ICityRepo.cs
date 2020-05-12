@@ -6,7 +6,7 @@ using TravelAPI.Models;
 
 namespace TravelAPI.Services
 {
-    public interface ICityRepo
+    public interface ICityRepo : IRepository
     {
         Task<ICollection<CityModel>> GetCities();
         Task<CityModel> GetCity(string Name);

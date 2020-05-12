@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,9 @@ namespace TravelAPI.Services
     public class AttractionRepo : Repository, IAttractionRepo
     {
         private readonly TravelAPIContext _travelApiContext;
-        public AttractionRepo(TravelAPIContext context)
+        public AttractionRepo(TravelAPIContext travelAPIContext, ILogger<CountryRepo> logger) : base(travelAPIContext, logger)
         {
-            _travelApiContext = context;
+            _travelApiContext = travelAPIContext;
         }
         public async Task<AttractionModel> GetAttraction(string name)
         {

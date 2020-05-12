@@ -8,12 +8,12 @@ using TravelAPI.Models;
 
 namespace TravelAPI.Services
 {
-    public class TravelRestrictionRepo : ITravelRestrictionRepo
+    public class TravelRestrictionRepo : Repository, ITravelRestrictionRepo
     {
         private readonly TravelAPIContext _travelApiContext;
-        public TravelRestrictionRepo(TravelAPIContext Context, ILogger<TravelRestrictionRepo> logger)
+        public TravelRestrictionRepo(TravelAPIContext travelAPIContext, ILogger<CountryRepo> logger) : base(travelAPIContext, logger)
         {
-            _travelApiContext = Context;
+            _travelApiContext = travelAPIContext;
         }
         public async Task<ICollection<TravelRestrictionModel>> GetTravelRestrictions()
         {

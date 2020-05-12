@@ -6,7 +6,7 @@ using TravelAPI.Models;
 
 namespace TravelAPI.Services
 {
-    public interface IAttractionRepo
+    public interface IAttractionRepo : IRepository
     {
         Task<AttractionModel>GetAttraction(string name);
         Task<ICollection<AttractionModel>>GetRating(int rating);
