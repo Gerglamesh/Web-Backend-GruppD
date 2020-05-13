@@ -472,32 +472,44 @@ What will Hampus do today
 
 
 
-# SKRIV DATUM HÄR
+# 13/05 Mirko
 
 ### Yesterday
 
 What did All Do
 
-* 
-* 
-* 
-
 What did Irvin yesterday
 
-* 
-* 
+* set up unit test TRAPI-215------------Not Finished
+* Test Solution Project for the whole group (TRAPI-226)--------Finished
 
 What did Jakob yesterday
 
-* 
+* Create logger for travelrestiction repo (TRAPI-235)---------Finished
+* Create logger for city repo (TRAPI-237)---------Finished
+* Create unit test for city (TRAPI-210)------------Not Finished
 
 What did Mirko yesterday
 
-* 
+* Set up generic repo (TRAPI-220)---------Finished
+* Make sure our context is set up correctly in regards to how our teacher set it up (TRAPI-219)---------Finished
+* Create unit test for countryinfo (TRAPI-212)---------Not Finished
 
 What did Hampus yesterday
 
-* 
+* Get request TRAPI :
+
+  * 162---------Finished
+  * 163---------Finished
+  * 164---------Finished
+  * 165---------Finished
+  * 166---------Finished
+  
+* Create logger (TRAPI-228)---------Finished
+
+* Git Bash teacher---------Finished
+
+* Fix bug with test Project---------Finished
 
   
 
@@ -509,20 +521,25 @@ What will All do today
 
 What will Irvin do today
 
-* 
+* set up unit test TRAPI-215
+* Create Atrattion Logger (TRAPI-236)
 
 What will Mirko do today
 
-* 
+* Create unit test for countryinfo (TRAPI-212)
+* Code CleanUp(TRAPI-230)
 
 What will Jakob do today
 
-* 
+* Create unit test for city (TRAPI-210)
+* Code Cleaup (TRAPI-231)
 
 What will Hampus do today
 
-* 
-* 
+* Create Unit Test(TRAPI-211)
+  * Planning 
+  * Create Sub Task
+  * Start Making Tests   
 
 
 
