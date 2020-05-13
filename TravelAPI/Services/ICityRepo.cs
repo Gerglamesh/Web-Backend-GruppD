@@ -8,7 +8,7 @@ namespace TravelAPI.Services
 {
     public interface ICityRepo : IRepository
     {
-        Task<ICollection<CityModel>> GetCities();
+        Task<ICollection<CityModel>> GetCities(bool includeAttractions = false);
         Task<CityModel> GetCity(string Name);
     }
 }
