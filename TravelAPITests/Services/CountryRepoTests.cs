@@ -1,9 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TravelAPI.Services;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using TravelAPI.Models;
+using Moq.EntityFrameworkCore;
+using Moq;
+using Microsoft.Extensions.Logging;
 
 namespace TravelAPI.Services.Tests
 {
@@ -14,11 +14,18 @@ namespace TravelAPI.Services.Tests
         public void GetCountriesTest()
         {
             //Arrange
-            IList<CountryModel> countries = GenerateEvents();
+            IList<CountryModel> countries = GenerateCountries();
+            var travelAPIContextMock = new Mock<TravelAPIContext>();
+            travelAPIContextMock.Setup(c => c.Countries).ReturnsDbSet(countries);
+
+            var logger = Mock.Of<ILogger<CountryRepo>>();
+            var countriesRepository = new CountryRepo(travelAPIContextMock.Object, logger);
+
             //Act 
+            var theCountries = countriesRepository.GetCountries();
 
             //Assert
-            Assert.Fail();
+            Assert.AreEqual(1, theCountries.Result.Count);
         }
 
         [TestMethod()]
@@ -45,7 +52,7 @@ namespace TravelAPI.Services.Tests
             Assert.Fail();
         }
 
-        private static IList<CountryModel> GenerateEvents()
+        private static IList<CountryModel> GenerateCountries()
         {
             return new List<CountryModel>
             {
@@ -69,7 +76,45 @@ namespace TravelAPI.Services.Tests
                     TravelRestriction = new TravelRestrictionModel
                     {
                         TravelRestrictionId = 1,
-
+                        IsWorkTravelAllowed = false,
+                        IsTourismAllowed = false,
+                        IsImmigrationAllowed = false,
+                        IsCitizenshipAllowed = true,
+                        IsFamilyVisitAllowed = true,
+                        IsVisaNeeded = true,
+                        RiskLevel = 5
+                    },
+                    Cities = new List<CityModel>
+                    {
+                        new CityModel
+                        {
+                            CityId = 1,
+                            Name = "Birnin Zana",
+                            Country = new CountryModel(),
+                            Attractions = new List<AttractionModel>
+                            {
+                                new AttractionModel
+                                {
+                                    AttractionId = 1,
+                                    Name = "Nature",
+                                    Location = "Outside all cities",
+                                    IsChildFriendly = false,
+                                    Information = "This is the information on Nature",
+                                    Rating = 4,
+                                    City = new CityModel()
+                                },
+                                new AttractionModel
+                                {
+                                    AttractionId = 2,
+                                    Name = "The Golden City",
+                                    Location = "Birnin Zana",
+                                    IsChildFriendly = true,
+                                    Information = "This is the information on Golden City",
+                                    Rating = 5,
+                                    City = new CityModel()
+                                }
+                            }
+                        }
                     }
                 }
             };
