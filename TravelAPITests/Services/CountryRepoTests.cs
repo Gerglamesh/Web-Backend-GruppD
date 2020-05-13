@@ -1,17 +1,16 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TravelAPI.Models;
 using Moq.EntityFrameworkCore;
 using Moq;
 using Microsoft.Extensions.Logging;
+using Xunit;
 
 namespace TravelAPI.Services.Tests
 {
-    [TestClass()]
     public class CountryRepoTests
     {
-        [TestMethod()]
-        public void GetCountriesTest()
+        [Fact]
+        public async void GetCountriesTest()
         {
             //Arrange
             IList<CountryModel> countries = GenerateCountries();
@@ -22,34 +21,43 @@ namespace TravelAPI.Services.Tests
             var countriesRepository = new CountryRepo(travelAPIContextMock.Object, logger);
 
             //Act 
-            var theCountries = countriesRepository.GetCountries();
+            var theCountries = await countriesRepository.GetCountries();
 
             //Assert
-            Assert.AreEqual(1, theCountries.Result.Count);
+            Assert.Equal(2, theCountries.Count);
         }
 
-        [TestMethod()]
-        public void GetCountryTest()
+        [Fact]
+        public async void GetCountryByIdTest()
         {
-            Assert.Fail();
+            //Arrange
+            IList<CountryModel> countries = GenerateCountries();
+            var travelAPIContextMock = new Mock<TravelAPIContext>();
+            travelAPIContextMock.Setup(c => c.Countries).ReturnsDbSet(countries);
+
+            var logger = Mock.Of<ILogger<CountryRepo>>();
+            var countriesRepository = new CountryRepo(travelAPIContextMock.Object, logger);
+
+            //Act 
+            var theCountry = await countriesRepository.GetCountry(2);
+
+            //Assert
+            Assert.Equal("Långtbortistan", theCountry.Name);
         }
 
-        [TestMethod()]
+        [Fact]
         public void GetCountryTest1()
         {
-            Assert.Fail();
         }
 
-        [TestMethod()]
+        [Fact]
         public void GetRightHandTrafficTest()
         {
-            Assert.Fail();
         }
 
-        [TestMethod()]
+        [Fact]
         public void GetCountriesByLanguageTest()
         {
-            Assert.Fail();
         }
 
         private static IList<CountryModel> GenerateCountries()
@@ -110,6 +118,58 @@ namespace TravelAPI.Services.Tests
                                     Location = "Birnin Zana",
                                     IsChildFriendly = true,
                                     Information = "This is the information on Golden City",
+                                    Rating = 5,
+                                    City = new CityModel()
+                                }
+                            }
+                        }
+                    }
+                },
+
+                new CountryModel
+                {
+                    CountryId = 2,
+                    Name = "Långtbortistan",
+                    CountryInfo = new CountryInfoModel
+                    {
+                        CountryInfoId = 2,
+                        Population = 10000,
+                        Governance = "Constitutional matriarchy",
+                        BNP = 992384001,
+                        CapitalCity = "Storstan",
+                        Area = 100000,
+                        TimeZone = "GMT + 78",
+                        NationalDay = "5/1",
+                        RightHandTraffic = true,
+                        Language = "English/Swenglish/Swedish"
+                    },
+                    TravelRestriction = new TravelRestrictionModel
+                    {
+                        TravelRestrictionId = 2,
+                        IsWorkTravelAllowed = true,
+                        IsTourismAllowed = true,
+                        IsImmigrationAllowed = true,
+                        IsCitizenshipAllowed = true,
+                        IsFamilyVisitAllowed = true,
+                        IsVisaNeeded = false,
+                        RiskLevel = 0
+                    },
+                    Cities = new List<CityModel>
+                    {
+                        new CityModel
+                        {
+                            CityId = 2,
+                            Name = "Storstan",
+                            Country = new CountryModel(),
+                            Attractions = new List<AttractionModel>
+                            {
+                                new AttractionModel
+                                {
+                                    AttractionId = 3,
+                                    Name = "Architecture",
+                                    Location = "Storstan old district",
+                                    IsChildFriendly = true,
+                                    Information = "This is the information on architecture",
                                     Rating = 5,
                                     City = new CityModel()
                                 }
