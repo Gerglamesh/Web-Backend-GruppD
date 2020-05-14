@@ -23,11 +23,11 @@ namespace TravelAPI
             _travelConfig = config;
         }
 
-        public DbSet<CountryModel> Countries { get; set; }
-        public DbSet<CountryInfoModel> CountryInfo { get; set; }
-        public DbSet<AttractionModel> Attractions { get; set; }
-        public DbSet<CityModel> Cities { get; set; }
-        public DbSet<TravelRestrictionModel> TravelRestrictions { get; set; }
+        public virtual DbSet<CountryModel> Countries { get; set; }
+        public virtual DbSet<CountryInfoModel> CountryInfo { get; set; }
+        public virtual DbSet<AttractionModel> Attractions { get; set; }
+        public virtual DbSet<CityModel> Cities { get; set; }
+        public virtual DbSet<TravelRestrictionModel> TravelRestrictions { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
