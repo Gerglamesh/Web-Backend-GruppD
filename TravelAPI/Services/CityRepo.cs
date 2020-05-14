@@ -10,7 +10,7 @@ namespace TravelAPI.Services
     public class CityRepo : Repository, ICityRepo
     {
         private readonly TravelAPIContext _travelApiContext;
-        public CityRepo(TravelAPIContext travelAPIContext, ILogger<CountryRepo> logger) : base(travelAPIContext, logger)
+        public CityRepo(TravelAPIContext travelAPIContext, ILogger<CityRepo> logger) : base(travelAPIContext, logger)
         {
             _travelApiContext = travelAPIContext;
         }
@@ -23,7 +23,15 @@ namespace TravelAPI.Services
         }
         public async Task<ICollection<CityModel>> GetCities(bool includeAttractions = false)
         {
-            return await _travelApiContext.Set<CityModel>().ToListAsync();
+            IQueryable<CityModel> query = _travelAPIContext.Cities;
+            if (includeAttractions)
+            {
+                query.Include(c => c.Attractions);
+            }
+
+
+            return await query.ToArrayAsync();
+
         }
     }
 }
