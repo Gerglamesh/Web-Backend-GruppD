@@ -14,13 +14,6 @@ namespace TravelAPI.Services
         {
             _travelApiContext = travelAPIContext;
         }
-
-        //public async Task<CityModel> GetCity(string Name)
-        //{
-        //    var query = _travelApiContext.Cities
-        //    .Where(s => s.Name == Name);
-        //    return await query.FirstOrDefaultAsync();
-        //}
         public async Task<ICollection<CityModel>> GetCities(
             bool IncludeAttractions = false,
             bool IncludeCountries = false)
