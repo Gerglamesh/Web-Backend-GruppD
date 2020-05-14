@@ -20,9 +20,9 @@ namespace TravelAPI.Services.Tests
             var logger = Mock.Of<ILogger<CityRepo>>();
             var citiesRepository = new CityRepo(travelAPIContextMock.Object, logger);
             //Act
-            var TheCities = await citiesRepository.GetCities();
+            var theCities = await citiesRepository.GetCities();
             //Assert
-            Assert.Equal(2, TheCities.Count);
+            Assert.Equal(2, theCities.Count);
         }
         [Fact]
         public async void GetCityByNameTest()
@@ -35,10 +35,10 @@ namespace TravelAPI.Services.Tests
             var logger = Mock.Of<ILogger<CityRepo>>();
             var citiesRepository = new CityRepo(travelAPIContextMock.Object, logger);
             //Act
-            var TheCity = await citiesRepository.GetCityByName("Gothenburg");
+            var theCity = await citiesRepository.GetCityByName("Gothenburg");
 
             //Assert
-            Assert.Equal("Gothenburg", TheCity.Name);
+            Assert.Equal("Gothenburg", theCity.Name);
         }
 
         [Fact]
@@ -52,11 +52,31 @@ namespace TravelAPI.Services.Tests
             var logger = Mock.Of<ILogger<CityRepo>>();
             var citiesRepository = new CityRepo(travelAPIContextMock.Object, logger);
             //Act
-            var TheCity = await citiesRepository.GetCityById(1);
+            var theCity = await citiesRepository.GetCityById(1);
 
             //Assert
-            Assert.Equal(1, TheCity.CityId);
+            Assert.Equal(1, theCity.CityId);
         }
+        [Theory]
+        [InlineData("Gothenburg", 700000)]
+        [InlineData("Oslo", 5000000)]
+        public async void GetCityPopulationByName(string inlineName, int expected)
+        {
+            //Arrange
+            IList<CityModel> cities = GenerateCities();
+            var travelAPIContextMock = new Mock<TravelAPIContext>();
+            travelAPIContextMock.Setup(c => c.Cities).ReturnsDbSet(cities);
+
+            var logger = Mock.Of<ILogger<CityRepo>>();
+            var citiesRepository = new CityRepo(travelAPIContextMock.Object, logger);
+
+            //Act 
+            var theCity = await citiesRepository.GetCityByName(inlineName);
+
+            //Assert
+            Assert.Equal(expected, theCity.Population);
+        }
+        
         private static IList<CityModel> GenerateCities()
         {
             return new List<CityModel>
@@ -65,6 +85,7 @@ namespace TravelAPI.Services.Tests
                 {
                     CityId = 1,
                     Name = "Gothenburg",
+                    Population = 700000,
                     Country = new CountryModel
                     {
                         CountryId = 1,
@@ -114,6 +135,7 @@ namespace TravelAPI.Services.Tests
                 {
                     CityId = 2,
                     Name = "Oslo",
+                    Population = 5000000,
                     Country = new CountryModel
                     {
                         CountryId = 2,
