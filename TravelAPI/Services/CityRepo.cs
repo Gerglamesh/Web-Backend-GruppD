@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,9 @@ namespace TravelAPI.Services
     public class CityRepo : Repository, ICityRepo
     {
         private readonly TravelAPIContext _travelApiContext;
-        public CityRepo(TravelAPIContext Context)
+        public CityRepo(TravelAPIContext travelAPIContext, ILogger<CountryRepo> logger) : base(travelAPIContext, logger)
         {
-            _travelApiContext = Context;
+            _travelApiContext = travelAPIContext;
         }
 
         public async Task<CityModel> GetCity(string Name)
@@ -20,7 +21,7 @@ namespace TravelAPI.Services
             .Where(s => s.Name == Name);
             return await query.FirstOrDefaultAsync();
         }
-        public async Task<ICollection<CityModel>> GetCities()
+        public async Task<ICollection<CityModel>> GetCities(bool includeAttractions = false)
         {
             return await _travelApiContext.Set<CityModel>().ToListAsync();
         }

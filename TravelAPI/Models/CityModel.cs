@@ -13,7 +13,5 @@ namespace TravelAPI.Models
         
         public CountryModel Country { get; set; }
         public ICollection<AttractionModel> Attractions { get; set; }
-
-
     }
 }

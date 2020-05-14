@@ -12,9 +12,11 @@ namespace TravelAPI.Services
 {
     public class AttractionRepo : Repository, IAttractionRepo
     {
-   
-        public AttractionRepo(TravelAPIContext travelAPIContext, ILogger<AttractionRepo> logger) : base(travelAPIContext, logger)
+
+        private readonly TravelAPIContext _travelApiContext;
+        public AttractionRepo(TravelAPIContext travelAPIContext, ILogger<CountryRepo> logger) : base(travelAPIContext, logger)
         {
+            _travelApiContext = travelAPIContext;
         }
         public async Task<AttractionModel> GetAttraction(string name)
         {
@@ -33,7 +35,8 @@ namespace TravelAPI.Services
 
         public async Task<ICollection<AttractionModel>>GetRating(int rating)
         {
-            var query = _travelAPIContext.Attractions
+
+            var query = _travelApiContext.Attractions
                 .Where(q => q.Rating == rating);
             return await query.ToListAsync();
         }

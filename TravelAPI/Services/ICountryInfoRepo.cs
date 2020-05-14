@@ -6,7 +6,7 @@ using TravelAPI.Models;
 
 namespace TravelAPI.Services
 {
-    public interface ICountryInfoRepo
+    public interface ICountryInfoRepo : IRepository
     {
         Task<ICollection<CountryInfoModel>> GetCountryInfos();
     }

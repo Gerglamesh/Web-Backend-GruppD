@@ -8,15 +8,16 @@ using TravelAPI.Models;
 
 namespace TravelAPI.Services
 {
-    public class TravelRestrictionRepo : ITravelRestrictionRepo
+    public class TravelRestrictionRepo : Repository, ITravelRestrictionRepo
     {
         private readonly TravelAPIContext _travelApiContext;
-        public TravelRestrictionRepo(TravelAPIContext Context, ILogger<TravelRestrictionRepo> logger)
+        public TravelRestrictionRepo(TravelAPIContext Context, ILogger<TravelRestrictionRepo> logger): base(Context, logger)
         {
             _travelApiContext = Context;
         }
         public async Task<ICollection<TravelRestrictionModel>> GetTravelRestrictions()
         {
+            _logger.LogInformation("Getting Travel restrictions");
             return await _travelApiContext.Set<TravelRestrictionModel>().ToListAsync();
         }
     }

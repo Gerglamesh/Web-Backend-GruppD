@@ -6,8 +6,8 @@ using TravelAPI.Models;
 
 namespace TravelAPI.Services
 {
-       public interface ITravelRestrictionRepo
-        {
+    public interface ITravelRestrictionRepo : IRepository
+    {
         Task<ICollection<TravelRestrictionModel>> GetTravelRestrictions();
     }
 }

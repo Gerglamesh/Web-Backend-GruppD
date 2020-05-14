@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TravelAPI.Models;
+using TravelAPI.Services;
 
 namespace TravelAPI.Controller
 {
@@ -10,11 +13,24 @@ namespace TravelAPI.Controller
     [ApiController]
     public class CityController : ControllerBase
     {
-        [HttpGet]
-        public string Get()
+        private readonly ICityRepo _cityRepo;
+        public CityController(ICityRepo cityRepo)
         {
-            
-            return "City TEST";
+            _cityRepo = cityRepo;
+        }
+        [HttpGet]
+        public async Task<ActionResult<CityModel[]>> GetCities([FromQuery]bool includeAttractions = false)
+        {
+            try
+            {
+                var results = await _cityRepo.GetCities(includeAttractions);
+                return Ok(results);
+            }
+            catch (Exception e)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
+
+            }
         }
     }
 }
