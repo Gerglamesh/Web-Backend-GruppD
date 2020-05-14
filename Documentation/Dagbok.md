@@ -73,3 +73,10 @@ Vi har försökt att skapa DTO.
 Inget av detta är helt klart ännu men vi har fått värdefulla inblickar i vad det handlar om och kommit en bit på vägen.
 
 Vi har även finslipat koden och testat att öra en första migration med testdata. Det fungerar inte riktigt heller ännu men även där är vi en god bit påväg.
+
+14/5
+
+Vi började med att skriva daliy stand up som är en slags planering för vad vi skulle göra idag.
+Sen följde vi planeringen bara:
+
+vi alla i gruppen höll på med unit tester hela/nästan hela dagen och vi alla blev klara med dom
