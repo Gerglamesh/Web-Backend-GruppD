@@ -144,7 +144,7 @@ namespace TravelAPI.Services.Tests
                 new CountryModel
                 {
                     CountryId = 2,
-                    Name = "Långtbortistans",
+                    Name = "Långtbortistanss",
                     CountryInfo = new CountryInfoModel
                     {
                         CountryInfoId = 2,
