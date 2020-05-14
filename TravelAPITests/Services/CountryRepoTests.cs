@@ -45,9 +45,24 @@ namespace TravelAPI.Services.Tests
             Assert.Equal("Långtbortistan", theCountry.Name);
         }
 
-        [Fact]
-        public void GetCountryTest1()
+        [Theory]
+        [InlineData("Wakanda", "Wakanda")]
+        [InlineData("Långtbortistan", "Långtbortistan")]
+        public async void GetCountryByNameTest(string inlineName, string expected)
         {
+            //Arrange
+            IList<CountryModel> countries = GenerateCountries();
+            var travelAPIContextMock = new Mock<TravelAPIContext>();
+            travelAPIContextMock.Setup(c => c.Countries).ReturnsDbSet(countries);
+
+            var logger = Mock.Of<ILogger<CountryRepo>>();
+            var countriesRepository = new CountryRepo(travelAPIContextMock.Object, logger);
+
+            //Act 
+            var theCountry = await countriesRepository.GetCountry(inlineName);
+
+            //Assert
+            Assert.Equal(expected, theCountry.Name);
         }
 
         [Fact]
