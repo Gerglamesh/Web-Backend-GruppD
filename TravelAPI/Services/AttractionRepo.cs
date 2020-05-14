@@ -14,7 +14,7 @@ namespace TravelAPI.Services
     {
 
         private readonly TravelAPIContext _travelApiContext;
-        public AttractionRepo(TravelAPIContext travelAPIContext, ILogger<CountryRepo> logger) : base(travelAPIContext, logger)
+        public AttractionRepo(TravelAPIContext travelAPIContext, ILogger<AttractionRepo> logger) : base(travelAPIContext, logger)
         {
             _travelApiContext = travelAPIContext;
         }
@@ -27,9 +27,12 @@ namespace TravelAPI.Services
         
         public async Task<ICollection<AttractionModel>>GetIschildfriendly(bool IsChildFriendly)
         {
-            return await _travelAPIContext
-              .Set<AttractionModel>()
-             .Where(a => a.IsChildFriendly == true).ToListAsync();
+            IQueryable<AttractionModel> query = _travelAPIContext.Attractions
+             .Where(a => a.IsChildFriendly == IsChildFriendly);
+
+
+            return await query.ToArrayAsync();
+
         }
 
 
