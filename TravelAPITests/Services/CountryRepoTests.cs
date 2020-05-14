@@ -4,13 +4,14 @@ using Moq.EntityFrameworkCore;
 using Moq;
 using Microsoft.Extensions.Logging;
 using Xunit;
+using System.Linq;
 
 namespace TravelAPI.Services.Tests
 {
     public class CountryRepoTests
     {
         [Fact]
-        public async void GetCountriesTest()
+        public async void GetCountriesTest_CheckIfReturnedListContains2Objects()
         {
             //Arrange
             IList<CountryModel> countries = GenerateCountries();
@@ -28,7 +29,7 @@ namespace TravelAPI.Services.Tests
         }
 
         [Fact]
-        public async void GetCountryByIdTest()
+        public async void GetCountryByIdTest_CheckIfReturnedObjectContainsCorrectName()
         {
             //Arrange
             IList<CountryModel> countries = GenerateCountries();
@@ -55,9 +56,24 @@ namespace TravelAPI.Services.Tests
         {
         }
 
-        [Fact]
-        public void GetCountriesByLanguageTest()
+        [Theory]
+        [InlineData("English", 2)]
+        [InlineData("Swenglish", 1)]
+        public async void GetCountriesByLanguageTest_ReturnListOfCountriesSPeakingCertainLanguage(string inlineLanguage, int expected)
         {
+            //Arrange
+            IList<CountryModel> countries = GenerateCountries();
+            var travelAPIContextMock = new Mock<TravelAPIContext>();
+            travelAPIContextMock.Setup(c => c.Countries).ReturnsDbSet(countries);
+
+            var logger = Mock.Of<ILogger<CountryRepo>>();
+            var countriesRepository = new CountryRepo(travelAPIContextMock.Object, logger);
+
+            //Act 
+            var theCountries = await countriesRepository.GetCountriesByLanguage(inlineLanguage);
+
+            //Assert
+            Assert.Equal(expected, theCountries.Count);
         }
 
         private static IList<CountryModel> GenerateCountries()
