@@ -21,7 +21,7 @@ namespace TravelAPI.Services
             .Where(s => s.Name == Name);
             return await query.FirstOrDefaultAsync();
         }
-        public async Task<ICollection<CityModel>> GetCities()
+        public async Task<ICollection<CityModel>> GetCities(bool includeAttractions = false)
         {
             return await _travelApiContext.Set<CityModel>().ToListAsync();
         }
