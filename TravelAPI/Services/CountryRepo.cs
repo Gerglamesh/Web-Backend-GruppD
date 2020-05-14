@@ -149,11 +149,17 @@ namespace TravelAPI.Services
             query = query.OrderBy(e => e.Name);
             return await query.ToArrayAsync();
         }
+
         public async Task<ICollection<CountryModel>> GetCountriesByLanguage(string language)
         {
-            return await _travelAPIContext
-                .Set<CountryModel>()
-                .Where(c => c.CountryInfo.Language.Contains(language)).ToListAsync();
+            _logger.LogInformation($"Getting Countries based on language: {language}");
+
+            IQueryable<CountryModel> query = _travelAPIContext
+                .Countries.Where(c => c.CountryInfo.Language.Contains(language))
+                .Include(i => i.CountryInfo);
+
+            query = query.OrderBy(e => e.Name);
+            return await query.ToArrayAsync();
         }
     }
 }
