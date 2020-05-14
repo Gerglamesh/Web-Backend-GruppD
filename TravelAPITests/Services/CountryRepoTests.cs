@@ -50,9 +50,23 @@ namespace TravelAPI.Services.Tests
         {
         }
 
-        [Fact]
-        public void GetRightHandTrafficTest()
+        [Theory]
+        [InlineData(true, 2)]
+        public async void GetRightHandTrafficTest(bool inlineBool, int expected)
         {
+            //Arrange
+            IList<CountryModel> countries = GenerateCountries();
+            var travelAPIContextMock = new Mock<TravelAPIContext>();
+            travelAPIContextMock.Setup(c => c.Countries).ReturnsDbSet(countries);
+
+            var logger = Mock.Of<ILogger<CountryRepo>>();
+            var countriesRepository = new CountryRepo(travelAPIContextMock.Object, logger);
+
+            //Act 
+            var theCountries = await countriesRepository.GetRightHandTraffic(inlineBool);
+
+            //Assert
+            Assert.Equal(expected, theCountries.Count);
         }
 
         [Fact]
