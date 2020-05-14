@@ -68,11 +68,13 @@ namespace TravelAPI.Services.Tests
         [Fact]
         public void GetRightHandTrafficTest()
         {
+            Assert.Equal(false, true);
         }
 
         [Fact]
         public void GetCountriesByLanguageTest()
         {
+            Assert.Equal(false, true);
         }
 
         private static IList<CountryModel> GenerateCountries()
