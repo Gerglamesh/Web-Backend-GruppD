@@ -10,7 +10,7 @@ namespace TravelAPI.Services.Tests
     public class AttractionRepoTests
     {
         [Fact]
-        public void GetAttractionTest()
+        public async void GetAttractionTest()
         {
             IList<AttractionModel> attractions = GenerateAttractions();
             var TravelAPIContextMock = new Mock<TravelAPIContext>();
@@ -18,17 +18,16 @@ namespace TravelAPI.Services.Tests
 
             var logger = Mock.Of<ILogger<AttractionRepo>>();
             var attractionRepo = new AttractionRepo(TravelAPIContextMock.Object, logger);
-
+            //Act 
             string attraction = "The Fun Thing";
 
-            var theAttraction = attractionRepo.GetAttraction(attraction);
-
-            Assert.Equal(1, theAttraction.Result.AttractionId);
-
+            var theAttraction = await attractionRepo.GetAttraction(attraction);
+            //Assert
+            Assert.Equal(1, theAttraction.AttractionId);
         }
 
         [Theory]
-        [InlineData(true, 1)]
+        [InlineData(true, 2)]
         [InlineData(false, 1)]
         public async void GetIschildfriendlyTest(bool inlineBool, int expected)
         {
@@ -63,6 +62,7 @@ namespace TravelAPI.Services.Tests
 
         }
 
+
         private static IList<AttractionModel> GenerateAttractions()
         {
             return new List<AttractionModel>
@@ -80,8 +80,35 @@ namespace TravelAPI.Services.Tests
                         CityId = 1,
                         Name = "Någonting",
                     }
+                },
+                new AttractionModel
+                {
+                    AttractionId= 2,
+                    Name = "The danger thing ",
+                    Location = "home",
+                    IsChildFriendly = false,
+                    Information = "no no no ",
+                    Rating = 2,
+                    City= new CityModel
+                    {
+                        CityId = 1,
+                        Name = "Någonting",
+                    }
+                },
+                new AttractionModel
+                {
+                    AttractionId= 3,
+                    Name = "balder",
+                    Location = "korsvägen",
+                    IsChildFriendly = true,
+                    Information = "inngen info",
+                    Rating = 3,
+                    City= new CityModel
+                    {
+                        CityId = 1,
+                        Name = "Någonting",
+                    }
                 }
-
             };
         }
     }
