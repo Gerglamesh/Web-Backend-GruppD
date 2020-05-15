@@ -620,30 +620,32 @@ What will Hampus do today
 
 What did All Do
 
-* 
+* Take a look at TravelRestriction and CountryInfo  Get  ----- Finished
 
-What did Irvin yesterday
+What will Irvin do today
 
-* 
-* 
+* set up unit test TRAPI-215 ----- Finished
+* Code clean up (TRAPI-233) ----- Not Finished
+
+What will Mirko do today
+
+* Will share unit test with Hampus
+  * TRAPI-241 ----- Finished
+  * TRAPI-243 ----- Finished
+  * TRAPI-244 ----- Finished
 
 What did Jakob yesterday
 
-* 
-
-What did Mirko yesterday
-
-* 
+* Create unit test for city (TRAPI-210) ----- Finished
+* Code Clean-up (TRAPI-231) ----- Not Finished
 
 What did Hampus yesterday
 
-* 
-
-* 
-
-  
-
-* 
+* Will share unit test with Mirko
+  * TRAPI-241 ----- Finished
+  * TRAPI-243 ----- Finished
+  * TRAPI-244 ----- Finished
+* Code clean-up (TRAPI-189) ----- Not Finished
 
 =======================
 
@@ -651,24 +653,7 @@ What did Hampus yesterday
 
 What will All do today
 
-* 
-
-What will Irvin do today
-
-* 
-
-What will Mirko do today
-
-* * 
-
-What will Jakob do today
-
-* 
-
-What will Hampus do today
-
-* 
-* 
+* Last day of sprint! We will try to get as much done as possible!
 
 
 
