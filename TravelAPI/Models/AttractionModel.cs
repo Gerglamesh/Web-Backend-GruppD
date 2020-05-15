@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TravelAPI.Models
 {
@@ -18,6 +19,8 @@ namespace TravelAPI.Models
         public int Rating { get; set; }
 
         //Relationships
+        [ForeignKey ("CityId")]
+        public int CityId { get; set; }
         public CityModel City { get; set; }
     }
 }

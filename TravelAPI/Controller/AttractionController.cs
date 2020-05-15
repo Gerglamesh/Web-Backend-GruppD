@@ -1,8 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TravelAPI.DTO;
+using TravelAPI.Models;
 using TravelAPI.Services;
 
 namespace TravelAPI.Controller
@@ -11,11 +15,13 @@ namespace TravelAPI.Controller
     [ApiController]
     public class AttractionController : ControllerBase
     {  
-       private readonly IAttractionRepo repository;
+       private readonly IAttractionRepo _attractionRepo;
+        private readonly IMapper _mapper;
 
-        public AttractionController (IAttractionRepo repository)
+        public AttractionController (IAttractionRepo attractionRepo, IMapper mapper)
         {
-            this.repository = repository;
+            _attractionRepo = attractionRepo;
+            _mapper = mapper;
         }
     
         
@@ -26,12 +32,24 @@ namespace TravelAPI.Controller
             // Anrop till Test Repo
             return "hej irke";
         }
-        
-        //[HttpGet]
-        //public async Task<ActionResult<IEnumerable<AttractionController>>> Get()
-        //{
-        //    return await repository.GetAttraction();
-        //}
 
+        [HttpPost]
+        public async Task<ActionResult<AttractionDto>> PostEvent(AttractionDto attractionDto)
+        {
+            try
+            {
+                var mappedEntity = _mapper.Map<AttractionModel>(attractionDto);
+                _attractionRepo.Add(mappedEntity);
+                if (await _attractionRepo.Save())
+                {
+                    return Created($"/api/v1.0/events/{mappedEntity.AttractionId}", _mapper.Map<AttractionDto>(mappedEntity));
+                }
+            }
+            catch (Exception e)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
+            }
+            return BadRequest();
+        }
     }
 }
