@@ -18,9 +18,10 @@ namespace TravelAPI.Controller
         private readonly ICountryRepo _countryRepo;
         private readonly IMapper _mapper;
 
-        public CountryController(ICountryRepo countryRepo)
+        public CountryController(ICountryRepo countryRepo, IMapper mapper)
         {
             _countryRepo = countryRepo;
+            _mapper = mapper;
         }
 
         [HttpGet]
