@@ -1,17 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Threading.Tasks;
+using TravelAPI.Models;
 
-namespace TravelAPI.Models
+namespace TravelAPI.DTO
 {
-    public class CityModel
+    public class CityDto
     {
-        [Key]
+        [Required]
         public int CityId { get; set; }
+       [Required]
         public string Name { get; set; }
         public int Population { get; set; }
 
-        [ForeignKey("Country")]
+
         public CountryModel Country { get; set; }
         public ICollection<AttractionModel> Attractions { get; set; }
     }
