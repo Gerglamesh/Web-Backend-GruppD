@@ -74,7 +74,30 @@ Inget av detta är helt klart ännu men vi har fått värdefulla inblickar i vad
 
 Vi har även finslipat koden och testat att öra en första migration med testdata. Det fungerar inte riktigt heller ännu men även där är vi en god bit påväg.
 
-14/5
+
+**13/5**
+
+Vi har missat att skriva dagbok de senaste 4-5 dagarna men här kommer en summering:
+
+VI har börjat med en ny sprint och finslipat metoderna och klasserna.
+
+Vi har utökat funktionaliteten i projektet genom att lägga till get requests där det behövs (i både repon och controllers).
+
+Vi har reviderat om CountryInfo och TravelRestrictions verkligen behöver ha egna get metoder då de inte är intressanta annat än när de paras ihop med ett land. Svaret blir att de inte kommer ha get requests då vi ej ser att det fyller någon funktion i dagsläget.
+
+En generisk klass har skapats för CRUDs som våra repon ärver av.
+
+En logger har implementerats i våra repon.
+
+Vi har lärt oss hur man matar in data i httpGET för att differensiera mellan olika frågeställningar i controllern (alltså hur man anropar de olika metoderna med hjälp av URL).
+
+Vi har ännu inte gått igenom hur man skapar DTO:er så vi avvaktar med det sålänge.
+
+Vi har börjat skapa tester för repon med mocks och testdata i xUnit.
+
+Vi har gjort några bugfixar, bland annat att vi hade problem med hur vår app hämtade rätt connection string.
+
+**14/5**
 
 Vi började med att skriva daliy stand up som är en slags planering för vad vi skulle göra idag.
 Sen följde vi planeringen bara:

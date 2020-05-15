@@ -4,13 +4,14 @@ using Moq.EntityFrameworkCore;
 using Moq;
 using Microsoft.Extensions.Logging;
 using Xunit;
+using System.Linq;
 
 namespace TravelAPI.Services.Tests
 {
     public class CountryRepoTests
     {
         [Fact]
-        public async void GetCountriesTest()
+        public async void GetCountriesTest_CheckIfReturnedListContains2Objects()
         {
             //Arrange
             IList<CountryModel> countries = GenerateCountries();
@@ -27,8 +28,11 @@ namespace TravelAPI.Services.Tests
             Assert.Equal(2, theCountries.Count);
         }
 
-        [Fact]
-        public async void GetCountryByIdTest()
+        
+        [Theory]
+        [InlineData(1, "Wakanda")]
+        [InlineData(2, "Långtbortistan")]
+        public async void GetCountryByIdTest_CheckIfReturnedObjectContainsCorrectName(int inlineInt, string expected)
         {
             //Arrange
             IList<CountryModel> countries = GenerateCountries();
@@ -39,25 +43,71 @@ namespace TravelAPI.Services.Tests
             var countriesRepository = new CountryRepo(travelAPIContextMock.Object, logger);
 
             //Act 
-            var theCountry = await countriesRepository.GetCountry(2);
+            var theCountry = await countriesRepository.GetCountry(inlineInt);
 
             //Assert
-            Assert.Equal("Långtbortistan", theCountry.Name);
+            Assert.Equal(expected, theCountry.Name);
         }
 
-        [Fact]
-        public void GetCountryTest1()
+        [Theory]
+        [InlineData("Wakanda", "Wakanda")]
+        [InlineData("Långtbortistan", "Långtbortistan")]
+        public async void GetCountryByNameTest(string inlineName, string expected)
         {
+            //Arrange
+            IList<CountryModel> countries = GenerateCountries();
+            var travelAPIContextMock = new Mock<TravelAPIContext>();
+            travelAPIContextMock.Setup(c => c.Countries).ReturnsDbSet(countries);
+
+            var logger = Mock.Of<ILogger<CountryRepo>>();
+            var countriesRepository = new CountryRepo(travelAPIContextMock.Object, logger);
+
+            //Act 
+            var theCountry = await countriesRepository.GetCountry(inlineName);
+
+            //Assert
+            Assert.Equal(expected, theCountry.Name);
         }
 
-        [Fact]
-        public void GetRightHandTrafficTest()
+        [Theory]
+        [InlineData(true, 2)]
+        public async void GetRightHandTrafficTest(bool inlineBool, int expected)
         {
+
+            //Arrange
+            IList<CountryModel> countries = GenerateCountries();
+            var travelAPIContextMock = new Mock<TravelAPIContext>();
+            travelAPIContextMock.Setup(c => c.Countries).ReturnsDbSet(countries);
+
+            var logger = Mock.Of<ILogger<CountryRepo>>();
+            var countriesRepository = new CountryRepo(travelAPIContextMock.Object, logger);
+
+            //Act 
+            var theCountries = await countriesRepository.GetRightHandTraffic(inlineBool);
+
+            //Assert
+            Assert.Equal(expected, theCountries.Count);
+
         }
 
-        [Fact]
-        public void GetCountriesByLanguageTest()
+        [Theory]
+        [InlineData("English", 2)]
+        [InlineData("Swenglish", 1)]
+        public async void GetCountriesByLanguageTest_ReturnListOfCountriesSpeakingCertainLanguage(string inlineLanguage, int expected)
         {
+            //Arrange
+            IList<CountryModel> countries = GenerateCountries();
+            var travelAPIContextMock = new Mock<TravelAPIContext>();
+            travelAPIContextMock.Setup(c => c.Countries).ReturnsDbSet(countries);
+
+            var logger = Mock.Of<ILogger<CountryRepo>>();
+            var countriesRepository = new CountryRepo(travelAPIContextMock.Object, logger);
+
+            //Act 
+            var theCountries = await countriesRepository.GetCountriesByLanguage(inlineLanguage);
+
+            //Assert
+            Assert.Equal(expected, theCountries.Count);
         }
 
         private static IList<CountryModel> GenerateCountries()
