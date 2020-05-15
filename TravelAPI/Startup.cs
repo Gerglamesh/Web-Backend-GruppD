@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TravelAPI.Services;
+using AutoMapper;
 
 namespace TravelAPI
 {
@@ -19,6 +20,7 @@ namespace TravelAPI
         {
             services.AddDbContext<TravelAPIContext>();
             services.AddScoped<ICountryRepo, CountryRepo>();
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddMvc(options => options.EnableEndpointRouting = false).SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
 
