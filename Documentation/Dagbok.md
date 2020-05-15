@@ -96,3 +96,12 @@ Vi har börjat skapa tester för repon med mocks och testdata i xUnit.
 
 Vi har gjort några bugfixar, bland annat att vi hade problem med hur vår app hämtade rätt connection string.
 
+
+
+**14/5**
+
+Vi började med att skriva daliy stand up som är en slags planering för vad vi skulle göra idag.
+
+Sen följde vi planeringen bara:
+
+vi alla i gruppen höll på med unit tester hela/nästan hela dagen och vi alla blev klara med dom
