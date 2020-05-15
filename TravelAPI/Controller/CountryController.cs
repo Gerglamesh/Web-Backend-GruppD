@@ -4,8 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TravelAPI.Models;
 using TravelAPI.Services;
+using AutoMapper;
+using TravelAPI.DTO;
+using TravelAPI.Models;
 
 namespace TravelAPI.Controller
 {
@@ -14,6 +16,7 @@ namespace TravelAPI.Controller
     public class CountryController : ControllerBase
     {
         private readonly ICountryRepo _countryRepo;
+        private readonly IMapper _mapper;
 
         public CountryController(ICountryRepo countryRepo)
         {
@@ -21,7 +24,7 @@ namespace TravelAPI.Controller
         }
 
         [HttpGet]
-        public async Task<ActionResult<CountryModel[]>> GetCountries(
+        public async Task<ActionResult<CountryDto[]>> GetCountries(
             [FromQuery]bool includeCities = false,
             [FromQuery]bool includeTravelRestrictions = false,
             [FromQuery]bool includeAttractions = false,
@@ -45,7 +48,7 @@ namespace TravelAPI.Controller
         }
 
         [HttpGet("{name}")]
-        public async Task<ActionResult<CountryModel>> GetCountry(
+        public async Task<ActionResult<CountryDto>> GetCountry(
             string name,
             [FromQuery]bool includeCities = false,
             [FromQuery]bool includeTravelRestrictions = false,
@@ -71,7 +74,7 @@ namespace TravelAPI.Controller
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<CountryModel>> GetCountry(
+        public async Task<ActionResult<CountryDto>> GetCountry(
             int id,
             [FromQuery]bool includeCities = false,
             [FromQuery]bool includeTravelRestrictions = false,
@@ -98,9 +101,23 @@ namespace TravelAPI.Controller
 
         //TODO: Update this with handling DTO instead of CountryModel
         [HttpPost]
-        public async Task<ActionResult<CountryModel>> PostCountry(CountryModel country)
+        public async Task<ActionResult<CountryDto>> PostCountry(CountryDto countryDto)
         {
-            return Ok(country);
+            try
+            {
+                var mappedEntity = _mapper.Map<CountryModel>(countryDto);
+                _countryRepo.Add(mappedEntity);
+                if (await _countryRepo.Save())
+                {
+                    return Created($"/api/v1.0/countries/{mappedEntity.CountryId}", _mapper.Map<CountryModel>(mappedEntity));
+                }
+            }
+            catch (Exception e)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
+            }
+
+            return BadRequest();
         }
     }
 }

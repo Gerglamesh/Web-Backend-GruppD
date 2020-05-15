@@ -11,8 +11,7 @@ namespace TravelAPI.Services
     public class CountryRepo : Repository, ICountryRepo
     {
         public CountryRepo(TravelAPIContext travelAPIContext, ILogger<CountryRepo> logger) : base (travelAPIContext, logger)
-        {
-        }
+        {}
 
         public async Task<ICollection<CountryModel>> GetCountries(
             bool includeCities = false,
