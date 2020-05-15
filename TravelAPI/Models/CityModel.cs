@@ -9,8 +9,9 @@ namespace TravelAPI.Models
         [Key]
         public int CityId { get; set; }
         public string Name { get; set; }
+        public int Population { get; set; }
 
-        
+
         public CountryModel Country { get; set; }
         public ICollection<AttractionModel> Attractions { get; set; }
     }
