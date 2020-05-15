@@ -95,5 +95,12 @@ namespace TravelAPI.Controller
                 return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
             }
         }
+
+        //TODO: Update this with handling DTO instead of CountryModel
+        [HttpPost]
+        public async Task<ActionResult<CountryModel>> PostCountry(CountryModel country)
+        {
+            return Ok(country);
+        }
     }
 }
