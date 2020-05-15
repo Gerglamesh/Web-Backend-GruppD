@@ -1,19 +1,16 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using TravelAPI.Models;
-using TravelAPI.Services;
 using Moq;
 using Moq.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Xunit;
 
 namespace TravelAPI.Services.Tests
 {
-    [TestClass()]
     public class AttractionRepoTests
     {
-        [TestMethod()]
-        public void GetAttractionTest()
+        [Fact]
+        public async void GetAttractionTest()
         {
             IList<AttractionModel> attractions = GenerateAttractions();
             var TravelAPIContextMock = new Mock <TravelAPIContext>();
@@ -21,16 +18,52 @@ namespace TravelAPI.Services.Tests
 
             var logger = Mock.Of<ILogger<AttractionRepo>>();
             var attractionRepo = new AttractionRepo (TravelAPIContextMock.Object, logger);
-
+            //Act 
             string attraction = "The Fun Thing";
 
-            var theAttraction =  attractionRepo.GetAttraction(attraction);
-            
-            Assert.Equals(1, theAttraction.Result.AttractionId);
-            
+            var theAttraction = await attractionRepo.GetAttraction(attraction);
+            //Assert
+            Assert.Equal(1, theAttraction.AttractionId);
         }
-       
-       private static  IList<AttractionModel> GenerateAttractions()
+        
+        [Theory]
+        [InlineData (true, 1)]
+        [InlineData(false,1)]
+        public async void GetIschildfriendlyTest(bool inlineBool, int expected)
+        {
+            IList<AttractionModel> attractions = GenerateAttractions();
+            var TravelAPIContextMock = new Mock<TravelAPIContext>();
+            TravelAPIContextMock.Setup(e => e.Attractions).ReturnsDbSet(attractions);
+
+            var logger = Mock.Of<ILogger<AttractionRepo>>();
+            var attractionRepo = new AttractionRepo(TravelAPIContextMock.Object, logger);
+            //Act 
+            var theAttractions = await attractionRepo.GetIschildfriendly(inlineBool);
+            //Assert
+            Assert.Equal(expected,  theAttractions.Count);
+        }
+      
+        [Theory] 
+        [InlineData (2, 1)]
+        [InlineData(3, 1)]
+        public async void  GetRatingTest(int inlineNum, int expected)
+        {
+            //Arrange
+            IList<AttractionModel> attractions = GenerateAttractions();
+            var TravelAPIContextMock = new Mock<TravelAPIContext>();
+            TravelAPIContextMock.Setup(e => e.Attractions).ReturnsDbSet(attractions);
+
+            var logger = Mock.Of<ILogger<AttractionRepo>>();
+            var attractionRepo = new AttractionRepo(TravelAPIContextMock.Object, logger);
+            //Act 
+            var theAttractions =  await attractionRepo.GetRating(inlineNum);
+            //Assert
+            Assert.Equal(expected, theAttractions.Count);
+
+        }
+        
+        
+        private static  IList<AttractionModel> GenerateAttractions()
         {
             return new List<AttractionModel>
                 {
@@ -47,8 +80,37 @@ namespace TravelAPI.Services.Tests
                                 CityId = 1,
                                 Name = "Någonting",
                             }
-                    }
-                    
+                    },
+                     new AttractionModel
+                    {
+                        AttractionId= 2,
+                        Name = "The danger thing ",
+                        Location = "home",
+                        IsChildFriendly = false,
+                        Information = "no no no ",
+                        Rating = 2,
+                        City= new CityModel
+                            {
+                                CityId = 1,
+                                Name = "Någonting",
+                            }
+                    },
+                       new AttractionModel
+                    {
+                        AttractionId= 3,
+                        Name = "balder",
+                        Location = "korsvägen",
+                        IsChildFriendly = true,
+                        Information = "inngen info",
+                        Rating = 3,
+                        City= new CityModel
+                            {
+                                CityId = 1,
+                                Name = "Någonting",
+                            }
+                    },
+
+
               };
         }
     }

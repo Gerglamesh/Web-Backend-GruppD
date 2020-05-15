@@ -25,10 +25,10 @@ namespace TravelAPI.Services
             return await query.FirstOrDefaultAsync();
         }
         
-        public async Task<ICollection<AttractionModel>>GetIschildfriendly(bool IsChildFriendly)
+        public async Task<ICollection<AttractionModel>>GetIschildfriendly(bool isChildFriendly)
         {
             IQueryable<AttractionModel> query = _travelAPIContext.Attractions
-             .Where(a => a.IsChildFriendly == IsChildFriendly);
+             .Where(a => a.IsChildFriendly == isChildFriendly);
 
 
             return await query.ToArrayAsync();
