@@ -8,19 +8,11 @@ namespace TravelAPI.Services
     {
         public MappedProfile()
         {
-            /*
-            CreateMap<CountryModel, CountryDto>()
+            
+            CreateMap<CityModel, CityDto>()
                 .ReverseMap();
 
-            CreateMap<, GigDto>()
-                .ReverseMap();
-
-            CreateMap<Venue, VenueDto>()
-                .ReverseMap();
-
-            CreateMap<Artist, ArtistDto>()
-                .ReverseMap();
-                */
+  
         }
 
     }
