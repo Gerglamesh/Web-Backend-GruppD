@@ -68,6 +68,7 @@ namespace TravelAPI.Services.Tests
             Assert.Equal(expected, theCountry.Name);
         }
 
+
         [Theory]
         [InlineData(true, 2)]
         public async void GetRightHandTrafficTest(bool inlineBool, int expected)
