@@ -105,3 +105,13 @@ Vi började med att skriva daliy stand up som är en slags planering för vad vi
 Sen följde vi planeringen bara:
 
 vi alla i gruppen höll på med unit tester hela/nästan hela dagen och vi alla blev klara med dom
+
+
+
+**15/5**
+
+Dagen startade med ett github haveri som berodde på en dålig merge. Förmiddagen gick ut på att rädda repot och det lyckades med hjälp av Joakim. Efter det så var vi tvugna att lägga tillbaka så mycket arbete som möjligt i en ny branch och mergea den. Allt som allt gick inget arbete av vikt förlorat och vi har lärt oss massvis om git på köpet. Så sammanslaget en bra men panikartad erfarenhet.
+
+Resterande tid lades på att göra klart så mycket som möjligt av veckans sprint. Nästan allt blev kvar och den enda återstoden 'r att några DTO's ska skapas samt att code cleanupen inte hanns med. Cleanupen kommer dock i nästa sprint.
+
+Projektet kommer nu att byta deltagare fr.o.m. nästa vecka. Detta innebär att Irvin och Jakob ska in i ett annat projekt och att Hampus och Mirko är kvar i detta projektet en vecka till.
