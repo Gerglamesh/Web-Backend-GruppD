@@ -25,9 +25,10 @@ namespace TravelAPI.Services
         
         public async Task<ICollection<AttractionModel>>GetIschildfriendly(bool IsChildFriendly)
         {
-            return await _travelApiContext
-              .Set<AttractionModel>()
-             .Where(a => a.IsChildFriendly == true).ToListAsync();
+            IQueryable<AttractionModel> query = _travelAPIContext.Attractions
+             .Where(a => a.IsChildFriendly == IsChildFriendly);
+
+            return await query.ToArrayAsync();
         }
 
 
