@@ -62,7 +62,6 @@ namespace TravelAPI.Services.Tests
 
         }
 
-
         private static IList<AttractionModel> GenerateAttractions()
         {
             return new List<AttractionModel>
@@ -101,7 +100,7 @@ namespace TravelAPI.Services.Tests
                     Name = "balder",
                     Location = "korsvägen",
                     IsChildFriendly = true,
-                    Information = "inngen info",
+                    Information = "ingen info",
                     Rating = 3,
                     City= new CityModel
                     {
