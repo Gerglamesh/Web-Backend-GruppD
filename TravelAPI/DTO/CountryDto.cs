@@ -12,6 +12,6 @@ namespace TravelAPI.DTO
         //Relationships
         public CountryInfoDto CountryInfo { get; set; }
         public ICollection<CityDto> Cities { get; set; }
-        public TravelRestrictionModel TravelRestriction { get; set; }
+        public TravelRestrictionDto TravelRestriction { get; set; }
     }
 }
