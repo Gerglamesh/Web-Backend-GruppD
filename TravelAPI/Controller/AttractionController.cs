@@ -23,10 +23,8 @@ namespace TravelAPI.Controller
             _attractionRepo = attractionRepo;
             _mapper = mapper;
         }
-    
         
         [HttpGet]
-     
         public string Get()
         {
             // Anrop till Test Repo
@@ -49,6 +47,7 @@ namespace TravelAPI.Controller
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
             }
+
             return BadRequest();
         }
     }
