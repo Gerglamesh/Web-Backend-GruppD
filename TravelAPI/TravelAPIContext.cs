@@ -45,6 +45,69 @@ namespace TravelAPI
                 TravelRestrictionId = 1
             });
 
+            modelBuilder.Entity<CountryModel>()
+            .HasData(new
+            {
+                CountryId = 2,
+                Name = "Serbia",
+                CountryInfoId = 2,
+                TravelRestrictionId = 2
+            });
+
+            modelBuilder.Entity<CountryModel>()
+            .HasData(new
+            {
+                CountryId = 3,
+                Name = "Japan",
+                CountryInfoId = 3,
+                TravelRestrictionId = 3
+            });
+
+            modelBuilder.Entity<CountryModel>()
+            .HasData(new
+            {
+                CountryId = 4,
+                Name = "Uganda",
+                CountryInfoId = 4,
+                TravelRestrictionId = 4
+            });
+
+            modelBuilder.Entity<CountryModel>()
+            .HasData(new
+            {
+                CountryId = 5,
+                Name = "Barbados",
+                CountryInfoId = 5,
+                TravelRestrictionId = 5
+            });
+
+            modelBuilder.Entity<CountryModel>()
+            .HasData(new
+            {
+                CountryId = 6,
+                Name = "Canada",
+                CountryInfoId = 6,
+                TravelRestrictionId = 6
+            });
+
+            modelBuilder.Entity<CountryModel>()
+            .HasData(new
+            {
+                CountryId = 7,
+                Name = "Brazil",
+                CountryInfoId = 7,
+                TravelRestrictionId = 7
+            });
+
+            modelBuilder.Entity<CountryModel>()
+            .HasData(new
+            {
+                CountryId = 8,
+                Name = "New Zealand",
+                CountryInfoId = 8,
+                TravelRestrictionId = 8
+            });
+
             modelBuilder.Entity<TravelRestrictionModel>()
             .HasData(new
             {
@@ -68,10 +131,115 @@ namespace TravelAPI
                     BNP = 19360,
                     Area = 65200,
                     TimeZone = "GMT+4:30",
-                    NationalDay = "19/8",
+                    NationalDay = "19/08",
                     Language = "Dari/Pashtu/Iranian",
                     RightHandTraffic = true
                 });
+
+            modelBuilder.Entity<CountryInfoModel>()
+            .HasData(new
+            {
+                CountryInfoId = 2,
+                Population = 80000,
+                Governance = "Parliamentary Republic",
+                CapitalCity = "Belgrad",
+                BNP = 7246,
+                Area = 88361,
+                TimeZone = "GMT+2",
+                NationalDay = "15/02",
+                Language = "Serbian",
+                RightHandTraffic = true
+            });
+
+            modelBuilder.Entity<CountryInfoModel>()
+            .HasData(new
+            {
+                CountryInfoId = 3,
+                Population = 126244,
+                Governance = "Constitutional Monarch",
+                CapitalCity = "Tokyo",
+                BNP = 39289,
+                Area = 377918,
+                TimeZone = "GMT+9",
+                NationalDay = "11/02",
+                Language = "Japanese/Ryukyuan/Ainu/Orok/Evenki/Nivkh",
+                RightHandTraffic = false
+            });
+
+            modelBuilder.Entity<CountryInfoModel>()
+            .HasData(new
+            {
+                CountryInfoId = 4,
+                Population = 4272,
+                Governance = "Democratic State",
+                CapitalCity = "Kampala",
+                BNP = 2746,
+                Area = 241037,
+                TimeZone = "GMT+3",
+                NationalDay = "18/05",
+                Language = "Bantu/Nilotic/Central Sudanic",
+                RightHandTraffic = false
+            });
+
+            modelBuilder.Entity<CountryInfoModel>()
+            .HasData(new
+            {
+                CountryInfoId = 5,
+                Population = 286641,
+                Governance = "Monarch",
+                CapitalCity = "Bridgetown",
+                BNP = 5145,
+                Area = 431,
+                TimeZone = "GMT-4",
+                NationalDay = "30/11",
+                Language = "English/Bajan Dialect",
+                RightHandTraffic = false
+            });
+
+            modelBuilder.Entity<CountryInfoModel>()
+            .HasData(new
+            {
+                CountryInfoId = 6,
+                Population = 3759,
+                Governance = "Constitutional Monarchy",
+                CapitalCity = "Ottawa",
+                BNP = 1713,
+                Area = 9985000,
+                TimeZone = "GMT-4",
+                NationalDay = "01/07",
+                Language = "French/English",
+                RightHandTraffic = true
+            });
+
+           modelBuilder.Entity<CountryInfoModel>()
+            .HasData(new
+            {
+                CountryInfoId = 7,
+                Population = 2095,
+                Governance = "Democratic Federal Republic",
+                CapitalCity = "Brasília",
+                BNP = 1869,
+                Area = 8516000,
+                TimeZone = "GMT-3",
+                NationalDay = "07/09",
+                Language = "Portuguese",
+                RightHandTraffic = true
+            });
+
+            modelBuilder.Entity<CountryInfoModel>()
+            .HasData(new
+            {
+                CountryInfoId = 8,
+                Population = 4886,
+                Governance = "Unitary parliamentary constitutional monarchy",
+                CapitalCity = "Wellington",
+                BNP = 2049,
+                Area = 268021,
+                TimeZone = "GMT+12",
+                NationalDay = "06/02",
+                Language = "Maori/English",
+                RightHandTraffic = false
+            });
 
             modelBuilder.Entity<CityModel>()
                 .HasData(new
