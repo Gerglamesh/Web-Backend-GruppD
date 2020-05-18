@@ -34,12 +34,15 @@ namespace TravelAPI.Controller
         {
             try
             {
-                var results = await _countryRepo.GetCountries(
+                var results = await _countryRepo.GetCountries
+                (
                     includeCities,
                     includeTravelRestrictions,
                     includeAttractions,
                     attractionsMinRating,
-                    attractionsMaxRating);
+                    attractionsMaxRating
+                );
+
                 return Ok(results);
             }
             catch (Exception e)
@@ -59,13 +62,16 @@ namespace TravelAPI.Controller
         {
             try
             {
-                var results = await _countryRepo.GetCountry(
+                var results = await _countryRepo.GetCountry
+                (
                     name,
                     includeCities,
                     includeTravelRestrictions,
                     includeAttractions,
                     attractionsMinRating,
-                    attractionsMaxRating);
+                    attractionsMaxRating
+                );
+
                 return Ok(results);
             }
             catch (Exception e)
@@ -85,13 +91,16 @@ namespace TravelAPI.Controller
         {
             try
             {
-                var results = await _countryRepo.GetCountry(
+                var results = await _countryRepo.GetCountry
+                (
                     id,
                     includeCities,
                     includeTravelRestrictions,
                     includeAttractions,
                     attractionsMinRating,
-                    AttractionsMaxRating);
+                    AttractionsMaxRating
+                );
+
                 return Ok(results);
             }
             catch (Exception e)
@@ -108,6 +117,7 @@ namespace TravelAPI.Controller
             {
                 var mappedEntity = _mapper.Map<CountryModel>(countryDto);
                 _countryRepo.Add(mappedEntity);
+
                 if (await _countryRepo.Save())
                 {
                     return Created($"/api/v1.0/countries/{mappedEntity.CountryId}", _mapper.Map<CountryModel>(mappedEntity));
