@@ -12,8 +12,8 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "SettingsEnvironment": "dev"
+        "EnvironmentSettings": "dev",
+        "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "TravelAPI": {

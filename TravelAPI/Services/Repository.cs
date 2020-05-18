@@ -9,7 +9,6 @@ namespace TravelAPI.Services
     public class Repository : IRepository
     {
         protected readonly TravelAPIContext _travelAPIContext;
-        protected readonly TravelAPIContext tjoho;
         protected readonly ILogger<Repository> _logger;
         public Repository(TravelAPIContext context, ILogger<Repository> logger)
         {
