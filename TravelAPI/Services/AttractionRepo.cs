@@ -21,13 +21,14 @@ namespace TravelAPI.Services
         {
             var query = _travelApiContext.Attractions
                 .Where(q => q.Name == name);
+
             return await query.FirstOrDefaultAsync();
         }
         
         public async Task<ICollection<AttractionModel>>GetIschildfriendly(bool isChildFriendly)
         {
             IQueryable<AttractionModel> query = _travelAPIContext.Attractions
-             .Where(a => a.IsChildFriendly == isChildFriendly);
+                .Where(a => a.IsChildFriendly == isChildFriendly);
 
             return await query.ToArrayAsync();
         }
@@ -37,6 +38,7 @@ namespace TravelAPI.Services
         {
             var query = _travelApiContext.Attractions
                 .Where(q => q.Rating == rating);
+
             return await query.ToListAsync();
         }
     }
