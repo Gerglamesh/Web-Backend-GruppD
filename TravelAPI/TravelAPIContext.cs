@@ -74,31 +74,196 @@ namespace TravelAPI
                 });
 
             modelBuilder.Entity<CityModel>()
-                .HasData(new
-                {
-                    CityId = 1,
-                    Name = "Kabul",
-                    Population = 4222000,
-                    CountryId = 1
-                });
+            .HasData(new
+            {
+                CityId = 1,
+                Name = "Kabul",
+                Population = 4221532,
+                CountryId = 1
+            },
 
-            modelBuilder.Entity<CityModel>()
-                .HasData(new
-                {
-                    CityId = 2,
-                    Name = "Balkh",
-                    Population = 1382200,
-                    CountryId = 1
-                });
+            new
+            {
+                CityId = 2,
+                Name = "Balkh",
+                Population = 1382200,
+                CountryId = 1
+            },
+            new
+            {
+                CityId = 3,
+                Name = "Kandahar",
+                Population = 614118,
+                CountryId = 1
+            },
 
-            modelBuilder.Entity<CityModel>()
-                .HasData(new
-                {
-                    CityId = 3,
-                    Name = "Kandahar",
-                    Population = 614118,
-                    CountryId = 1
-                });
+            new
+            {
+                CityId = 4,
+                Name = "Belgrade",
+                Population = 1397939,
+                CountryId = 2
+            },
+
+            new
+            {
+                CityId = 5,
+                Name = "Novi Sad",
+                Population = 289128,
+                CountryId = 2
+            },
+
+            new
+            {
+                CityId = 6,
+                Name = "Niš",
+                Population = 185987,
+                CountryId = 2
+            },
+
+            new
+            {
+                CityId = 7,
+                Name = "Tokyo",
+                Population = 37435191,
+                CountryId = 3
+            },
+
+            new
+            {
+                CityId = 8,
+                Name = "Yokohama",
+                Population = 3725000,
+                CountryId = 3
+            },
+
+            new
+            {
+                CityId = 9,
+                Name = "Osaka",
+                Population = 2691000,
+                CountryId = 3
+            },
+
+            new
+            {
+                CityId = 10,
+                Name = "Kampala",
+                Population = 1680600,
+                CountryId = 4
+            },
+
+            new
+            {
+                CityId = 11,
+                Name = "Nansana",
+                Population = 365124,
+                CountryId = 4
+            },
+
+            new
+            {
+                CityId = 12,
+                Name = "Kira",
+                Population = 317157,
+                CountryId = 4
+            },
+
+            new
+            {
+                CityId = 13,
+                Name = "Bridgetown",
+                Population = 110000,
+                CountryId = 5
+            },
+
+            new
+            {
+                CityId = 14,
+                Name = "Speightstown",
+                Population = 3634,
+                CountryId = 5
+            },
+
+            new
+            {
+                CityId = 15,
+                Name = "Oistins",
+                Population = 2285,
+                CountryId = 5
+            },
+
+            new
+            {
+                CityId = 16,
+                Name = "Ottawa",
+                Population = 994837,
+                CountryId = 6
+            },
+
+            new
+            {
+                CityId = 17,
+                Name = "Toronto",
+                Population = 2930000,
+                CountryId = 6
+            },
+
+            new
+            {
+                CityId = 18,
+                Name = "Montreal",
+                Population = 1780000,
+                CountryId = 6
+            },
+
+            new
+            {
+                CityId = 19,
+                Name = "Brasilia",
+                Population = 4645943,
+                CountryId = 7
+            },
+
+            new
+            {
+                CityId = 20,
+                Name = "São Paulo",
+                Population = 21846507,
+                CountryId = 7
+            },
+
+            new
+            {
+                CityId = 21,
+                Name = "Rio de Janeiro",
+                Population = 13458075,
+                CountryId = 7
+            },
+
+            new
+            {
+                CityId = 22,
+                Name = "Auckland",
+                Population = 1657000,
+                CountryId = 8
+            },
+
+            new
+            {
+                CityId = 23,
+                Name = "Christchurch",
+                Population = 381500,
+                CountryId = 8
+            },
+
+            new
+            {
+                CityId = 24,
+                Name = "Wellington",
+                Population = 212700,
+                CountryId = 8
+            });
 
             modelBuilder.Entity<AttractionModel>()
                 .HasData(new
