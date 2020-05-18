@@ -62,11 +62,11 @@ namespace TravelAPI
             .HasData(new
                 {
                     CountryInfoId = 1,
-                    Population = 50000000,
+                    Population = 50000,
                     Governance = "Islamic Republic",
                     CapitalCity = "Kabul",
                     BNP = 19360,
-                    Area = 652000237,
+                    Area = 65200,
                     TimeZone = "GMT+4:30",
                     NationalDay = "19/8",
                     Language = "Dari/Pashtu/Iranian",
@@ -78,7 +78,7 @@ namespace TravelAPI
                 {
                     CityId = 1,
                     Name = "Kabul",
-                    Population = 4222000000,
+                    Population = 4222000,
                     CountryId = 1
                 });
 
