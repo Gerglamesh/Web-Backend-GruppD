@@ -28,7 +28,6 @@ namespace TravelAPI.Services.Tests
             Assert.Equal(2, theCountries.Count);
         }
 
-        
         [Theory]
         [InlineData(1, "Wakanda")]
         [InlineData(2, "Långtbortistan")]
