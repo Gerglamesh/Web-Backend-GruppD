@@ -51,7 +51,7 @@ namespace TravelAPI.Controller
             }
         }
 
-        [HttpGet("{name}")]
+        [HttpGet("{name:string}")]
         public async Task<ActionResult<CountryDto>> GetCountry(
             string name,
             [FromQuery]bool includeCities = false,
@@ -80,7 +80,7 @@ namespace TravelAPI.Controller
             }
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<CountryDto>> GetCountry(
             int id,
             [FromQuery]bool includeCities = false,
