@@ -657,6 +657,49 @@ What will All do today
 
 
 
+# 18/05 Mirko
+
+### Yesterday
+
+##### Nothing, because we are new groups now. So today we will plan forward instead!
+
+=======================
+
+### Today
+
+What will All do today
+
+* Plan sprint
+* Add more Issues in the backlog
+
+What will Oscar K do today
+
+* Create class MappedProfile in services (TRAPI-250)
+* Dealing with Visual Studio
+
+What will Mirko do today
+
+* Create DTO for countryInfo(TRAPI-247)
+* Add data to API(TRAPI-253)
+  * For Country(TRAPI-258)
+  * For CountryInfo(TRAPI-261)
+
+What will Oskar M do today
+
+* Create DTO for TravelRestriction(TRAPI-183)
+* Add data to API(TRAPI-253)
+  * For City(TRAPI-259)
+* Dealing with Visual Studio
+
+What will Hampus do today
+
+* Code Cleanup(TRAPI-189)
+* Begin coding put request(TRAPI-247)
+* Adding more test-DATA(TRAPI-254)
+* Do DB-migration(TRAPI-263)---------Finished
+
+
+
 # SKRIV DATUM 
 
 ### Yesterday
@@ -665,26 +708,19 @@ What did All Do
 
 * 
 
-What did Irvin yesterday
-
-* 
-* 
-
-What did Jakob yesterday
+What will Oscar K do today
 
 * 
 
-What did Mirko yesterday
+What will Mirko do today
 
 * 
 
-What did Hampus yesterday
+What will Oskar M do today
 
 * 
 
-* 
-
-  
+What will Hampus do today
 
 * 
 
@@ -696,7 +732,7 @@ What will All do today
 
 * 
 
-What will Irvin do today
+What will Oscar K do today
 
 * 
 
@@ -704,7 +740,7 @@ What will Mirko do today
 
 * * 
 
-What will Jakob do today
+What will Oskar M do today
 
 * 
 
@@ -722,26 +758,19 @@ What did All Do
 
 * 
 
-What did Irvin yesterday
-
-* 
-* 
-
-What did Jakob yesterday
+What will Oscar K do today
 
 * 
 
-What did Mirko yesterday
+What will Mirko do today
+
+* * 
+
+What will Oskar M do today
 
 * 
 
-What did Hampus yesterday
-
-* 
-
-* 
-
-  
+What will Hampus do today
 
 * 
 
@@ -753,7 +782,7 @@ What will All do today
 
 * 
 
-What will Irvin do today
+What will Oscar K do today
 
 * 
 
@@ -761,15 +790,13 @@ What will Mirko do today
 
 * * 
 
-What will Jakob do today
+What will Oskar M do today
 
 * 
 
 What will Hampus do today
 
 * 
-
-
 
 # SKRIV DATUM 
 
@@ -779,38 +806,7 @@ What did All Do
 
 * 
 
-What did Irvin yesterday
-
-* 
-* 
-
-What did Jakob yesterday
-
-* 
-
-What did Mirko yesterday
-
-* 
-
-What did Hampus yesterday
-
-* 
-
-* 
-
-  
-
-* 
-
-=======================
-
-### Today
-
-What will All do today
-
-* 
-
-What will Irvin do today
+What will Oscar K do today
 
 * 
 
@@ -818,7 +814,7 @@ What will Mirko do today
 
 * * 
 
-What will Jakob do today
+What will Oskar M do today
 
 * 
 
@@ -826,39 +822,6 @@ What will Hampus do today
 
 * 
 
-
-
-# SKRIV DATUM 
-
-### Yesterday
-
-What did All Do
-
-* 
-
-What did Irvin yesterday
-
-* 
-* 
-
-What did Jakob yesterday
-
-* 
-
-What did Mirko yesterday
-
-* 
-
-What did Hampus yesterday
-
-* 
-
-* 
-
-  
-
-* 
-
 =======================
 
 ### Today
@@ -867,7 +830,7 @@ What will All do today
 
 * 
 
-What will Irvin do today
+What will Oscar K do today
 
 * 
 
@@ -875,64 +838,7 @@ What will Mirko do today
 
 * * 
 
-What will Jakob do today
-
-* 
-
-What will Hampus do today
-
-* 
-
-
-
-# SKRIV DATUM 
-
-### Yesterday
-
-What did All Do
-
-* 
-
-What did Irvin yesterday
-
-* 
-* 
-
-What did Jakob yesterday
-
-* 
-
-What did Mirko yesterday
-
-* 
-
-What did Hampus yesterday
-
-* 
-
-* 
-
-  
-
-* 
-
-=======================
-
-### Today
-
-What will All do today
-
-* 
-
-What will Irvin do today
-
-* 
-
-What will Mirko do today
-
-* * 
-
-What will Jakob do today
+What will Oskar M do today
 
 * 
 
