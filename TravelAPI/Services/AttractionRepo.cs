@@ -12,6 +12,7 @@ namespace TravelAPI.Services
     public class AttractionRepo : Repository, IAttractionRepo
     {
         private readonly TravelAPIContext _travelApiContext;
+
         public AttractionRepo(TravelAPIContext travelAPIContext, ILogger<AttractionRepo> logger) : base(travelAPIContext, logger)
         {
             _travelApiContext = travelAPIContext;
