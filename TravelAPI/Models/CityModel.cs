@@ -12,6 +12,7 @@ namespace TravelAPI.Models
         public int Population { get; set; }
 
         [ForeignKey("Country")]
+        public int CountryId { get; set; }
         public CountryModel Country { get; set; }
         public ICollection<AttractionModel> Attractions { get; set; }
     }
