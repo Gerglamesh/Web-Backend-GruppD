@@ -43,64 +43,56 @@ namespace TravelAPI
                 Name = "Afghanistan",
                 CountryInfoId = 1,
                 TravelRestrictionId = 1
-            });
-
-            modelBuilder.Entity<CountryModel>()
-            .HasData(new
+            },
+             new
             {
                 CountryId = 2,
                 Name = "Serbia",
                 CountryInfoId = 2,
                 TravelRestrictionId = 2
-            });
+            },
 
-            modelBuilder.Entity<CountryModel>()
-            .HasData(new
+             new
             {
                 CountryId = 3,
                 Name = "Japan",
                 CountryInfoId = 3,
                 TravelRestrictionId = 3
-            });
+            },
 
-            modelBuilder.Entity<CountryModel>()
-            .HasData(new
+            new
             {
                 CountryId = 4,
                 Name = "Uganda",
                 CountryInfoId = 4,
                 TravelRestrictionId = 4
-            });
+            },
 
-            modelBuilder.Entity<CountryModel>()
-            .HasData(new
+            new
             {
                 CountryId = 5,
                 Name = "Barbados",
                 CountryInfoId = 5,
                 TravelRestrictionId = 5
-            });
+            },
 
-            modelBuilder.Entity<CountryModel>()
-            .HasData(new
+            new
             {
                 CountryId = 6,
                 Name = "Canada",
                 CountryInfoId = 6,
                 TravelRestrictionId = 6
-            });
+            },
 
-            modelBuilder.Entity<CountryModel>()
-            .HasData(new
+            new
             {
                 CountryId = 7,
                 Name = "Brazil",
                 CountryInfoId = 7,
                 TravelRestrictionId = 7
-            });
+            },
 
-            modelBuilder.Entity<CountryModel>()
-            .HasData(new
+            new
             {
                 CountryId = 8,
                 Name = "New Zealand",
@@ -134,10 +126,9 @@ namespace TravelAPI
                     NationalDay = "19/08",
                     Language = "Dari/Pashtu/Iranian",
                     RightHandTraffic = true
-                });
+                },
 
-            modelBuilder.Entity<CountryInfoModel>()
-            .HasData(new
+            new
             {
                 CountryInfoId = 2,
                 Population = 80000,
@@ -149,10 +140,9 @@ namespace TravelAPI
                 NationalDay = "15/02",
                 Language = "Serbian",
                 RightHandTraffic = true
-            });
+            },
 
-            modelBuilder.Entity<CountryInfoModel>()
-            .HasData(new
+            new
             {
                 CountryInfoId = 3,
                 Population = 126244,
@@ -164,10 +154,9 @@ namespace TravelAPI
                 NationalDay = "11/02",
                 Language = "Japanese/Ryukyuan/Ainu/Orok/Evenki/Nivkh",
                 RightHandTraffic = false
-            });
+            },
 
-            modelBuilder.Entity<CountryInfoModel>()
-            .HasData(new
+            new
             {
                 CountryInfoId = 4,
                 Population = 4272,
@@ -179,10 +168,9 @@ namespace TravelAPI
                 NationalDay = "18/05",
                 Language = "Bantu/Nilotic/Central Sudanic",
                 RightHandTraffic = false
-            });
+            },
 
-            modelBuilder.Entity<CountryInfoModel>()
-            .HasData(new
+            new
             {
                 CountryInfoId = 5,
                 Population = 286641,
@@ -194,10 +182,9 @@ namespace TravelAPI
                 NationalDay = "30/11",
                 Language = "English/Bajan Dialect",
                 RightHandTraffic = false
-            });
+            },
 
-            modelBuilder.Entity<CountryInfoModel>()
-            .HasData(new
+            new
             {
                 CountryInfoId = 6,
                 Population = 3759,
@@ -209,10 +196,9 @@ namespace TravelAPI
                 NationalDay = "01/07",
                 Language = "French/English",
                 RightHandTraffic = true
-            });
+            },
 
-           modelBuilder.Entity<CountryInfoModel>()
-            .HasData(new
+           new
             {
                 CountryInfoId = 7,
                 Population = 2095,
@@ -224,10 +210,9 @@ namespace TravelAPI
                 NationalDay = "07/09",
                 Language = "Portuguese",
                 RightHandTraffic = true
-            });
+            },
 
-            modelBuilder.Entity<CountryInfoModel>()
-            .HasData(new
+            new
             {
                 CountryInfoId = 8,
                 Population = 4886,
