@@ -2,7 +2,7 @@
 
 namespace TravelAPI.DTO
 {
-    class TravelRestrictionDto
+    public class TravelRestrictionDto
     {
         [Required]
         public int TravelRestrictionId { get; set; }
