@@ -6,8 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace TravelAPI.Models
-{
-    public class CountryModel
+{    public class CountryModel
     {
         //Props
         [Key]
