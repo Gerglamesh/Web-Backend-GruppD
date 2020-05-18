@@ -19,6 +19,7 @@ namespace TravelAPI.Controller
         {
             _travelRestrictionRepo = travelRestrictionRepo;
         }
+
         [HttpGet]
         public async Task<ActionResult<TravelRestrictionModel[]>> GetTravelRestrictions()
         {
