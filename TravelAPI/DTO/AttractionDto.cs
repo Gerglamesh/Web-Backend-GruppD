@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-using TravelAPI.Models;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace TravelAPI.DTO
 {
@@ -17,6 +12,6 @@ namespace TravelAPI.DTO
         public int Rating { get; set; }
 
         //Relationships
-        public CityModel City { get; set; }
+        public CityDto City { get; set; }
     }
 }
