@@ -9,29 +9,29 @@ namespace TravelAPI.Services
     public interface ICountryRepo : IRepository
     {
         Task<ICollection<CountryModel>> GetCountries(
-            bool IncludeCities = false,
-            bool IncludeTravelRestrictions = false,
-            bool IncludeAttractions = false,
-            int AttractionsMinRating = 0,
-            int AttractionsMaxRating = 5
+            bool includeCities = false,
+            bool includeTravelRestrictions = false,
+            bool includeAttractions = false,
+            int attractionsMinRating = 0,
+            int attractionsMaxRating = 5
             );
 
         Task<CountryModel> GetCountry(
             string name,
-            bool IncludeCities = false,
-            bool IncludeTravelRestrictions = false,
-            bool IncludeAttractions = false,
-            int AttractionsMinRating = 0,
-            int AttractionsMaxRating = 5
+            bool includeCities = false,
+            bool includeTravelRestrictions = false,
+            bool includeAttractions = false,
+            int attractionsMinRating = 0,
+            int attractionsMaxRating = 5
             );
 
         Task<CountryModel> GetCountry(
             int id,
-            bool IncludeCities = false,
-            bool IncludeTravelRestrictions = false,
-            bool IncludeAttractions = false,
-            int AttractionsMinRating = 0,
-            int AttractionsMaxRating = 5
+            bool includeCities = false,
+            bool includeTravelRestrictions = false,
+            bool includeAttractions = false,
+            int attractionsMinRating = 0,
+            int attractionsMaxRating = 5
             );
 
         Task<ICollection<CountryModel>> GetRightHandTraffic(bool rightHandTraffic);
