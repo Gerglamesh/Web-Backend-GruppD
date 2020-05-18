@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using TravelAPI.Models;
 
 namespace TravelAPI.DTO
 {

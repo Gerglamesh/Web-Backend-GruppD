@@ -4,7 +4,6 @@ using Moq.EntityFrameworkCore;
 using Moq;
 using Microsoft.Extensions.Logging;
 using Xunit;
-using System.Linq;
 
 namespace TravelAPI.Services.Tests
 {
