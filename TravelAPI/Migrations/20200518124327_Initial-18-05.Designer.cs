@@ -9,8 +9,8 @@ using TravelAPI;
 namespace TravelAPI.Migrations
 {
     [DbContext(typeof(TravelAPIContext))]
-    [Migration("20200518081119_18-05-2020")]
-    partial class _18052020
+    [Migration("20200518124327_Initial-18-05")]
+    partial class Initial1805
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -167,10 +167,101 @@ namespace TravelAPI.Migrations
                             CapitalCity = "Kabul",
                             Governance = "Islamic Republic",
                             Language = "Dari/Pashtu/Iranian",
-                            NationalDay = "19/8",
+                            NationalDay = "19/08",
                             Population = 50000,
                             RightHandTraffic = true,
                             TimeZone = "GMT+4:30"
+                        },
+                        new
+                        {
+                            CountryInfoId = 2,
+                            Area = 88361,
+                            BNP = 7246,
+                            CapitalCity = "Belgrad",
+                            Governance = "Parliamentary Republic",
+                            Language = "Serbian",
+                            NationalDay = "15/02",
+                            Population = 80000,
+                            RightHandTraffic = true,
+                            TimeZone = "GMT+2"
+                        },
+                        new
+                        {
+                            CountryInfoId = 3,
+                            Area = 377918,
+                            BNP = 39289,
+                            CapitalCity = "Tokyo",
+                            Governance = "Constitutional Monarch",
+                            Language = "Japanese/Ryukyuan/Ainu/Orok/Evenki/Nivkh",
+                            NationalDay = "11/02",
+                            Population = 126244,
+                            RightHandTraffic = false,
+                            TimeZone = "GMT+9"
+                        },
+                        new
+                        {
+                            CountryInfoId = 4,
+                            Area = 241037,
+                            BNP = 2746,
+                            CapitalCity = "Kampala",
+                            Governance = "Democratic State",
+                            Language = "Bantu/Nilotic/Central Sudanic",
+                            NationalDay = "18/05",
+                            Population = 4272,
+                            RightHandTraffic = false,
+                            TimeZone = "GMT+3"
+                        },
+                        new
+                        {
+                            CountryInfoId = 5,
+                            Area = 431,
+                            BNP = 5145,
+                            CapitalCity = "Bridgetown",
+                            Governance = "Monarch",
+                            Language = "English/Bajan Dialect",
+                            NationalDay = "30/11",
+                            Population = 286641,
+                            RightHandTraffic = false,
+                            TimeZone = "GMT-4"
+                        },
+                        new
+                        {
+                            CountryInfoId = 6,
+                            Area = 9985000,
+                            BNP = 1713,
+                            CapitalCity = "Ottawa",
+                            Governance = "Constitutional Monarchy",
+                            Language = "French/English",
+                            NationalDay = "01/07",
+                            Population = 3759,
+                            RightHandTraffic = true,
+                            TimeZone = "GMT-4"
+                        },
+                        new
+                        {
+                            CountryInfoId = 7,
+                            Area = 8516000,
+                            BNP = 1869,
+                            CapitalCity = "Brasília",
+                            Governance = "Democratic Federal Republic",
+                            Language = "Portuguese",
+                            NationalDay = "07/09",
+                            Population = 2095,
+                            RightHandTraffic = true,
+                            TimeZone = "GMT-3"
+                        },
+                        new
+                        {
+                            CountryInfoId = 8,
+                            Area = 268021,
+                            BNP = 2049,
+                            CapitalCity = "Wellington",
+                            Governance = "Unitary parliamentary constitutional monarchy",
+                            Language = "Maori/English",
+                            NationalDay = "06/02",
+                            Population = 4886,
+                            RightHandTraffic = false,
+                            TimeZone = "GMT+12"
                         });
                 });
 
@@ -204,6 +295,55 @@ namespace TravelAPI.Migrations
                             CountryId = 1,
                             CountryInfoId = 1,
                             Name = "Afghanistan",
+                            TravelRestrictionId = 1
+                        },
+                        new
+                        {
+                            CountryId = 2,
+                            CountryInfoId = 2,
+                            Name = "Serbia",
+                            TravelRestrictionId = 2
+                        },
+                        new
+                        {
+                            CountryId = 3,
+                            CountryInfoId = 3,
+                            Name = "Japan",
+                            TravelRestrictionId = 1
+                        },
+                        new
+                        {
+                            CountryId = 4,
+                            CountryInfoId = 4,
+                            Name = "Uganda",
+                            TravelRestrictionId = 1
+                        },
+                        new
+                        {
+                            CountryId = 5,
+                            CountryInfoId = 5,
+                            Name = "Barbados",
+                            TravelRestrictionId = 1
+                        },
+                        new
+                        {
+                            CountryId = 6,
+                            CountryInfoId = 6,
+                            Name = "Canada",
+                            TravelRestrictionId = 1
+                        },
+                        new
+                        {
+                            CountryId = 7,
+                            CountryInfoId = 7,
+                            Name = "Brazil",
+                            TravelRestrictionId = 1
+                        },
+                        new
+                        {
+                            CountryId = 8,
+                            CountryInfoId = 8,
+                            Name = "New Zealand",
                             TravelRestrictionId = 1
                         });
                 });
@@ -251,6 +391,17 @@ namespace TravelAPI.Migrations
                             IsVisaNeeded = true,
                             IsWorkTravelAllowed = true,
                             RiskLevel = 4
+                        },
+                        new
+                        {
+                            TravelRestrictionId = 2,
+                            IsCitizenshipAllowed = true,
+                            IsFamilyVisitAllowed = true,
+                            IsImmigrationAllowed = true,
+                            IsTourismAllowed = false,
+                            IsVisaNeeded = true,
+                            IsWorkTravelAllowed = true,
+                            RiskLevel = 1
                         });
                 });
 

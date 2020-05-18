@@ -44,20 +44,21 @@ namespace TravelAPI
                 CountryInfoId = 1,
                 TravelRestrictionId = 1
             },
-             new
+
+            new
             {
                 CountryId = 2,
                 Name = "Serbia",
                 CountryInfoId = 2,
-                TravelRestrictionId = 2
+                TravelRestrictionId = 1
             },
 
-             new
+            new
             {
                 CountryId = 3,
                 Name = "Japan",
                 CountryInfoId = 3,
-                TravelRestrictionId = 3
+                TravelRestrictionId = 1
             },
 
             new
@@ -65,7 +66,7 @@ namespace TravelAPI
                 CountryId = 4,
                 Name = "Uganda",
                 CountryInfoId = 4,
-                TravelRestrictionId = 4
+                TravelRestrictionId = 1
             },
 
             new
@@ -73,7 +74,7 @@ namespace TravelAPI
                 CountryId = 5,
                 Name = "Barbados",
                 CountryInfoId = 5,
-                TravelRestrictionId = 5
+                TravelRestrictionId = 1
             },
 
             new
@@ -81,7 +82,7 @@ namespace TravelAPI
                 CountryId = 6,
                 Name = "Canada",
                 CountryInfoId = 6,
-                TravelRestrictionId = 6
+                TravelRestrictionId = 1
             },
 
             new
@@ -89,7 +90,7 @@ namespace TravelAPI
                 CountryId = 7,
                 Name = "Brazil",
                 CountryInfoId = 7,
-                TravelRestrictionId = 7
+                TravelRestrictionId = 1
             },
 
             new
@@ -97,7 +98,7 @@ namespace TravelAPI
                 CountryId = 8,
                 Name = "New Zealand",
                 CountryInfoId = 8,
-                TravelRestrictionId = 8
+                TravelRestrictionId = 1
             });
 
             modelBuilder.Entity<TravelRestrictionModel>()
@@ -115,18 +116,18 @@ namespace TravelAPI
 
             modelBuilder.Entity<CountryInfoModel>()
             .HasData(new
-                {
-                    CountryInfoId = 1,
-                    Population = 50000,
-                    Governance = "Islamic Republic",
-                    CapitalCity = "Kabul",
-                    BNP = 19360,
-                    Area = 65200,
-                    TimeZone = "GMT+4:30",
-                    NationalDay = "19/08",
-                    Language = "Dari/Pashtu/Iranian",
-                    RightHandTraffic = true
-                },
+            {
+                CountryInfoId = 1,
+                Population = 50000,
+                Governance = "Islamic Republic",
+                CapitalCity = "Kabul",
+                BNP = 19360,
+                Area = 65200,
+                TimeZone = "GMT+4:30",
+                NationalDay = "19/08",
+                Language = "Dari/Pashtu/Iranian",
+                RightHandTraffic = true
+            },
 
             new
             {
@@ -198,7 +199,7 @@ namespace TravelAPI
                 RightHandTraffic = true
             },
 
-           new
+            new
             {
                 CountryInfoId = 7,
                 Population = 2095,
