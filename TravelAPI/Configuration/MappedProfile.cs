@@ -17,6 +17,5 @@ namespace TravelAPI.Services
             CreateMap<CountryModel, CountryDto>()
                 .ReverseMap();
         }
-
     }
 }
