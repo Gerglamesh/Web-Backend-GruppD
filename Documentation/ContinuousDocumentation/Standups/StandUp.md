@@ -614,7 +614,7 @@ What will Hampus do today
 
 
 
-# SKRIV DATUM 
+# 15/5 Irvin
 
 ### Yesterday
 
@@ -696,57 +696,70 @@ What will Hampus do today
 * Code Cleanup(TRAPI-189)
 * Begin coding put request(TRAPI-247)
 * Adding more test-DATA(TRAPI-254)
-* Do DB-migration(TRAPI-263)---------Finished
+* Do DB-migration(TRAPI-263)
 
 
 
-# SKRIV DATUM 
+# 19/5 Hampus
 
 ### Yesterday
 
 What did All Do
 
-* 
+* Orientation for newcomers to get to know the project and set up their environments --- Finished
 
-What will Oscar K do today
+What did Oscar K do
 
-* 
+* Mapped Profile Last touches TRAPI-250 ---- Finished
+* Had some trouble getting environment set up (weird bugs), solved now.
 
-What will Mirko do today
+What did Mirko do 
 
-* 
+* Create DTO for CountryInfo TRAPI-247 --- Finished
+* Add data to API TRAPI-253 
+  * For Country TRAPI-258 --- Finished 
+  * For CountryInfo TRAPI-261 --- Finished
 
-What will Oskar M do today
+What did Oskar M do 
 
-* 
+* Set up environment for this project TRAPI-264 --- Finished
+* Did DTO for TravelRestriction TRAPI-183 --- Finished
+* Add data to API TRAPI-253
+  * For City TRAPI-259 --- Finished
 
-What will Hampus do today
+What did Hampus do 
 
-* 
+* Code Cleanup TRAPI-189 --- Finished
+* Begin coding put request(TRAPI-247) --- Not Finished
+* Adding more test-DATA(TRAPI-254) --- Not Finished
+* Do DB-migration(TRAPI-263) --- Finished
+* Doing cleanup took longer than expected, not because of bad code, just because of a lot of code.
 
 =======================
 
 ### Today
 
-What will All do today
-
-* 
-
 What will Oscar K do today
 
-* 
+* Do Get-Methods in AttractionController TRAPI-266
+* Will start there and if there's time left might pick up some more issues
 
 What will Mirko do today
 
-* * 
+* Add data to API TRAPI-253
+  * For Attraction TRAPI-260
+  * For TravelRestriction TRAPI-262
+* Code Cleanup TRAPI-230
 
 What will Oskar M do today
 
-* 
+* Have a look at Check Constraints for database (code first) TRAPI-182
+* Code Cleanup TRAPI-251
 
 What will Hampus do today
 
-* 
+* Begin coding put request TRAPI-247
+* Adding more test-DATA TRAPI-254
 
 
 
