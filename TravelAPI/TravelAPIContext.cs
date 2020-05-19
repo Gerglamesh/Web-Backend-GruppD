@@ -45,7 +45,7 @@ namespace TravelAPI
                 CountryId = 2,
                 Name = "Serbia",
                 CountryInfoId = 2,
-                TravelRestrictionId = 1
+                TravelRestrictionId = 2
             },
 
             new
@@ -53,7 +53,7 @@ namespace TravelAPI
                 CountryId = 3,
                 Name = "Japan",
                 CountryInfoId = 3,
-                TravelRestrictionId = 1
+                TravelRestrictionId = 3
             },
 
             new
@@ -61,7 +61,7 @@ namespace TravelAPI
                 CountryId = 4,
                 Name = "Uganda",
                 CountryInfoId = 4,
-                TravelRestrictionId = 1
+                TravelRestrictionId = 4
             },
 
             new
@@ -69,7 +69,7 @@ namespace TravelAPI
                 CountryId = 5,
                 Name = "Barbados",
                 CountryInfoId = 5,
-                TravelRestrictionId = 1
+                TravelRestrictionId = 5
             },
 
             new
@@ -77,7 +77,7 @@ namespace TravelAPI
                 CountryId = 6,
                 Name = "Canada",
                 CountryInfoId = 6,
-                TravelRestrictionId = 1
+                TravelRestrictionId = 6
             },
 
             new
@@ -85,7 +85,7 @@ namespace TravelAPI
                 CountryId = 7,
                 Name = "Brazil",
                 CountryInfoId = 7,
-                TravelRestrictionId = 1
+                TravelRestrictionId = 7
             },
 
             new
@@ -93,7 +93,7 @@ namespace TravelAPI
                 CountryId = 8,
                 Name = "New Zealand",
                 CountryInfoId = 8,
-                TravelRestrictionId = 1
+                TravelRestrictionId = 8
             });
 
             modelBuilder.Entity<TravelRestrictionModel>()
@@ -107,6 +107,83 @@ namespace TravelAPI
                 IsFamilyVisitAllowed = true,
                 IsVisaNeeded = true,
                 RiskLevel = 4
+            },
+            new
+            {
+                TravelRestrictionId = 2,
+                IsWorkTravelAllowed = false,
+                IsTourismAllowed = false,
+                IsImmigrationAllowed = false,
+                IsCitizenshipAllowed = false,
+                IsFamilyVisitAllowed = false,
+                IsVisaNeeded = true,
+                RiskLevel = 4
+            },
+            new
+            {
+                TravelRestrictionId = 3,
+                IsWorkTravelAllowed = false,
+                IsTourismAllowed = false,
+                IsImmigrationAllowed = false,
+                IsCitizenshipAllowed = false,
+                IsFamilyVisitAllowed = false,
+                IsVisaNeeded = false,
+                RiskLevel = 3
+            },
+            new
+            {
+                TravelRestrictionId = 4,
+                IsWorkTravelAllowed = false,
+                IsTourismAllowed = false,
+                IsImmigrationAllowed = true,
+                IsCitizenshipAllowed = false,
+                IsFamilyVisitAllowed = false,
+                IsVisaNeeded = true,
+                RiskLevel = 2
+            },
+            new
+            {
+                TravelRestrictionId = 5,
+                IsWorkTravelAllowed = true,
+                IsTourismAllowed = true,
+                IsImmigrationAllowed = true,
+                IsCitizenshipAllowed = true,
+                IsFamilyVisitAllowed = true,
+                IsVisaNeeded = true,
+                RiskLevel = 1
+            },
+            new
+            {
+                TravelRestrictionId = 6,
+                IsWorkTravelAllowed = true,
+                IsTourismAllowed = true,
+                IsImmigrationAllowed = true,
+                IsCitizenshipAllowed = true,
+                IsFamilyVisitAllowed = true,
+                IsVisaNeeded = true,
+                RiskLevel = 3
+            },
+            new
+            {
+                TravelRestrictionId = 7,
+                IsWorkTravelAllowed = true,
+                IsTourismAllowed = true,
+                IsImmigrationAllowed = true,
+                IsCitizenshipAllowed = true,
+                IsFamilyVisitAllowed = true,
+                IsVisaNeeded = true,
+                RiskLevel = 5
+            },
+            new
+            {
+                TravelRestrictionId = 8,
+                IsWorkTravelAllowed = true,
+                IsTourismAllowed = true,
+                IsImmigrationAllowed = false,
+                IsCitizenshipAllowed = true,
+                IsFamilyVisitAllowed = false,
+                IsVisaNeeded = false,
+                RiskLevel = 2
             });
 
             modelBuilder.Entity<CountryInfoModel>()
