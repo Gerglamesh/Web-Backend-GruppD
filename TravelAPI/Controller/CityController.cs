@@ -2,8 +2,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using TravelAPI.DTO;
 using TravelAPI.Models;
@@ -13,11 +11,11 @@ namespace TravelAPI.Controller
 {
     [Route("api/v1.0/[controller]")]
     [ApiController]
-
     public class CityController : ControllerBase
     {
         private readonly ICityRepo _cityRepo;
         private readonly IMapper _mapper;
+
         public CityController(ICityRepo cityRepo, IMapper mapper)
         {
             _cityRepo = cityRepo;
@@ -25,7 +23,7 @@ namespace TravelAPI.Controller
         }
 
         [HttpGet]
-        public async Task<ActionResult<CityModel[]>> GetCities([FromQuery]bool includeAttractions = false)
+        public async Task<ActionResult<CityModel[]>> GetCities([FromQuery] bool includeAttractions = false)
         {
             try
             {
@@ -35,7 +33,6 @@ namespace TravelAPI.Controller
             catch (Exception e)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
-
             }
         }
 

@@ -3,8 +3,7 @@
 namespace TravelAPI.Models
 {
     public class TravelRestrictionModel
-    {
-        
+    {        
         [Key]
         public int TravelRestrictionId { get; set; }
         public bool IsWorkTravelAllowed { get; set; }

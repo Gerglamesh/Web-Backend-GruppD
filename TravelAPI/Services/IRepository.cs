@@ -11,7 +11,5 @@ namespace TravelAPI.Services
         void Delete<T>(T entity) where T : class;
         void Update<T>(T entity) where T : class;
         Task<bool> Save(); 
-
-
     }
 }

@@ -2,8 +2,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using TravelAPI.DTO;
 using TravelAPI.Models;
@@ -23,10 +21,8 @@ namespace TravelAPI.Controller
             _attractionRepo = attractionRepo;
             _mapper = mapper;
         }
-    
         
         [HttpGet]
-     
         public string Get()
         {
             // Anrop till Test Repo
@@ -49,6 +45,7 @@ namespace TravelAPI.Controller
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
             }
+
             return BadRequest();
         }
     }

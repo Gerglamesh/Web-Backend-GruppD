@@ -10,23 +10,24 @@ namespace TravelAPI.Services
     public class CityRepo : Repository, ICityRepo
     {
         private readonly TravelAPIContext _travelApiContext;
+
         public CityRepo(TravelAPIContext travelAPIContext, ILogger<CityRepo> logger) : base(travelAPIContext, logger)
         {
             _travelApiContext = travelAPIContext;
         }
 
         public async Task<ICollection<CityModel>> GetCities(
-            bool IncludeAttractions = false,
-            bool IncludeCountries = false)
+            bool includeAttractions = false,
+            bool includeCountries = false)
         {
             _logger.LogInformation("Getting Cities");
             IQueryable<CityModel> query = _travelAPIContext.Cities
                 .Include(a => a.Attractions);
-            if (IncludeAttractions)
+            if (includeAttractions)
             {
                 query.Include(a => a.Attractions);
             }
-            if (IncludeCountries)
+            if (includeCountries)
             {
                 query.Include(c => c.Country);
             }
@@ -35,17 +36,17 @@ namespace TravelAPI.Services
 
         public async Task<CityModel> GetCityByName(
             string name,
-            bool IncludeCoutries = false,
-            bool IncludeAttractions = false)
+            bool includeCoutries = false,
+            bool includeAttractions = false)
         {
             _logger.LogInformation($"Getting City named '{name}')");
 
             IQueryable<CityModel> query = _travelApiContext.Cities.Where(n => n.Name == name);
-            if (IncludeCoutries)
+            if (includeCoutries)
             {
                 query = query.Include(c => c.Country);
             }
-            if (IncludeAttractions)
+            if (includeAttractions)
             {
                 query = query.Include(a => a.Attractions);
             }
@@ -53,18 +54,18 @@ namespace TravelAPI.Services
         }
 
         public async Task<CityModel> GetCityById(
-            int CityId,
-            bool IncludeCoutries = false,
-            bool IncludeAttractions = false)
+            int cityId,
+            bool includeCoutries = false,
+            bool includeAttractions = false)
         {
             _logger.LogInformation("Getting City by Id");
 
-            IQueryable<CityModel> query = _travelApiContext.Cities.Where(i => i.CityId == CityId);
-            if (IncludeCoutries)
+            IQueryable<CityModel> query = _travelApiContext.Cities.Where(i => i.CityId == cityId);
+            if (includeCoutries)
             {
                 query = query.Include(c => c.Country);
             }
-            if (IncludeAttractions)
+            if (includeAttractions)
             {
                 query = query.Include(a => a.Attractions);
             }

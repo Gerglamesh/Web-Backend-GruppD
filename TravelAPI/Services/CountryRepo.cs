@@ -56,11 +56,11 @@ namespace TravelAPI.Services
 
         public async Task<CountryModel> GetCountry(
             string name, 
-            bool IncludeCities = false, 
-            bool IncludeTravelRestrictions = false, 
-            bool IncludeAttractions = false, 
-            int AttractionsMinRating = 0, 
-            int AttractionsMaxRating = 5)
+            bool includeCities = false, 
+            bool includeTravelRestrictions = false, 
+            bool includeAttractions = false, 
+            int attractionsMinRating = 0, 
+            int attractionsMaxRating = 5)
         {
             _logger.LogInformation($"Getting Country named '{name}'");
 
@@ -68,29 +68,29 @@ namespace TravelAPI.Services
                 .Countries.Where(c => c.Name == name)
                 .Include(i => i.CountryInfo);
 
-            if (IncludeCities)
+            if (includeCities)
             {
                 query = query.Include(c => c.Cities);
             }
-            if (IncludeTravelRestrictions)
+            if (includeTravelRestrictions)
             {
                 query = query.Include(c => c.TravelRestriction);
             }
-            if (IncludeAttractions)
+            if (includeAttractions)
             {
-                if (AttractionsMinRating < 0)
+                if (attractionsMinRating < 0)
                 {
-                    AttractionsMinRating = 0;
+                    attractionsMinRating = 0;
                 }
-                if (AttractionsMaxRating > 5)
+                if (attractionsMaxRating > 5)
                 {
-                    AttractionsMinRating = 5;
+                    attractionsMinRating = 5;
                 }
 
                 query = query.Include(c => c.Cities)
                     .ThenInclude(c => c.Attractions
-                    .Where(r => r.Rating <= AttractionsMaxRating &&
-                                r.Rating >= AttractionsMinRating));
+                    .Where(r => r.Rating <= attractionsMaxRating &&
+                                r.Rating >= attractionsMinRating));
             }
 
             return await query.FirstOrDefaultAsync();
@@ -98,11 +98,11 @@ namespace TravelAPI.Services
 
         public async Task<CountryModel> GetCountry(
             int id, 
-            bool IncludeCities = false, 
-            bool IncludeTravelRestrictions = false, 
-            bool IncludeAttractions = false, 
-            int AttractionsMinRating = 0, 
-            int AttractionsMaxRating = 5)
+            bool includeCities = false, 
+            bool includeTravelRestrictions = false, 
+            bool includeAttractions = false, 
+            int attractionsMinRating = 0, 
+            int attractionsMaxRating = 5)
         {
             _logger.LogInformation($"Getting Country with ID {id}");
 
@@ -110,29 +110,29 @@ namespace TravelAPI.Services
                 .Countries.Where(c => c.CountryId == id)
                 .Include(i => i.CountryInfo);
 
-            if (IncludeCities)
+            if (includeCities)
             {
                 query = query.Include(c => c.Cities);
             }
-            if (IncludeTravelRestrictions)
+            if (includeTravelRestrictions)
             {
                 query = query.Include(c => c.TravelRestriction);
             }
-            if (IncludeAttractions)
+            if (includeAttractions)
             {
-                if (AttractionsMinRating < 0)
+                if (attractionsMinRating < 0)
                 {
-                    AttractionsMinRating = 0;
+                    attractionsMinRating = 0;
                 }
-                if (AttractionsMaxRating > 5)
+                if (attractionsMaxRating > 5)
                 {
-                    AttractionsMinRating = 5;
+                    attractionsMinRating = 5;
                 }
 
                 query = query.Include(c => c.Cities)
                     .ThenInclude(c => c.Attractions
-                    .Where(r => r.Rating <= AttractionsMaxRating &&
-                                r.Rating >= AttractionsMinRating));
+                    .Where(r => r.Rating <= attractionsMaxRating &&
+                                r.Rating >= attractionsMinRating));
             }
 
             return await query.FirstOrDefaultAsync();

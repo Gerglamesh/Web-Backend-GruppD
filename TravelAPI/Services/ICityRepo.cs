@@ -10,16 +10,16 @@ namespace TravelAPI.Services
     {
         Task<ICollection<CityModel>> GetCities(
             bool includeAttractions = false,
-            bool IncludeCoutries = false);
+            bool includeCoutries = false);
 
         Task<CityModel> GetCityByName(
-            string Name,
-            bool IncludeCountries = false,
-            bool IncludeAttractions = false);
+            string name,
+            bool includeCountries = false,
+            bool includeAttractions = false);
 
         Task<CityModel> GetCityById(
-           int CityId,
-           bool IncludeCountries = false,
-           bool IncludeAttractions = false);
+           int cityId,
+           bool includeCountries = false,
+           bool includeAttractions = false);
     }
 }

@@ -125,7 +125,7 @@ namespace TravelAPI.Services.Tests
                             Name = "Liseberg",
                             Location = "Gothenburg",
                             IsChildFriendly = true,
-                            Information = "Rollercosters",
+                            Information = "Rollercoasters",
                             Rating = 8
                         }
                     }

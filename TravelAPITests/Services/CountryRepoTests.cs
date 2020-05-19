@@ -4,7 +4,6 @@ using Moq.EntityFrameworkCore;
 using Moq;
 using Microsoft.Extensions.Logging;
 using Xunit;
-using System.Linq;
 
 namespace TravelAPI.Services.Tests
 {
@@ -28,7 +27,6 @@ namespace TravelAPI.Services.Tests
             Assert.Equal(2, theCountries.Count);
         }
 
-        
         [Theory]
         [InlineData(1, "Wakanda")]
         [InlineData(2, "Långtbortistan")]
