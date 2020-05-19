@@ -49,7 +49,7 @@ namespace TravelAPI.Controller
             }
         }
 
-        [HttpGet("{name:string}")]
+        [HttpGet("{name}")]
         public async Task<ActionResult<CountryDto>> GetCountry(
             string name,
             [FromQuery]bool includeCities = false,
@@ -107,7 +107,6 @@ namespace TravelAPI.Controller
             }
         }
 
-        //TODO: Update this with handling DTO instead of CountryModel
         [HttpPost]
         public async Task<ActionResult<CountryDto>> PostCountry(CountryDto countryDto)
         {

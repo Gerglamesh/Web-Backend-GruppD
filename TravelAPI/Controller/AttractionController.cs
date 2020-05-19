@@ -1,12 +1,11 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
+using TravelAPI.Services;
+using AutoMapper;
 using TravelAPI.DTO;
 using TravelAPI.Models;
-using TravelAPI.Services;
 
 namespace TravelAPI.Controller
 {
@@ -24,7 +23,7 @@ namespace TravelAPI.Controller
         }
 
         [HttpGet]
-        public async Task<ActionResult<ICollection<AttractionDto[]>>> GetAttractions([FromQuery]bool includeCities = false)            
+        public async Task<ActionResult<AttractionDto[]>> GetAttractions([FromQuery]bool includeCities = false)            
         {
             try
             {
