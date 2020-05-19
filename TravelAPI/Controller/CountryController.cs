@@ -107,7 +107,6 @@ namespace TravelAPI.Controller
             }
         }
 
-        //TODO: Update this with handling DTO instead of CountryModel
         [HttpPost]
         public async Task<ActionResult<CountryDto>> PostCountry(CountryDto countryDto)
         {

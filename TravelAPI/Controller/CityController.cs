@@ -45,7 +45,7 @@ namespace TravelAPI.Controller
                 _cityRepo.Add(mappedEntity);
                 if (await _cityRepo.Save())
                 {
-                    return Created($"/api/v1.0/events/{mappedEntity.CityId}", _mapper.Map<CityDto>(mappedEntity));
+                    return Created($"/api/v1.0/city/{mappedEntity.CityId}", _mapper.Map<CityDto>(mappedEntity));
                 }
             }
             catch (Exception e)
