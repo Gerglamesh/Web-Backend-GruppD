@@ -38,7 +38,7 @@ namespace TravelAPI.Controller
                 _attractionRepo.Add(mappedEntity);
                 if (await _attractionRepo.Save())
                 {
-                    return Created($"/api/v1.0/events/{mappedEntity.AttractionId}", _mapper.Map<AttractionDto>(mappedEntity));
+                    return Created($"/api/v1.0/attraction/{mappedEntity.AttractionId}", _mapper.Map<AttractionDto>(mappedEntity));
                 }
             }
             catch (Exception e)
