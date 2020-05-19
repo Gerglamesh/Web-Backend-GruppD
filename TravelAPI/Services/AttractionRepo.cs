@@ -18,6 +18,21 @@ namespace TravelAPI.Services
             _travelApiContext = travelAPIContext;
         }
 
+        public async Task<ICollection<AttractionModel>> GetAttractions(bool includeCities = false)
+        {
+            _logger.LogInformation("Getting Attractions");
+
+            IQueryable<AttractionModel> query = _travelAPIContext.Attractions;
+
+            if (includeCities)
+            {
+                query.Include(a => a.City);
+            }
+
+            query = query.OrderBy(a => a.Name);
+            return await query.ToArrayAsync();
+        }
+
         public async Task<AttractionModel> GetAttraction(string name)
         {
             var query = _travelApiContext.Attractions

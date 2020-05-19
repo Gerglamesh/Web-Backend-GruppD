@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TravelAPI.DTO;
 using TravelAPI.Models;
@@ -21,12 +22,19 @@ namespace TravelAPI.Controller
             _attractionRepo = attractionRepo;
             _mapper = mapper;
         }
-        
+
         [HttpGet]
-        public string Get()
+        public async Task<ActionResult<ICollection<AttractionDto[]>>> GetAttractions([FromQuery]bool includeCities = false)            
         {
-            // Anrop till Test Repo
-            return "hej irke";
+            try
+            {
+                var results = await _attractionRepo.GetAttractions(includeCities);
+                return Ok(results);
+            }
+            catch (Exception e)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
+            }
         }
 
         [HttpPost]

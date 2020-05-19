@@ -50,7 +50,7 @@ namespace TravelAPI.Services
                                 r.Rating >= attractionsMinRating));
             }
 
-            query = query.OrderBy(e => e.Name);
+            query = query.OrderBy(c => c.Name);
             return await query.ToArrayAsync();
         }
 

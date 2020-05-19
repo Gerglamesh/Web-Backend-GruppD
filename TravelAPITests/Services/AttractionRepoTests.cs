@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using TravelAPI.Services;
+using System.Collections.Generic;
 using TravelAPI.Models;
 using Moq;
 using Moq.EntityFrameworkCore;
@@ -9,6 +10,26 @@ namespace TravelAPI.Services.Tests
 {
     public class AttractionRepoTests
     {
+        [Theory]
+        [InlineData(true, 3)]
+        [InlineData(false, 3)]
+        public async void GetAttractionsTest(bool inlineBool, int expected)
+        {
+            //Arrange
+            IList<AttractionModel> attractions = GenerateAttractions();
+            var TravelAPIContextMock = new Mock<TravelAPIContext>();
+            TravelAPIContextMock.Setup(e => e.Attractions).ReturnsDbSet(attractions);
+
+            var logger = Mock.Of<ILogger<AttractionRepo>>();
+            var attractionRepo = new AttractionRepo(TravelAPIContextMock.Object, logger);
+
+            //Act
+            var theAttractions = await attractionRepo.GetAttractions(inlineBool);
+
+            //Assert
+            Assert.Equal(expected, theAttractions.Count);
+        }
+
         [Fact]
         public async void GetAttractionTest()
         {
