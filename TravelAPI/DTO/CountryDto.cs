@@ -5,8 +5,12 @@ namespace TravelAPI.DTO
 {
     public class CountryDto
     {
-        [Required] public int CountryId { get; set; }
-        [Required] public string Name { get; set; }
+        [Required] 
+        public int CountryId { get; set; }
+        [Required]
+        [RegularExpression(@"^[a-zA-Z''-'\s]{1,56}$",
+            ErrorMessage = "Characters are not allowed or text is to long/short.")]
+        public string Name { get; set; }
 
         //Relationships
         public CountryInfoDto CountryInfo { get; set; }
