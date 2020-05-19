@@ -23,9 +23,12 @@ namespace TravelAPI.DTO
         [Required]
         [Range(1, 2147483647, ErrorMessage = "Value for {0} must be between {1} and {2}")]
         public int Area { get; set; }
-        [Required] 
+        [Required]
+        [RegularExpression(@"^[+-]?\d{1,2}(\.\d{1,2})?$", 
+            ErrorMessage = "Not a valid timezone format.")]
         public string TimeZone { get; set; }
         [Required]
+        [RegularExpression(@"^[0-9m]{1,2}/[0-9d]{1,2}$")]
         public string NationalDay { get; set; }
         [Required] 
         public bool RightHandTraffic { get; set; }
