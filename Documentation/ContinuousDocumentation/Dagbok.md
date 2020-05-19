@@ -115,3 +115,9 @@ Dagen startade med ett github haveri som berodde på en dålig merge. Förmiddag
 Resterande tid lades på att göra klart så mycket som möjligt av veckans sprint. Nästan allt blev kvar och den enda återstoden 'r att några DTO's ska skapas samt att code cleanupen inte hanns med. Cleanupen kommer dock i nästa sprint.
 
 Projektet kommer nu att byta deltagare fr.o.m. nästa vecka. Detta innebär att Irvin och Jakob ska in i ett annat projekt och att Hampus och Mirko är kvar i detta projektet en vecka till.
+
+
+
+###### 18/5
+
+Denna dag började med att vi fick in The "Oskars" in i laget. Sedan har vi förklarat ganska mycket om hur arbetsdagarna ser ut och hur vi jobbar. SQL har bråkat en hel del med oss, men vi har fått det att fungera. Allihopa har jobbat på ganska bra och hårt. Avslutar denna dag med denna dagbok!
