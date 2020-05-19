@@ -26,11 +26,48 @@ namespace TravelAPI.Controller
     
         
         [HttpGet]
-     
-        public string Get()
+        public async Task<ActionResult<AttractionDto[]>> GetAttraction(string name)
         {
-            // Anrop till Test Repo
-            return "hej irke";
+            try
+            {
+                var results = await _attractionRepo.GetAttraction(name);
+                var mappedResults = _mapper.Map<AttractionDto[]>(results);
+                return Ok(mappedResults);
+            }
+            catch (Exception e)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
+            }
+        }
+
+        [HttpGet("{rating}")]
+        public async Task<ActionResult<AttractionDto[]>> GetAttractionByRating(int rating)
+        {
+            try
+            {
+                var result = await _attractionRepo.GetRating(rating);
+                var mappedResult = _mapper.Map<AttractionDto[]>(result);
+                return Ok(mappedResult);
+            }
+            catch (Exception e)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
+            }
+        }
+
+        [HttpGet("{childfriendly}")]
+        public async Task<ActionResult<AttractionDto[]>> GetAttractionByChildFriendly(bool isChildFriendly)
+        {
+            try
+            {
+                var result = await _attractionRepo.GetIschildfriendly(isChildFriendly);
+                var mappedResult = _mapper.Map<AttractionDto[]>(isChildFriendly);
+                return Ok(mappedResult);
+            }
+            catch (Exception e)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
+            }
         }
 
         [HttpPost]
