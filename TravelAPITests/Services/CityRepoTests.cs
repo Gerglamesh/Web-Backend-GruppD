@@ -22,7 +22,7 @@ namespace TravelAPI.Services.Tests
             //Act
             var theCities = await citiesRepository.GetCities();
             //Assert
-            Assert.Equal(2, theCities.Count);
+            Assert.Equal(5, theCities.Count);
         }
 
         [Fact]
