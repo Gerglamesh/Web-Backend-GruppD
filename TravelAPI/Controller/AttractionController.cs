@@ -23,15 +23,14 @@ namespace TravelAPI.Controller
             _attractionRepo = attractionRepo;
             _mapper = mapper;
         }
-    
-        
-        [HttpGet]
-        public async Task<ActionResult<AttractionDto[]>> GetAttraction(string name)
+
+        [HttpGet("/api/v1.0/[controller]/id/{id:int}")]
+        public async Task<ActionResult<AttractionDto>> GetAttraction(int id)
         {
             try
             {
-                var results = await _attractionRepo.GetAttraction(name);
-                var mappedResults = _mapper.Map<AttractionDto[]>(results);
+                var results = await _attractionRepo.GetAttraction(id);
+                var mappedResults = _mapper.Map<AttractionDto>(results);
                 return Ok(mappedResults);
             }
             catch (Exception e)
@@ -40,14 +39,14 @@ namespace TravelAPI.Controller
             }
         }
 
-        [HttpGet("{rating}")]
-        public async Task<ActionResult<AttractionDto[]>> GetAttractionByRating(int rating)
+        [HttpGet("{name}")]
+        public async Task<ActionResult<AttractionDto>> GetAttraction(string name)
         {
             try
             {
-                var result = await _attractionRepo.GetRating(rating);
-                var mappedResult = _mapper.Map<AttractionDto[]>(result);
-                return Ok(mappedResult);
+                var results = await _attractionRepo.GetAttraction(name);
+                var mappedResults = _mapper.Map<AttractionDto>(results);
+                return Ok(mappedResults);
             }
             catch (Exception e)
             {
@@ -55,13 +54,13 @@ namespace TravelAPI.Controller
             }
         }
 
-        [HttpGet("{childfriendly}")]
-        public async Task<ActionResult<AttractionDto[]>> GetAttractionByChildFriendly(bool isChildFriendly)
+        [HttpGet("{rating:int}")]
+        public async Task<ActionResult<AttractionDto[]>> GetAttractionByRating(int rating)
         {
             try
             {
-                var result = await _attractionRepo.GetIschildfriendly(isChildFriendly);
-                var mappedResult = _mapper.Map<AttractionDto[]>(isChildFriendly);
+                var result = await _attractionRepo.GetRating(rating);
+                var mappedResult = _mapper.Map<AttractionDto[]>(result);
                 return Ok(mappedResult);
             }
             catch (Exception e)
