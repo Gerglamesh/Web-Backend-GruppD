@@ -27,7 +27,7 @@ namespace TravelAPI.Services.Tests
         }
 
         [Theory]
-        [InlineData(true, 2)]
+        [InlineData(true, 8)]
         [InlineData(false, 1)]
         public async void GetIschildfriendlyTest(bool inlineBool, int expected)
         {
@@ -45,7 +45,7 @@ namespace TravelAPI.Services.Tests
 
         [Theory]
         [InlineData(2, 1)]
-        [InlineData(3, 1)]
+        [InlineData(3, 2)]
         public async void GetRatingTest(int inlineNum, int expected)
         {
             //Arrange
