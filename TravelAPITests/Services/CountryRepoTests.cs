@@ -24,7 +24,7 @@ namespace TravelAPI.Services.Tests
             var theCountries = await countriesRepository.GetCountries();
 
             //Assert
-            Assert.Equal(2, theCountries.Count);
+            Assert.Equal(3, theCountries.Count);
         }
 
         [Theory]
@@ -68,7 +68,7 @@ namespace TravelAPI.Services.Tests
         }
 
         [Theory]
-        [InlineData(true, 2)]
+        [InlineData(true, 3)]
         public async void GetRightHandTrafficTest(bool inlineBool, int expected)
         {
 
