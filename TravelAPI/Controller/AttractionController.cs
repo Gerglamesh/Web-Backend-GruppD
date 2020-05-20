@@ -1,11 +1,11 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
+using TravelAPI.Services;
+using AutoMapper;
 using TravelAPI.DTO;
 using TravelAPI.Models;
-using TravelAPI.Services;
 
 namespace TravelAPI.Controller
 {
@@ -20,6 +20,21 @@ namespace TravelAPI.Controller
         {
             _attractionRepo = attractionRepo;
             _mapper = mapper;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<AttractionDto[]>> GetAttractions([FromQuery]bool includeCities = false)            
+        {
+            try
+            {
+                var results = await _attractionRepo.GetAttractions(includeCities);
+                var mappedResults = _mapper.Map<AttractionDto[]>(results);
+                return Ok(mappedResults);
+            }
+            catch (Exception e)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
+            }
         }
 
         [HttpGet("/api/v1.0/[controller]/id/{id:int}")]

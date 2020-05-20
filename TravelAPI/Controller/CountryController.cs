@@ -49,7 +49,7 @@ namespace TravelAPI.Controller
             }
         }
 
-        [HttpGet("{name:string}")]
+        [HttpGet("{name}")]
         public async Task<ActionResult<CountryDto>> GetCountry(
             string name,
             [FromQuery]bool includeCities = false,

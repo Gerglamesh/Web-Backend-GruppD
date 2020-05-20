@@ -20,7 +20,10 @@ namespace TravelAPI
         {
             services.AddDbContext<TravelAPIContext>();
             services.AddScoped<ICountryRepo, CountryRepo>();
+            services.AddScoped<ICityRepo, CityRepo>();
             services.AddScoped<IAttractionRepo, AttractionRepo>();
+            services.AddScoped<ITravelRestrictionRepo, TravelRestrictionRepo>();
+            services.AddScoped<ICountryInfoRepo, CountryInfoRepo>();
             services.AddAutoMapper(typeof(Startup));
 
             services.AddMvc(options => options.EnableEndpointRouting = false).SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
