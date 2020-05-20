@@ -11,7 +11,6 @@ namespace TravelAPI.Services
 {
     public class AttractionRepo : Repository, IAttractionRepo
     {
-
         public AttractionRepo(TravelAPIContext travelAPIContext, ILogger<AttractionRepo> logger) : base(travelAPIContext, logger)
         {
         }
@@ -35,7 +34,14 @@ namespace TravelAPI.Services
             query = query.OrderBy(a => a.Name);
             return await query.ToArrayAsync();
         }
-
+        
+        public async Task<AttractionModel> GetAttraction(int id)
+        {
+            var query = _travelAPIContext.Attractions
+                .Where(q => q.AttractionId == id);
+            return await query.FirstOrDefaultAsync();
+        }
+        
         public async Task<AttractionModel> GetAttraction(string name)
         {
             var query = _travelAPIContext.Attractions
@@ -43,8 +49,8 @@ namespace TravelAPI.Services
 
             return await query.FirstOrDefaultAsync();
         }
-        
-        public async Task<ICollection<AttractionModel>>GetIschildfriendly(bool isChildFriendly)
+
+        public async Task<ICollection<AttractionModel>> GetIschildfriendly(bool isChildFriendly = false)
         {
             IQueryable<AttractionModel> query = _travelAPIContext.Attractions
                 .Where(a => a.IsChildFriendly == isChildFriendly);
