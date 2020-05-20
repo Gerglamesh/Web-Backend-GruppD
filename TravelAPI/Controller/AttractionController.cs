@@ -2,8 +2,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using TravelAPI.DTO;
 using TravelAPI.Models;
@@ -78,13 +76,14 @@ namespace TravelAPI.Controller
                 _attractionRepo.Add(mappedEntity);
                 if (await _attractionRepo.Save())
                 {
-                    return Created($"/api/v1.0/events/{mappedEntity.AttractionId}", _mapper.Map<AttractionDto>(mappedEntity));
+                    return Created($"/api/v1.0/attraction/{mappedEntity.AttractionId}", _mapper.Map<AttractionDto>(mappedEntity));
                 }
             }
             catch (Exception e)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
             }
+
             return BadRequest();
         }
     }

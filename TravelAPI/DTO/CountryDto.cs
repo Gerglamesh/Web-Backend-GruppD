@@ -1,19 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using TravelAPI.Models;
 
 namespace TravelAPI.DTO
 {
     public class CountryDto
     {
-        [Required]
+        [Required] 
         public int CountryId { get; set; }
         [Required]
+        [RegularExpression(@"^[a-zA-Z''-'\s]{1,56}$",
+            ErrorMessage = "Characters are not allowed or text is to long/short.")]
         public string Name { get; set; }
 
         //Relationships
-        public CountryInfoModel CountryInfo { get; set; }
-        public ICollection<CityModel> Cities { get; set; }
-        public TravelRestrictionModel TravelRestriction { get; set; }
+        public CountryInfoDto CountryInfo { get; set; }
+        public ICollection<CityDto> Cities { get; set; }
+        public TravelRestrictionDto TravelRestriction { get; set; }
     }
 }

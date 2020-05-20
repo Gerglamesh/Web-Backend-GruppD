@@ -10,11 +10,13 @@ namespace TravelAPI.Services
     {
         protected readonly TravelAPIContext _travelAPIContext;
         protected readonly ILogger<Repository> _logger;
+
         public Repository(TravelAPIContext context, ILogger<Repository> logger)
         {
             _travelAPIContext = context;
             _logger = logger;
         }
+
         public void Add<T>(T entity) where T : class
         {
             _logger.LogInformation($"Adding object of type {entity.GetType()}");
