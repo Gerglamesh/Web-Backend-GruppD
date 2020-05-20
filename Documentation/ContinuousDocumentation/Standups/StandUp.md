@@ -763,29 +763,38 @@ What will Hampus do today
 
 
 
-# SKRIV DATUM 
+# 05-20 Oskar M
 
 ### Yesterday
 
 What did All Do
 
-* 
+* We all helped fix some bugs and issues.
 
-What will Oscar K do today
+What did Oscar K do
 
-* 
+* TRAPI-266 - In progress
+  * TRAPI-267 - Finished
+  * TRAPI-268 - Cannot be completed/Should be incorporated into GetAttractions()
+  * TRAPI-269 - Finished
 
-What will Mirko do today
+What did Mirko do
 
-* * 
+* Add data to API TRAPI-253 - Finished
+  * For Attraction TRAPI-260 - Finished
+  * For TravelRestriction TRAPI-262 - Finished
+* Code Cleanup TRAPI-230 - Finished
 
-What will Oskar M do today
+What did Oskar M do
 
-* 
+* Have a look at Check Constraints for database (code first) TRAPI-182 - Finished
 
-What will Hampus do today
+What did Hampus do
 
-* 
+* Begin coding put request TRAPI-247 - Finished
+* Adding more test-DATA TRAPI-254 - Finished
+* Coded Get all Attractions TRAPI-273- Finished
+* Did some work on all Attractions in Attractionrepo TRAPI-271 - Not Finished
 
 =======================
 
@@ -793,23 +802,26 @@ What will Hampus do today
 
 What will All do today
 
-* 
+* Create more issues in backlog
 
 What will Oscar K do today
 
-* 
+* TRAPI-268
+* TRAPI-252
 
 What will Mirko do today
 
-* * 
+* TRAPI-272
 
 What will Oskar M do today
 
-* 
+* TRAPI-272
+* TRAPI-251
 
 What will Hampus do today
 
-* 
+* TRAPI-271
+  * Solve issue where we don't get cities from attractions.
 
 # SKRIV DATUM 
 
