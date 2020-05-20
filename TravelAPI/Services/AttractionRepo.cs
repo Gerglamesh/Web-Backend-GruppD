@@ -20,11 +20,16 @@ namespace TravelAPI.Services
         {
             _logger.LogInformation("Getting Attractions");
 
-            IQueryable<AttractionModel> query = _travelAPIContext.Attractions;
+            IQueryable<AttractionModel> query;
 
-            if (includeCities)
+            if (!includeCities)
+            {                
+                query = _travelAPIContext.Attractions;
+            }
+            else
             {
-                query.Include(a => a.City);
+                query = _travelAPIContext.Attractions
+                .Include(a => a.City);
             }
 
             query = query.OrderBy(a => a.Name);

@@ -28,7 +28,8 @@ namespace TravelAPI.Controller
             try
             {
                 var results = await _attractionRepo.GetAttractions(includeCities);
-                return Ok(results);
+                var mappedResults = _mapper.Map<AttractionDto[]>(results);
+                return Ok(mappedResults);
             }
             catch (Exception e)
             {
