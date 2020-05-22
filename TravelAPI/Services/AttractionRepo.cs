@@ -21,47 +21,10 @@ namespace TravelAPI.Services
 
             IQueryable<AttractionModel> query = _travelAPIContext.Attractions;
 
-            if (includeCities)
-            {
-                query = query.Include(a => a.City);
-            }
+            if (includeCities) query = query.Include(a => a.City);
 
-            query = query.ForEachAsync(query.Where());
-
-
-            //if (isChildFriendly)
-            //{
-            //    query = query.Select(a => new AttractionModel
-            //    {
-            //        AttractionId = a.AttractionId,
-            //        Name = a.Name,
-            //        Location = a.Location,
-            //        Information = a.Information,
-            //        Rating = a.Rating,
-            //        IsChildFriendly = a.IsChildFriendly
-            //    });
-            //        List<AttractionModel> tempList = new List<AttractionModel>();
-            //        foreach (var q in query)
-            //        {
-            //            if (q.IsChildFriendly == isChildFriendly)
-            //            {
-            //                tempList.Add(q);
-            //            }
-            //        }
-            //        query = tempList.AsQueryable<AttractionModel>();
-            //else
-            //{
-            //    query = query.Select(a => new AttractionModel
-            //    {
-            //        AttractionId = a.AttractionId,
-            //        Name = a.Name,
-            //        Location = a.Location,
-            //        Information = a.Information,
-            //        Rating = a.Rating,
-            //        IsChildFriendly = a.IsChildFriendly
-            //    });
-            //}
-
+            if (isChildFriendly) query = query.Where(a => a.IsChildFriendly == true);
+            else query = query.Where(a => a.IsChildFriendly == false);
 
                 query = query.OrderBy(a => a.Name);
             return await query.ToArrayAsync();
