@@ -11,26 +11,58 @@ namespace TravelAPI.Services
     public class AttractionRepo : Repository, IAttractionRepo
     {
         public AttractionRepo(TravelAPIContext travelAPIContext, ILogger<AttractionRepo> logger) : base(travelAPIContext, logger)
-        {
-        }
+        {}
 
-        public async Task<ICollection<AttractionModel>> GetAttractions(bool includeCities = false)
+        public async Task<ICollection<AttractionModel>> GetAttractions(
+            bool includeCities = false,
+            bool isChildFriendly = false)
         {
             _logger.LogInformation("Getting Attractions");
 
-            IQueryable<AttractionModel> query;
+            IQueryable<AttractionModel> query = _travelAPIContext.Attractions;
 
-            if (!includeCities)
-            {                
-                query = _travelAPIContext.Attractions;
-            }
-            else
+            if (includeCities)
             {
-                query = _travelAPIContext.Attractions
-                .Include(a => a.City);
+                query = query.Include(a => a.City);
             }
+            query.Select(a => a.IsChildFriendly == isChildFriendly);
+           
+            //if (isChildFriendly)
+            //{
+            //    query = query.Select(a => new AttractionModel
+            //    {
+            //        AttractionId = a.AttractionId,
+            //        Name = a.Name,
+            //        Location = a.Location,
+            //        Information = a.Information,
+            //        Rating = a.Rating,
+            //        IsChildFriendly = a.IsChildFriendly
+            //    });
+            //        List<AttractionModel> tempList = new List<AttractionModel>();
+            //        foreach (var q in query)
+            //        {
+            //            if (q.IsChildFriendly == isChildFriendly)
+            //            {
+            //                tempList.Add(q);
+            //            }
+            //        }
+            //        query = tempList.AsQueryable<AttractionModel>();
+            //    }
+            //else
+            //{
+            //    query = query.Select(a => new AttractionModel
+            //    {
+            //        AttractionId = a.AttractionId,
+            //        Name = a.Name,
+            //        Location = a.Location,
+            //        Information = a.Information,
+            //        Rating = a.Rating,
+            //        IsChildFriendly = a.IsChildFriendly
+            //    });
+            //}
 
-            query = query.OrderBy(a => a.Name);
+
+                query = query.OrderBy(a => a.Name);
             return await query.ToArrayAsync();
         }
         

@@ -23,11 +23,13 @@ namespace TravelAPI.Controller
         }
 
         [HttpGet]
-        public async Task<ActionResult<AttractionDto[]>> GetAttractions([FromQuery]bool includeCities = false)            
+        public async Task<ActionResult<AttractionDto[]>> GetAttractions(
+            [FromQuery]bool includeCities = false,
+            [FromQuery]bool isChildFriendly = false)            
         {
             try
             {
-                var results = await _attractionRepo.GetAttractions(includeCities);
+                var results = await _attractionRepo.GetAttractions(includeCities, isChildFriendly);
                 var mappedResults = _mapper.Map<AttractionDto[]>(results);
                 return Ok(mappedResults);
             }
