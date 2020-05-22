@@ -823,29 +823,30 @@ What will Hampus do today
 * TRAPI-271
   * Solve issue where we don't get cities from attractions.
 
-# SKRIV DATUM 
+# 22/5 Hampus
 
-### Yesterday
+### Last time
 
 What did All Do
 
-* 
+* We created more issues in backlog
 
-What will Oscar K do today
+What did Oscar K do
 
-* 
+* TRAPI-268 --- Under development
+* TRAPI-252 --- still some left
 
-What will Mirko do today
+What did Mirko do 
 
-* * 
+* TRAPI-272 --- Did some research, not yet done
 
-What will Oskar M do today
+What did Oskar M do 
 
-* 
+* Could not attend but is done with his issues for this sprint
 
-What will Hampus do today
+What did Hampus do 
 
-* 
+* TRAPI-271 --- finished
 
 =======================
 
@@ -853,23 +854,24 @@ What will Hampus do today
 
 What will All do today
 
-* 
+* Get sprint done and do sprint review
 
 What will Oscar K do today
 
-* 
+* TRAPI-268
+* TRAPI-252
 
 What will Mirko do today
 
-* * 
+* TRAPI-272 with Hampus
 
 What will Oskar M do today
 
-* 
+* Unavailable today, is at an interview
 
 What will Hampus do today
 
-* 
+* TRAPI-272 with Mirko
 
 
 
