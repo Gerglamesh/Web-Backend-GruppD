@@ -37,9 +37,7 @@ namespace TravelAPI.Services
             {
                 query = query.Include(c => c.Cities)
                     .ThenInclude(c => c.Attractions);
-            }
-            if (includeAttractions)
-            {
+
                 query = query.Select(c => new CountryModel
                 {
                     CountryId = c.CountryId,
@@ -51,28 +49,17 @@ namespace TravelAPI.Services
                     Cities = c.Cities.Select(c => new CityModel
                     {
                         CityId = c.CityId,
-                        CountryId = c.CountryId,
-                        Country = c.Country,
                         Name = c.Name,
                         Population = c.Population,
-                        Attractions = c.Where(a => a)
+                        CountryId = c.CountryId,
+                        Country = c.Country,
+                        Attractions = c.Attractions.Where
+                        (
+                            a => a.Rating <= attractionsMaxRating
+                            && a.Rating >= attractionsMinRating
+                        ).ToArray()
                     }).ToArray()
                 });
-
-
-                if (attractionsMinRating < 0)
-                {
-                    attractionsMinRating = 0;
-                }
-                if (attractionsMaxRating > 5)
-                {
-                    attractionsMinRating = 5;
-                }
-
-                query = query.Include(c => c.Cities)
-                    .ThenInclude(c => c.Attractions
-                    .Where(r => r.Rating <= attractionsMaxRating &&
-                                r.Rating >= attractionsMinRating));
             }
 
             query = query.OrderBy(c => c.Name);
@@ -103,19 +90,31 @@ namespace TravelAPI.Services
             }
             if (includeAttractions)
             {
-                if (attractionsMinRating < 0)
-                {
-                    attractionsMinRating = 0;
-                }
-                if (attractionsMaxRating > 5)
-                {
-                    attractionsMinRating = 5;
-                }
-
                 query = query.Include(c => c.Cities)
-                    .ThenInclude(c => c.Attractions
-                    .Where(r => r.Rating <= attractionsMaxRating &&
-                                r.Rating >= attractionsMinRating));
+                    .ThenInclude(c => c.Attractions);
+
+                query = query.Select(c => new CountryModel
+                {
+                    CountryId = c.CountryId,
+                    Name = c.Name,
+                    CountryInfoId = c.CountryInfoId,
+                    CountryInfo = c.CountryInfo,
+                    TravelRestrictionId = c.TravelRestrictionId,
+                    TravelRestriction = c.TravelRestriction,
+                    Cities = c.Cities.Select(c => new CityModel
+                    {
+                        CityId = c.CityId,
+                        Name = c.Name,
+                        Population = c.Population,
+                        CountryId = c.CountryId,
+                        Country = c.Country,
+                        Attractions = c.Attractions.Where
+                        (
+                            a => a.Rating <= attractionsMaxRating
+                            && a.Rating >= attractionsMinRating
+                        ).ToArray()
+                    }).ToArray()
+                });
             }
 
             return await query.FirstOrDefaultAsync();
@@ -145,19 +144,31 @@ namespace TravelAPI.Services
             }
             if (includeAttractions)
             {
-                if (attractionsMinRating < 0)
-                {
-                    attractionsMinRating = 0;
-                }
-                if (attractionsMaxRating > 5)
-                {
-                    attractionsMinRating = 5;
-                }
-
                 query = query.Include(c => c.Cities)
-                    .ThenInclude(c => c.Attractions
-                    .Where(r => r.Rating <= attractionsMaxRating &&
-                                r.Rating >= attractionsMinRating));
+                    .ThenInclude(c => c.Attractions);
+
+                query = query.Select(c => new CountryModel
+                {
+                    CountryId = c.CountryId,
+                    Name = c.Name,
+                    CountryInfoId = c.CountryInfoId,
+                    CountryInfo = c.CountryInfo,
+                    TravelRestrictionId = c.TravelRestrictionId,
+                    TravelRestriction = c.TravelRestriction,
+                    Cities = c.Cities.Select(c => new CityModel
+                    {
+                        CityId = c.CityId,
+                        Name = c.Name,
+                        Population = c.Population,
+                        CountryId = c.CountryId,
+                        Country = c.Country,
+                        Attractions = c.Attractions.Where
+                        (
+                            a => a.Rating <= attractionsMaxRating
+                            && a.Rating >= attractionsMinRating
+                        ).ToArray()
+                    }).ToArray()
+                });
             }
 
             return await query.FirstOrDefaultAsync();
