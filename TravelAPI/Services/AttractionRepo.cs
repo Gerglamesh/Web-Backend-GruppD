@@ -25,8 +25,10 @@ namespace TravelAPI.Services
             {
                 query = query.Include(a => a.City);
             }
-            query.Select(a => a.IsChildFriendly == isChildFriendly);
-           
+
+            query = query.ForEachAsync(query.Where());
+
+
             //if (isChildFriendly)
             //{
             //    query = query.Select(a => new AttractionModel
@@ -47,7 +49,6 @@ namespace TravelAPI.Services
             //            }
             //        }
             //        query = tempList.AsQueryable<AttractionModel>();
-            //    }
             //else
             //{
             //    query = query.Select(a => new AttractionModel
