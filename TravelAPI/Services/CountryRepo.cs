@@ -35,9 +35,6 @@ namespace TravelAPI.Services
             }
             if (includeAttractions)
             {
-                query = query.Include(c => c.Cities)
-                    .ThenInclude(c => c.Attractions);
-
                 query = query.Select(c => new CountryModel
                 {
                     CountryId = c.CountryId,
@@ -52,7 +49,6 @@ namespace TravelAPI.Services
                         Name = c.Name,
                         Population = c.Population,
                         CountryId = c.CountryId,
-                        Country = c.Country,
                         Attractions = c.Attractions.Where
                         (
                             a => a.Rating <= attractionsMaxRating
@@ -90,9 +86,6 @@ namespace TravelAPI.Services
             }
             if (includeAttractions)
             {
-                query = query.Include(c => c.Cities)
-                    .ThenInclude(c => c.Attractions);
-
                 query = query.Select(c => new CountryModel
                 {
                     CountryId = c.CountryId,
@@ -107,7 +100,6 @@ namespace TravelAPI.Services
                         Name = c.Name,
                         Population = c.Population,
                         CountryId = c.CountryId,
-                        Country = c.Country,
                         Attractions = c.Attractions.Where
                         (
                             a => a.Rating <= attractionsMaxRating
@@ -144,9 +136,6 @@ namespace TravelAPI.Services
             }
             if (includeAttractions)
             {
-                query = query.Include(c => c.Cities)
-                    .ThenInclude(c => c.Attractions);
-
                 query = query.Select(c => new CountryModel
                 {
                     CountryId = c.CountryId,
@@ -161,7 +150,6 @@ namespace TravelAPI.Services
                         Name = c.Name,
                         Population = c.Population,
                         CountryId = c.CountryId,
-                        Country = c.Country,
                         Attractions = c.Attractions.Where
                         (
                             a => a.Rating <= attractionsMaxRating
