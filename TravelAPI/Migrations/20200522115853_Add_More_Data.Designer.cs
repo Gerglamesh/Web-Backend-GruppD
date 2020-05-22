@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TravelAPI;
 
 namespace TravelAPI.Migrations
 {
     [DbContext(typeof(TravelAPIContext))]
-    partial class TravelAPIContextModelSnapshot : ModelSnapshot
+    [Migration("20200522115853_Add_More_Data")]
+    partial class Add_More_Data
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

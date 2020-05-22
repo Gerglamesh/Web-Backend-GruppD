@@ -11,26 +11,22 @@ namespace TravelAPI.Services
     public class AttractionRepo : Repository, IAttractionRepo
     {
         public AttractionRepo(TravelAPIContext travelAPIContext, ILogger<AttractionRepo> logger) : base(travelAPIContext, logger)
-        {
-        }
+        {}
 
-        public async Task<ICollection<AttractionModel>> GetAttractions(bool includeCities = false)
+        public async Task<ICollection<AttractionModel>> GetAttractions(
+            bool includeCities = false,
+            bool isChildFriendly = false)
         {
             _logger.LogInformation("Getting Attractions");
 
-            IQueryable<AttractionModel> query;
+            IQueryable<AttractionModel> query = _travelAPIContext.Attractions;
 
-            if (!includeCities)
-            {                
-                query = _travelAPIContext.Attractions;
-            }
-            else
-            {
-                query = _travelAPIContext.Attractions
-                .Include(a => a.City);
-            }
+            if (includeCities) query = query.Include(a => a.City);
 
-            query = query.OrderBy(a => a.Name);
+            if (isChildFriendly) query = query.Where(a => a.IsChildFriendly == true);
+            else query = query.Where(a => a.IsChildFriendly == false);
+
+                query = query.OrderBy(a => a.Name);
             return await query.ToArrayAsync();
         }
         
