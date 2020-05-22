@@ -35,6 +35,31 @@ namespace TravelAPI.Services
             }
             if (includeAttractions)
             {
+                query = query.Include(c => c.Cities)
+                    .ThenInclude(c => c.Attractions);
+            }
+            if (includeAttractions)
+            {
+                query = query.Select(c => new CountryModel
+                {
+                    CountryId = c.CountryId,
+                    Name = c.Name,
+                    CountryInfoId = c.CountryInfoId,
+                    CountryInfo = c.CountryInfo,
+                    TravelRestrictionId = c.TravelRestrictionId,
+                    TravelRestriction = c.TravelRestriction,
+                    Cities = c.Cities.Select(c => new CityModel
+                    {
+                        CityId = c.CityId,
+                        CountryId = c.CountryId,
+                        Country = c.Country,
+                        Name = c.Name,
+                        Population = c.Population,
+                        Attractions = c.Where(a => a)
+                    }).ToArray()
+                });
+
+
                 if (attractionsMinRating < 0)
                 {
                     attractionsMinRating = 0;
