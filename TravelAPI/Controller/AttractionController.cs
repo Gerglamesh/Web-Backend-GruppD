@@ -44,7 +44,7 @@ namespace TravelAPI.Controller
         {
             try
             {
-                var results = await _attractionRepo.GetAttraction(id);
+                var results = await _attractionRepo.GetAttractionByID(id);
                 var mappedResults = _mapper.Map<AttractionDto>(results);
                 return Ok(mappedResults);
             }
@@ -59,7 +59,7 @@ namespace TravelAPI.Controller
         {
             try
             {
-                var results = await _attractionRepo.GetAttraction(name);
+                var results = await _attractionRepo.GetAttractionByName(name);
                 var mappedResults = _mapper.Map<AttractionDto>(results);
                 return Ok(mappedResults);
             }
@@ -74,7 +74,7 @@ namespace TravelAPI.Controller
         {
             try
             {
-                var result = await _attractionRepo.GetRating(rating);
+                var result = await _attractionRepo.GetAttractionByRating(rating);
                 var mappedResult = _mapper.Map<AttractionDto[]>(result);
                 return Ok(mappedResult);
             }
