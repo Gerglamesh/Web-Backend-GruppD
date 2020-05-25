@@ -14,7 +14,7 @@ namespace TravelAPI.Services
             int attractionsMaxRating = 5
             );
 
-        Task<CountryModel> GetCountry(
+        Task<CountryModel> GetCountryByName(
             string name,
             bool includeCities = false,
             bool includeTravelRestrictions = false,
@@ -23,7 +23,7 @@ namespace TravelAPI.Services
             int attractionsMaxRating = 5
             );
 
-        Task<CountryModel> GetCountry(
+        Task<CountryModel> GetCountryById(
             int id,
             bool includeCities = false,
             bool includeTravelRestrictions = false,
@@ -32,7 +32,7 @@ namespace TravelAPI.Services
             int attractionsMaxRating = 5
             );
 
-        Task<ICollection<CountryModel>> GetRightHandTraffic(bool rightHandTraffic);
+        Task<ICollection<CountryModel>> GetCountryByRightHandTraffic(bool rightHandTraffic);
 
         Task<ICollection<CountryModel>> GetCountriesByLanguage(string language);
     }

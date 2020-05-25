@@ -11,12 +11,12 @@ namespace TravelAPI.Controller
 {
     [Route("api/v1.0/[controller]")]
     [ApiController]
-    public class CountryController : ControllerBase
+    public class CountriesController : ControllerBase
     {
         private readonly ICountryRepo _countryRepo;
         private readonly IMapper _mapper;
 
-        public CountryController(ICountryRepo countryRepo, IMapper mapper)
+        public CountriesController(ICountryRepo countryRepo, IMapper mapper)
         {
             _countryRepo = countryRepo;
             _mapper = mapper;
@@ -50,7 +50,7 @@ namespace TravelAPI.Controller
         }
 
         [HttpGet("{name}")]
-        public async Task<ActionResult<CountryDto>> GetCountry(
+        public async Task<ActionResult<CountryDto>> GetCountryByName(
             string name,
             [FromQuery]bool includeCities = false,
             [FromQuery]bool includeTravelRestrictions = false,
@@ -79,7 +79,7 @@ namespace TravelAPI.Controller
         }
 
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<CountryDto>> GetCountry(
+        public async Task<ActionResult<CountryDto>> GetCountryByID(
             int id,
             [FromQuery]bool includeCities = false,
             [FromQuery]bool includeTravelRestrictions = false,
