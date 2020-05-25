@@ -60,7 +60,7 @@ namespace TravelAPI.Controller
         {
             try
             {
-                var results = await _countryRepo.GetCountry
+                var results = await _countryRepo.GetCountryByName
                 (
                     name,
                     includeCities,
@@ -79,7 +79,7 @@ namespace TravelAPI.Controller
         }
 
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<CountryDto>> GetCountryByID(
+        public async Task<ActionResult<CountryDto>> GetCountryById(
             int id,
             [FromQuery]bool includeCities = false,
             [FromQuery]bool includeTravelRestrictions = false,
@@ -89,7 +89,7 @@ namespace TravelAPI.Controller
         {
             try
             {
-                var results = await _countryRepo.GetCountry
+                var results = await _countryRepo.GetCountryById
                 (
                     id,
                     includeCities,
