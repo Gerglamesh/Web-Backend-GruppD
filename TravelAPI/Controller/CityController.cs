@@ -24,11 +24,18 @@ namespace TravelAPI.Controller
 
         //GET: api/v1.0/cities/                                 Get all cities
         [HttpGet]
-        public async Task<ActionResult<CityModel[]>> GetCities([FromQuery] bool includeAttractions = false)
+        public async Task<ActionResult<CityModel[]>> GetCities(
+            bool includeCoutry = false,
+            int minPopulation = 0,
+            int maxPopulation = 0)
         {
             try
             {
-                var results = await _cityRepo.GetCities(includeAttractions);
+                var results = await _cityRepo.GetCities(
+                    includeCoutry, 
+                    minPopulation, 
+                    maxPopulation);
+
                 return Ok(results);
             }
             catch (Exception e)
@@ -39,7 +46,7 @@ namespace TravelAPI.Controller
 
         //GET: api/v1.0/cities/1                                 Get cities by id
         [HttpGet("{id}")]
-        public async Task<ActionResult<CityDto>> GetFlightById(int id)
+        public async Task<ActionResult<CityDto>> GetFlightById(int id, bool includeCoutry = false)
         {
             try
             {
@@ -59,6 +66,7 @@ namespace TravelAPI.Controller
             }
         }
 
+        //GET: api/v1.0/cities/                                 Post city
         [HttpPost]
         public async Task<ActionResult<CityDto>> PostEvent(CityDto cityDto)
         {
