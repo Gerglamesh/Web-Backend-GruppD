@@ -40,7 +40,7 @@ namespace TravelAPI.Controller
         }
 
         [HttpGet("/api/v1.0/[controller]/id/{id:int}")]
-        public async Task<ActionResult<AttractionDto>> GetAttraction(int id)
+        public async Task<ActionResult<AttractionDto>> GetAttractionByID(int id)
         {
             try
             {
@@ -55,7 +55,7 @@ namespace TravelAPI.Controller
         }
 
         [HttpGet("{name}")]
-        public async Task<ActionResult<AttractionDto>> GetAttraction(string name)
+        public async Task<ActionResult<AttractionDto>> GetAttractionByName(string name)
         {
             try
             {
