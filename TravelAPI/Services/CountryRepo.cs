@@ -12,19 +12,9 @@ namespace TravelAPI.Services
         public CountryRepo(TravelAPIContext travelAPIContext, ILogger<CountryRepo> logger) : base (travelAPIContext, logger)
         {}
 
-        public async Task<ICollection<CountryModel>> GetCountries(
-            bool includeCities = false,
-            bool includeTravelRestrictions = false,
-            bool includeAttractions = false,
-            int attractionsMinRating = 0,
-            int attractionsMaxRating = 5)
+        private static IQueryable<CountryModel> CountryQuery(bool includeCities, bool includeTravelRestrictions, bool includeAttractions, int attractionsMinRating, int attractionsMaxRating, IQueryable<CountryModel> query)
         {
-            _logger.LogInformation("Getting Countries");
-
-            IQueryable<CountryModel> query = _travelAPIContext.Countries
-                .Include(i => i.CountryInfo);
-
-            if(includeCities)
+            if (includeCities)
             {
                 query = query.Include(c => c.Cities);
             }
@@ -56,6 +46,23 @@ namespace TravelAPI.Services
                     }).ToArray()
                 });
             }
+
+            return query;
+        }
+
+        public async Task<ICollection<CountryModel>> GetCountries(
+            bool includeCities = false,
+            bool includeTravelRestrictions = false,
+            bool includeAttractions = false,
+            int attractionsMinRating = 0,
+            int attractionsMaxRating = 5)
+        {
+            _logger.LogInformation("Getting Countries");
+
+            IQueryable<CountryModel> query = _travelAPIContext.Countries
+                .Include(i => i.CountryInfo);
+
+            query = CountryQuery(includeCities, includeTravelRestrictions, includeAttractions, attractionsMinRating, attractionsMaxRating, query);
 
             query = query.OrderBy(c => c.Name);
             return await query.ToArrayAsync();
@@ -75,38 +82,7 @@ namespace TravelAPI.Services
                 .Countries.Where(c => c.Name == name)
                 .Include(i => i.CountryInfo);
 
-            if (includeCities)
-            {
-                query = query.Include(c => c.Cities);
-            }
-            if (includeTravelRestrictions)
-            {
-                query = query.Include(c => c.TravelRestriction);
-            }
-            if (includeAttractions)
-            {
-                query = query.Select(c => new CountryModel
-                {
-                    CountryId = c.CountryId,
-                    Name = c.Name,
-                    CountryInfoId = c.CountryInfoId,
-                    CountryInfo = c.CountryInfo,
-                    TravelRestrictionId = c.TravelRestrictionId,
-                    TravelRestriction = c.TravelRestriction,
-                    Cities = c.Cities.Select(c => new CityModel
-                    {
-                        CityId = c.CityId,
-                        Name = c.Name,
-                        Population = c.Population,
-                        CountryId = c.CountryId,
-                        Attractions = c.Attractions.Where
-                        (
-                            a => a.Rating <= attractionsMaxRating
-                            && a.Rating >= attractionsMinRating
-                        ).ToArray()
-                    }).ToArray()
-                });
-            }
+            query = CountryQuery(includeCities, includeTravelRestrictions, includeAttractions, attractionsMinRating, attractionsMaxRating, query);
 
             return await query.FirstOrDefaultAsync();
         }
@@ -125,38 +101,7 @@ namespace TravelAPI.Services
                 .Countries.Where(c => c.CountryId == id)
                 .Include(i => i.CountryInfo);
 
-            if (includeCities)
-            {
-                query = query.Include(c => c.Cities);
-            }
-            if (includeTravelRestrictions)
-            {
-                query = query.Include(c => c.TravelRestriction);
-            }
-            if (includeAttractions)
-            {
-                query = query.Select(c => new CountryModel
-                {
-                    CountryId = c.CountryId,
-                    Name = c.Name,
-                    CountryInfoId = c.CountryInfoId,
-                    CountryInfo = c.CountryInfo,
-                    TravelRestrictionId = c.TravelRestrictionId,
-                    TravelRestriction = c.TravelRestriction,
-                    Cities = c.Cities.Select(c => new CityModel
-                    {
-                        CityId = c.CityId,
-                        Name = c.Name,
-                        Population = c.Population,
-                        CountryId = c.CountryId,
-                        Attractions = c.Attractions.Where
-                        (
-                            a => a.Rating <= attractionsMaxRating
-                            && a.Rating >= attractionsMinRating
-                        ).ToArray()
-                    }).ToArray()
-                });
-            }
+            query = CountryQuery(includeCities, includeTravelRestrictions, includeAttractions, attractionsMinRating, attractionsMaxRating, query);
 
             return await query.FirstOrDefaultAsync();
         }
