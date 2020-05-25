@@ -61,7 +61,7 @@ namespace TravelAPI.Services
             return await query.ToArrayAsync();
         }
 
-        public async Task<CountryModel> GetCountry(
+        public async Task<CountryModel> GetCountryByName(
             string name, 
             bool includeCities = false, 
             bool includeTravelRestrictions = false, 
@@ -111,7 +111,7 @@ namespace TravelAPI.Services
             return await query.FirstOrDefaultAsync();
         }
 
-        public async Task<CountryModel> GetCountry(
+        public async Task<CountryModel> GetCountryById(
             int id, 
             bool includeCities = false, 
             bool includeTravelRestrictions = false, 
@@ -161,7 +161,7 @@ namespace TravelAPI.Services
             return await query.FirstOrDefaultAsync();
         }
 
-        public async Task<ICollection<CountryModel>> GetRightHandTraffic(bool isRightHandTraffic)
+        public async Task<ICollection<CountryModel>> GetCountryByRightHandTraffic(bool isRightHandTraffic)
         {
             _logger.LogInformation($"Getting Countries based on rightHandTraffic: {isRightHandTraffic}");
 
