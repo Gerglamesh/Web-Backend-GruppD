@@ -30,14 +30,14 @@ namespace TravelAPI.Services
             return await query.ToArrayAsync();
         }
         
-        public async Task<AttractionModel> GetAttraction(int id)
+        public async Task<AttractionModel> GetAttractionByID(int id)
         {
             var query = _travelAPIContext.Attractions
                 .Where(q => q.AttractionId == id);
             return await query.FirstOrDefaultAsync();
         }
         
-        public async Task<AttractionModel> GetAttraction(string name)
+        public async Task<AttractionModel> GetAttractionByName(string name)
         {
             var query = _travelAPIContext.Attractions
                 .Where(q => q.Name == name);
@@ -53,7 +53,7 @@ namespace TravelAPI.Services
             return await query.ToArrayAsync();
         }
 
-        public async Task<ICollection<AttractionModel>>GetRating(int rating)
+        public async Task<ICollection<AttractionModel>>GetAttractionByRating(int rating)
         {
             var query = _travelAPIContext.Attractions
                 .Where(q => q.Rating == rating);

@@ -11,12 +11,12 @@ namespace TravelAPI.Controller
 {
     [Route("api/v1.0/[controller]")]
     [ApiController]
-    public class AttractionController : ControllerBase
+    public class AttractionsController : ControllerBase
     {  
        private readonly IAttractionRepo _attractionRepo;
         private readonly IMapper _mapper;
 
-        public AttractionController (IAttractionRepo attractionRepo, IMapper mapper)
+        public AttractionsController (IAttractionRepo attractionRepo, IMapper mapper)
         {
             _attractionRepo = attractionRepo;
             _mapper = mapper;
@@ -39,12 +39,12 @@ namespace TravelAPI.Controller
             }
         }
 
-        [HttpGet("/api/v1.0/[controller]/id/{id:int}")]
-        public async Task<ActionResult<AttractionDto>> GetAttraction(int id)
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<AttractionDto>> GetAttractionByID(int id)
         {
             try
             {
-                var results = await _attractionRepo.GetAttraction(id);
+                var results = await _attractionRepo.GetAttractionByID(id);
                 var mappedResults = _mapper.Map<AttractionDto>(results);
                 return Ok(mappedResults);
             }
@@ -55,11 +55,11 @@ namespace TravelAPI.Controller
         }
 
         [HttpGet("{name}")]
-        public async Task<ActionResult<AttractionDto>> GetAttraction(string name)
+        public async Task<ActionResult<AttractionDto>> GetAttractionByName(string name)
         {
             try
             {
-                var results = await _attractionRepo.GetAttraction(name);
+                var results = await _attractionRepo.GetAttractionByName(name);
                 var mappedResults = _mapper.Map<AttractionDto>(results);
                 return Ok(mappedResults);
             }
@@ -74,7 +74,7 @@ namespace TravelAPI.Controller
         {
             try
             {
-                var result = await _attractionRepo.GetRating(rating);
+                var result = await _attractionRepo.GetAttractionByRating(rating);
                 var mappedResult = _mapper.Map<AttractionDto[]>(result);
                 return Ok(mappedResult);
             }
