@@ -11,24 +11,26 @@ namespace TravelAPI.Controller
 {
     [Route("api/v1.0/[controller]")]
     [ApiController]
-    public class CityController : ControllerBase
+    public class CitiesController : ControllerBase
     {
         private readonly ICityRepo _cityRepo;
         private readonly IMapper _mapper;
 
-        public CityController(ICityRepo cityRepo, IMapper mapper)
+        public CitiesController(ICityRepo cityRepo, IMapper mapper)
         {
             _cityRepo = cityRepo;
             _mapper = mapper;
         }
 
         [HttpGet]
-        public async Task<ActionResult<CityModel[]>> GetCities([FromQuery] bool includeAttractions = false)
+        public async Task<ActionResult<CityDto[]>> GetCities([FromQuery] bool includeAttractions = false)
         {
             try
             {
                 var results = await _cityRepo.GetCities(includeAttractions);
-                return Ok(results);
+                var mappedResults = _mapper.Map<CityDto>(results);
+
+                return Ok(mappedResults);
             }
             catch (Exception e)
             {
