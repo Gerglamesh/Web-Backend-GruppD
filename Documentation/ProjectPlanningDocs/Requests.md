@@ -2,79 +2,59 @@
 
 **Country**
 
-/Countries/
+/Countries/   :heavy_check_mark:
 
-/Countries/?name = \<name>
+/Countries/name = \<name> || <id>   :heavy_check_mark:
 
-/Countries/?name= \<name> & includeCountryInformation = \<bool>
+/Countries/name = \<name> & includeCities = \<bool>  :heavy_check_mark:
 
-/Countries/?name = \<name> & includeCities = \<bool>
+/Countries/name = \<name> & includeTravelRestrictions = \<bool> :heavy_check_mark:
 
-/Countries/?name = \<name> & includeTravelRestrictions = \<bool>
+/Countries/name = \<name> & includeAttractions = \<bool> **HATEOAS?**
 
-/Countries/?name = \<name> & includeAttractions = \<bool>
+/Countries/name = \<name> & includeAttractions = \<bool> & minRating = int (1-5) || maxRating = int (1-5) **HATEOAS?**
 
-/Countries/?name = \<name> & includeAttractions = \<bool> **<u>(Of a specific rating)</u>**
+/Countries/rightHandTraffic = \<bool> ​​
 
-/Countries/?name = \<name> & includeAttractions = \<bool> **<u>(Within a rating interwall)</u>**
+/Countries/language = \<language>  ​​
 
-/Countries/?rightHandTraffic = \<bool>
-
-/Countries/?language = \<language> 
+Include CountryInfo via HATEOAS
 
 
 
 **City**
 
-/Cities/
+/Cities/ :heavy_check_mark:
 
-/Cities/?name = \<name> 
+/Cities/name = \<name> || <id>  
 
-/Cities/?name = \<name> & includeAttractions = \<bool>
+/Cities/name = \<name> & includeAttractions = \<bool> **HATEOAS?**
 
-/Cities/?name = \<name> & includeAttractions = \<bool> **<u>(Of a specific rating)</u>**
+/Cities/name = \<name> & includeAttractions = \<bool> & minRating = int (1-5) || maxRating = int (1-5) **HATEOAS?**
 
-/Cities/?name = \<name> & includeAttractions = \<bool> **<u>(Within a rating interwall)</u>**
-
-/Cities/?name = \<name> & includeInformation = \<bool> 
+/Cities/name = \<name> & minPopulation = <int> & maxPopulation = <int>
 
 
 
-**Attraction**
+**Attraction **
 
 /Attractions/
 
-/Attractions/?name = \<name> 
+/Attractions/name = \<name> || <id>
 
-/Attractions/?name = \<name> & includeLocation =  \<bool>
+/Attractions/childFriendly = \<bool>
 
-/Attractions/?childFriendly = \<bool>
+/Attractions/rating = \<int> 
 
-/Attractions/?rating = \<rating> 
-
-/Attractions/?minRating >= \<minRating> & maxRating <= \<maxRating> 
+/Attractions/minRating = \<int> & maxRating = \<int> 
 
 
 
 **CountryInfo** 
 
-/Countries/?minPopulation =  \<minPopulation>
+/Countries/Info/   (Get All)
 
-/Countries/?governance = \<governance> (Hard to implement search)
-
-/Countries/?BNP = \<BNP> (irrelevant?)
-
-/Country/?capitalCity = \<capitalCity> (Might be relevant?)
-
-/Country/?area = \<area> (irrelevant?)
-
-/Country/?timeZone = \<timeZone>  (maybe useful?)
-
-/Country/?nationalDay = \<NationalDay> (irrelevant to search for!)
-
-/Country/?rightHandTraffic = \<bool> (good criteria)
-
-/Country/?language = \<language>  (good criteria)
+/Countries/Info/id = <id>
 
 
 
@@ -86,15 +66,28 @@ Travel restriction information only fetched when coupled with country. Therefor 
 
 ### Post
 
+/Countries/  :heavy_check_mark:
 
+/Cities/ :heavy_check_mark:
+
+/Attraction/  :heavy_check_mark:
+
+CountryInfo should only be part of posting a new Country, not a separate post.
+
+/TravelRestriction/ :heavy_check_mark:
 
 ### Put
 
+/Countries/id
 
+/Cities/id
+
+/Attraction/id  ​​
+
+/CountryInfo/id
+
+/TravelRestriction/id ​​
 
 ### Delete
-
-
-
 
 
