@@ -11,12 +11,12 @@ namespace TravelAPI.Controller
 {
     [Route("api/v1.0/[controller]")]
     [ApiController]
-    public class AttractionController : ControllerBase
+    public class AttractionsController : ControllerBase
     {  
        private readonly IAttractionRepo _attractionRepo;
         private readonly IMapper _mapper;
 
-        public AttractionController (IAttractionRepo attractionRepo, IMapper mapper)
+        public AttractionsController (IAttractionRepo attractionRepo, IMapper mapper)
         {
             _attractionRepo = attractionRepo;
             _mapper = mapper;
