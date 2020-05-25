@@ -13,7 +13,7 @@ namespace TravelAPI.DTO
         public string Name { get; set; }
         [Range(1, 2147483647, ErrorMessage = "Value for {0} must be between {1} and {2}")] 
         public int Population { get; set; }
-
+        [Required]
         public CountryDto Country { get; set; }
         public ICollection<AttractionDto> Attractions { get; set; }
     }

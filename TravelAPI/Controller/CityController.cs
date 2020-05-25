@@ -22,6 +22,7 @@ namespace TravelAPI.Controller
             _mapper = mapper;
         }
 
+        //GET: api/v1.0/cities/                                 Get all cities
         [HttpGet]
         public async Task<ActionResult<CityModel[]>> GetCities([FromQuery] bool includeAttractions = false)
         {
@@ -29,6 +30,28 @@ namespace TravelAPI.Controller
             {
                 var results = await _cityRepo.GetCities(includeAttractions);
                 return Ok(results);
+            }
+            catch (Exception e)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
+            }
+        }
+
+        //GET: api/v1.0/cities/1                                 Get cities by id
+        [HttpGet("{id}")]
+        public async Task<ActionResult<CityDto>> GetFlightById(int id)
+        {
+            try
+            {
+                var result = await _cityRepo.GetCityById(id);
+
+                if (result == null)
+                {
+                    return NotFound($"Couldn't find any cities with ID: {id}");
+                }
+
+                var mappedResult = _mapper.Map<CityDto>(result);
+                return Ok(mappedResult);
             }
             catch (Exception e)
             {
