@@ -23,7 +23,7 @@ namespace TravelAPI.Controller
         }
 
         [HttpGet]
-        public async Task<ActionResult<AttractionDto[]>> GetAttractions(
+        public async Task<ActionResult<AttractionDto[]>> GetAllAttractions(
             [FromQuery]bool includeCities = false,
             [FromQuery]bool isChildFriendly = false)            
         {
