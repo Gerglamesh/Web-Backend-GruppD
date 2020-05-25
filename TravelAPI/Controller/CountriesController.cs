@@ -107,6 +107,35 @@ namespace TravelAPI.Controller
             }
         }
 
+        [HttpGet("{isRightHandTraffic}")]
+        public async Task<ActionResult<CountryDto[]>> GetCountriesByIsRightHandTraffic(
+        [FromQuery]bool isRightHandTraffic = false,
+        [FromQuery]bool includeCities = false,
+        [FromQuery]bool includeTravelRestrictions = false,
+        [FromQuery]bool includeAttractions = false,
+        [FromQuery]int attractionsMinRating = 0,
+        [FromQuery]int attractionsMaxRating = 5)
+        {
+            try
+            {
+                var results = await _countryRepo.GetCountriesByRightHandTraffic
+                (
+                    isRightHandTraffic,
+                    includeCities,
+                    includeTravelRestrictions,
+                    includeAttractions,
+                    attractionsMinRating,
+                    attractionsMaxRating
+                );
+
+                return Ok(results);
+            }
+            catch (Exception e)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
+            }
+        }
+
         [HttpPost]
         public async Task<ActionResult<CountryDto>> PostCountry(CountryDto countryDto)
         {

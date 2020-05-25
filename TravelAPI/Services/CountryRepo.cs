@@ -106,12 +106,21 @@ namespace TravelAPI.Services
             return await query.FirstOrDefaultAsync();
         }
 
-        public async Task<ICollection<CountryModel>> GetCountryByRightHandTraffic(bool isRightHandTraffic)
+        public async Task<ICollection<CountryModel>> GetCountriesByRightHandTraffic(
+            bool isRightHandTraffic = false,
+            bool includeCities = false,
+            bool includeTravelRestrictions = false,
+            bool includeAttractions = false,
+            int attractionsMinRating = 0,
+            int attractionsMaxRating = 5)
         {
             _logger.LogInformation($"Getting Countries based on rightHandTraffic: {isRightHandTraffic}");
 
             IQueryable<CountryModel> query = _travelAPIContext
-                .Countries.Where(c => c.CountryInfo.RightHandTraffic == true);
+                .Countries.Where(c => c.CountryInfo.RightHandTraffic == true)
+                .Include(i => i.CountryInfo);
+
+            query = CountryQuery(includeCities, includeTravelRestrictions, includeAttractions, attractionsMinRating, attractionsMaxRating, query);
 
             query = query.OrderBy(e => e.Name);
             return await query.ToArrayAsync();

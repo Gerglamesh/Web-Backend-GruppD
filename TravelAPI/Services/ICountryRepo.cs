@@ -32,7 +32,14 @@ namespace TravelAPI.Services
             int attractionsMaxRating = 5
             );
 
-        Task<ICollection<CountryModel>> GetCountryByRightHandTraffic(bool rightHandTraffic);
+        Task<ICollection<CountryModel>> GetCountriesByRightHandTraffic(
+            bool rightHandTraffic,
+            bool includeCities = false,
+            bool includeTravelRestrictions = false,
+            bool includeAttractions = false,
+            int attractionsMinRating = 0,
+            int attractionsMaxRating = 5
+            );
 
         Task<ICollection<CountryModel>> GetCountriesByLanguage(string language);
     }
