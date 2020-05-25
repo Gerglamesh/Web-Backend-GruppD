@@ -875,60 +875,32 @@ What will Hampus do today
 
 
 
-# SKRIV DATUM 
-
-### Yesterday
-
-What did All Do
-
-* 
-
-What did Irvin yesterday
-
-* 
-* 
-
-What did Jakob yesterday
-
-* 
-
-What did Mirko yesterday
-
-* 
-
-What did Hampus yesterday
-
-* 
-
-* 
-
-  
-
-* 
-
-=======================
+# 25/5 Oscar K
 
 ### Today
 
 What will All do today
 
-* 
+* Add more to the backlog
+  * Refracture Controllers to get closer to Request.md
+  * Correct naming disparity in Controllers (Countries, Attractions)
+* Start the weeks Sprint
 
-What will Irvin do today
+What model will Oscar K be responsible for: 
 
-* 
+* CountryInfo
 
-What will Mirko do today
+What model will Oskar M be responsible for: 
 
-* * 
+* Country
 
-What will Jakob do today
+What model will Benjamin be responsible for:
 
-* 
+* City
 
-What will Hampus do today
+What model will Eric be responsible for:
 
-* 
+* Attraction
 
 # SKRIV DATUM 
 

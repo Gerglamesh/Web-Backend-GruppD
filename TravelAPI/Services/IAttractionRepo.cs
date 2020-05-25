@@ -9,9 +9,9 @@ namespace TravelAPI.Services
         Task<ICollection<AttractionModel>> GetAttractions(
             bool includeCities = false,
             bool isChildFriendly = false);
-        Task<AttractionModel>GetAttraction(int id);
-        Task<AttractionModel>GetAttraction(string name);
-        Task<ICollection<AttractionModel>>GetRating(int rating);
+        Task<AttractionModel>GetAttractionByID(int id);
+        Task<AttractionModel>GetAttractionByName(string name);
+        Task<ICollection<AttractionModel>>GetAttractionByRating(int rating);
         Task<ICollection<AttractionModel>> GetIschildfriendly(bool IsChildFriendly = false);
     }
 }
