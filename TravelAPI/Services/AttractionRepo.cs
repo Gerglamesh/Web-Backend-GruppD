@@ -11,32 +11,29 @@ namespace TravelAPI.Services
     public class AttractionRepo : Repository, IAttractionRepo
     {
         public AttractionRepo(TravelAPIContext travelAPIContext, ILogger<AttractionRepo> logger) : base(travelAPIContext, logger)
-        {}
+        { }
 
-        public async Task<ICollection<AttractionModel>> GetAttractions(
+        public async Task<AttractionModel[]> GetAttractions(
             bool includeCities = false,
             bool isChildFriendly = false)
         {
-            _logger.LogInformation("Getting Attractions");
-
+            _logger.LogInformation("Get all Attractions");
             IQueryable<AttractionModel> query = _travelAPIContext.Attractions;
 
             if (includeCities) query = query.Include(a => a.City);
-
             if (isChildFriendly) query = query.Where(a => a.IsChildFriendly == true);
-            else query = query.Where(a => a.IsChildFriendly == false);
 
-                query = query.OrderBy(a => a.Name);
+            query = query.OrderBy(a => a.AttractionId);
             return await query.ToArrayAsync();
         }
-        
+
         public async Task<AttractionModel> GetAttractionByID(int id)
         {
             var query = _travelAPIContext.Attractions
                 .Where(q => q.AttractionId == id);
             return await query.FirstOrDefaultAsync();
         }
-        
+
         public async Task<AttractionModel> GetAttractionByName(string name)
         {
             var query = _travelAPIContext.Attractions
@@ -53,7 +50,7 @@ namespace TravelAPI.Services
             return await query.ToArrayAsync();
         }
 
-        public async Task<ICollection<AttractionModel>>GetAttractionByRating(int rating)
+        public async Task<ICollection<AttractionModel>> GetAttractionByRating(int rating)
         {
             var query = _travelAPIContext.Attractions
                 .Where(q => q.Rating == rating);

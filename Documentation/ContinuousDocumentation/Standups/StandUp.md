@@ -902,30 +902,31 @@ What model will Eric be responsible for:
 
 * Attraction
 
-# SKRIV DATUM 
+# 26/5 
 
 ### Yesterday
 
 What did All Do
 
+* Vi strukturerade upp arbetet och delade ut uppgifterna för dagen. Vi fick även två nya förmågor kingen och kingen. Vi hälsar dom välkommna.
+
+What did Eric yesterday
+
+* Jag gjorde lite code cleanup på allt som hade med attraction att göra. Bytte namn på metoder och klasser. Gjorde get request på några get metoder. 
 * 
 
-What did Irvin yesterday
+What did Benjamin yesterday
 
-* 
-* 
-
-What did Jakob yesterday
-
+* Jag gjorde samma som ovanstående. Rensade upp i metoder och klasser som hade med city att göra.
 * 
 
-What did Mirko yesterday
+What did Oscar k yesterday
 
-* 
+* Jag satte ihop get metoder för countryinfo.
 
-What did Hampus yesterday
+What did Oskar yesterday
 
-* 
+* Jag gjorde samma som ovan men för country.
 
 * 
 
@@ -939,23 +940,23 @@ What did Hampus yesterday
 
 What will All do today
 
-* 
+* Fortsätta med sprinten. Kika på HATEOAS.
 
-What will Irvin do today
+What will Eric do today
 
-* 
+* Jag skall fixa get request på get-attraction by rating
 
-What will Mirko do today
+What will Benjamin do today
 
-* * 
+* Ska trixa lite med HATEOAS och en merge conflict
 
-What will Jakob do today
+What will Oscar k do today
 
-* 
+* Fortsätta med sprintarna.
 
-What will Hampus do today
+What will Oskar do today
 
-* 
+* put och delete på country. Och kika på HATEOAS
 
 # SKRIV DATUM 
 

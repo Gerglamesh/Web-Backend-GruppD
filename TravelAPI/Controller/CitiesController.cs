@@ -11,12 +11,12 @@ namespace TravelAPI.Controller
 {
     [Route("api/v1.0/[controller]")]
     [ApiController]
-    public class CityController : ControllerBase
+    public class CitiesController : ControllerBase
     {
         private readonly ICityRepo _cityRepo;
         private readonly IMapper _mapper;
 
-        public CityController(ICityRepo cityRepo, IMapper mapper)
+        public CitiesController(ICityRepo cityRepo, IMapper mapper)
         {
             _cityRepo = cityRepo;
             _mapper = mapper;
