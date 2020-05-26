@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using TravelAPI.HATEOAS;
 
 namespace TravelAPI.DTO
 {
-    public class CityDto
+    public class CityDto: HateoasLinkBase
     {
         [Required] 
         public int CityId { get; set; }

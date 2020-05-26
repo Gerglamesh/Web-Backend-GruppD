@@ -6,7 +6,7 @@ namespace TravelAPI.Services
 {
     public interface ICityRepo : IRepository
     {
-        Task<ICollection<CityModel>> GetCities(
+        Task<ICollection<CityModel>> GetAllCities(
             bool includeCoutry = false,
             int minPopulation = 0,
             int maxPopulation = 0);
@@ -19,7 +19,7 @@ namespace TravelAPI.Services
            int cityId,
            bool includeCountries = false);
 
-        Task<CityModel> SearchCityByKeyword(
+        Task<CityModel[]> SearchCityByKeyword(
            string keyword,
            bool includeCountries = false);
     }
