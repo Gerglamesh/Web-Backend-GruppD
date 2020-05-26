@@ -84,6 +84,28 @@ namespace TravelAPI.Controller
             }
         }
 
+        //GET: api/v1.0/cities/barb                                  Search cities containing
+        [HttpGet("search={keyword}")]
+        public async Task<ActionResult<CityDto>> SearchCityByName(string keyword, bool includeCountries = false)
+        {
+            try
+            {
+                var result = await _cityRepo.SearchCityByKeyword(keyword, includeCountries);
+
+                if (result == null)
+                {
+                    return NotFound($"Couldn't find any cities containing '{keyword}'");
+                }
+
+                var mappedResult = _mapper.Map<CityDto>(result);
+                return Ok(mappedResult);
+            }
+            catch (Exception e)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
+            }
+        }
+
 
         [HttpPost]
         public async Task<ActionResult<CityDto>> PostEvent(CityDto cityDto)
