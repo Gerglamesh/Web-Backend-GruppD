@@ -90,7 +90,7 @@ namespace TravelAPI.Controller
         {
             try
             {
-                var result = await _cityRepo.SearchCityByName(keyword, includeCountries);
+                var result = await _cityRepo.SearchCityByKeyword(keyword, includeCountries);
 
                 if (result == null)
                 {

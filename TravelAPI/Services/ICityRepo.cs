@@ -18,5 +18,9 @@ namespace TravelAPI.Services
         Task<CityModel> GetCityById(
            int cityId,
            bool includeCountries = false);
+
+        Task<CityModel> SearchCityByKeyword(
+           string keyword,
+           bool includeCountries = false);
     }
 }
