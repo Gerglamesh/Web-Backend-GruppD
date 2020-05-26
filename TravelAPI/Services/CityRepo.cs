@@ -8,8 +8,6 @@ namespace TravelAPI.Services
 {
     public class CityRepo : Repository, ICityRepo
     {
-        private readonly TravelAPIContext _travelApiContext;
-
         public CityRepo(TravelAPIContext travelAPIContext, ILogger<CityRepo> logger) : base(travelAPIContext, logger)
         {
         }
@@ -60,7 +58,7 @@ namespace TravelAPI.Services
         public async Task<CityModel> GetCityByName(string name, bool includeCountries = false)
         {
             _logger.LogInformation($"Getting city with name: {name}.");
-            IQueryable<CityModel> query = _travelApiContext.Cities.Where(n => n.Name == name);
+            IQueryable<CityModel> query = _travelAPIContext.Cities.Where(n => n.Name == name);
 
             return await Include(query, includeCountries)
                 .OrderBy(c => c.Name)
@@ -70,7 +68,7 @@ namespace TravelAPI.Services
         public async Task<CityModel> GetCityById(int cityId, bool includeCountries = false)
         {
             _logger.LogInformation($"Getting city by ID: {cityId}.");
-            IQueryable<CityModel> query = _travelApiContext.Cities.Where(i => i.CityId == cityId);
+            IQueryable<CityModel> query = _travelAPIContext.Cities.Where(i => i.CityId == cityId);
 
             return await Include(query, includeCountries)
                 .OrderBy(c => c.CityId)
@@ -80,7 +78,7 @@ namespace TravelAPI.Services
         public async Task<CityModel> SearchCityByKeyword(string keyword, bool includeCountries = false)
         {
             _logger.LogInformation($"Searching for city name containing '{keyword}'.");
-            IQueryable<CityModel> query = _travelApiContext.Cities.Where(n => n.Name.Contains(keyword));
+            IQueryable<CityModel> query = _travelAPIContext.Cities.Where(n => n.Name.Contains(keyword));
 
             return await Include(query, includeCountries)
                 .OrderBy(c => c.Name)
