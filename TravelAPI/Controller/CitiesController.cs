@@ -24,11 +24,14 @@ namespace TravelAPI.Controller
 
         //GET: api/v1.0/cities/                                 Get all cities
         [HttpGet]
-        public async Task<ActionResult<CityModel[]>> GetCities([FromQuery] bool includeAttractions = false)
+        public async Task<ActionResult<CityModel[]>> GetCities(
+            [FromQuery] bool includeCountry = false,
+            [FromQuery] int minPopulation = 0,
+            [FromQuery] int maxPopulation = 0)
         {
             try
             {
-                var results = await _cityRepo.GetCities(includeAttractions);
+                var results = await _cityRepo.GetCities(includeCountry, minPopulation, maxPopulation);
                 return Ok(results);
             }
             catch (Exception e)
@@ -39,7 +42,7 @@ namespace TravelAPI.Controller
 
         //GET: api/v1.0/cities/1                                 Get cities by id
         [HttpGet("{id}")]
-        public async Task<ActionResult<CityDto>> GetFlightById(int id)
+        public async Task<ActionResult<CityDto>> GetCityById(int id, bool includeCountries = false)
         {
             try
             {
@@ -58,6 +61,29 @@ namespace TravelAPI.Controller
                 return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
             }
         }
+
+        //GET: api/v1.0/cities/barbados                                 Get cities by name
+        [HttpGet("{name}")]
+        public async Task<ActionResult<CityDto>> GetCityByName(string name, bool includeCountries = false)
+        {
+            try
+            {
+                var result = await _cityRepo.GetCityByName(name, includeCountries);
+
+                if (result == null)
+                {
+                    return NotFound($"Couldn't find any cities with name: {name}");
+                }
+
+                var mappedResult = _mapper.Map<CityDto>(result);
+                return Ok(mappedResult);
+            }
+            catch (Exception e)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
+            }
+        }
+
 
         [HttpPost]
         public async Task<ActionResult<CityDto>> PostEvent(CityDto cityDto)
