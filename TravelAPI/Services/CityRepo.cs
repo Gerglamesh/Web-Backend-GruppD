@@ -28,18 +28,20 @@ namespace TravelAPI.Services
 
             if (minPopulation > 0 && maxPopulation > 0)
             {
-                query.Where(p => p.Population > minPopulation && p.Population < maxPopulation);
+                query.Where(p => p.Population >= minPopulation && p.Population <= maxPopulation)
+                    .OrderBy(c => c.Population);
             }
             else if (minPopulation > 0)
             {
-                query.Where(p => p.Population > minPopulation);
+                query.Where(p => p.Population >= minPopulation)
+                    .OrderBy(c => c.Population);
             }
             else if (maxPopulation > 0)
             {
-                query.Where(p => p.Population < maxPopulation);
+                query.Where(p => p.Population <= maxPopulation)
+                    .OrderBy(c => c.Population);
             }
-
-            return query;
+                return query;
         }
 
         public async Task<ICollection<CityModel>> GetCities(
@@ -51,6 +53,7 @@ namespace TravelAPI.Services
             IQueryable<CityModel> query = _travelAPIContext.Cities;
   
             return await Include(query, includeCoutry, minPopulation, maxPopulation)
+                .OrderBy(c => c.CityId)
                 .ToArrayAsync();
         }
 
@@ -60,6 +63,7 @@ namespace TravelAPI.Services
             IQueryable<CityModel> query = _travelApiContext.Cities.Where(n => n.Name == name);
 
             return await Include(query, includeCountries)
+                .OrderBy(c => c.Name)
                 .SingleOrDefaultAsync();
         }
 
@@ -69,6 +73,7 @@ namespace TravelAPI.Services
             IQueryable<CityModel> query = _travelApiContext.Cities.Where(i => i.CityId == cityId);
 
             return await Include(query, includeCountries)
+                .OrderBy(c => c.CityId)
                 .SingleOrDefaultAsync();
         }
     }
