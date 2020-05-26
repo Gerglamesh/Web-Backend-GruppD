@@ -9,12 +9,8 @@ namespace TravelAPI.Services
 {
     public class CountryInfoRepo : Repository, ICountryInfoRepo
     {
-        private readonly TravelAPIContext _travelApiContext;
-
         public CountryInfoRepo(TravelAPIContext travelAPIContext, ILogger<CountryRepo> logger) : base(travelAPIContext, logger)
-        {
-            _travelApiContext = travelAPIContext;
-        }
+        { }
 
         public async Task<CountryInfoModel[]> GetCountryInfo()
         {
