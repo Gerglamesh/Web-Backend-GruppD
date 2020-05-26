@@ -49,7 +49,7 @@ namespace TravelAPI.Services
             int minPopulation = 0,
             int maxPopulation = 0)
         {
-            _logger.LogInformation("Getting Cities.");
+            _logger.LogInformation("Getting cities.");
             IQueryable<CityModel> query = _travelAPIContext.Cities;
   
             return await Include(query, includeCoutry, minPopulation, maxPopulation)
@@ -59,7 +59,7 @@ namespace TravelAPI.Services
 
         public async Task<CityModel> GetCityByName(string name, bool includeCountries = false)
         {
-            _logger.LogInformation($"Getting City named '{name}')");
+            _logger.LogInformation($"Getting city with name: {name}.");
             IQueryable<CityModel> query = _travelApiContext.Cities.Where(n => n.Name == name);
 
             return await Include(query, includeCountries)
@@ -69,12 +69,23 @@ namespace TravelAPI.Services
 
         public async Task<CityModel> GetCityById(int cityId, bool includeCountries = false)
         {
-            _logger.LogInformation($"Getting City by ID: {cityId}");
+            _logger.LogInformation($"Getting city by ID: {cityId}.");
             IQueryable<CityModel> query = _travelApiContext.Cities.Where(i => i.CityId == cityId);
 
             return await Include(query, includeCountries)
                 .OrderBy(c => c.CityId)
                 .SingleOrDefaultAsync();
         }
+
+        public async Task<CityModel> SearchCityByName(string name, bool includeCountries = false)
+        {
+            _logger.LogInformation($"Searching for city named: {name}.");
+            IQueryable<CityModel> query = _travelApiContext.Cities.Where(n => n.Name.Contains(name));
+
+            return await Include(query, includeCountries)
+                .OrderBy(c => c.Name)
+                .SingleOrDefaultAsync();
+        }
+
     }
 }
