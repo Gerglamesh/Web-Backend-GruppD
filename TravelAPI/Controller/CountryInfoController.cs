@@ -44,6 +44,10 @@ namespace TravelAPI.Controller
             try
             {
                 var results = await _countryInfoRepo.GetCountryInfoByID(id);
+                if (results == null)
+                {
+                    return NotFound($"Couldn't find any Country Information on a Country with ID: {id}");
+                }
                 return Ok(results);
             }
             catch (Exception e)

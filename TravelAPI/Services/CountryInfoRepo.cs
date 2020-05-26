@@ -29,7 +29,7 @@ namespace TravelAPI.Services
         {
             var query = _travelAPIContext.CountryInfo
                 .Where(q => q.CountryInfoId == id);
-            return await query.FirstOrDefaultAsync();
+            return await query.SingleOrDefaultAsync();
         }
     }
 }
