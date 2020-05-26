@@ -6,6 +6,7 @@ namespace TravelAPI.Services
 {
     public interface ICountryInfoRepo : IRepository
     {
-        Task<ICollection<CountryInfoModel>> GetCountryInfos();
+        Task<CountryInfoModel[]> GetCountryInfo();
+        Task<CountryInfoModel> GetCountryInfoByID(int id);
     }
 }
