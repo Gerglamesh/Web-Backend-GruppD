@@ -49,14 +49,11 @@ namespace TravelAPI.Services
             bool includeCities = false,
             bool isChildFriendly = false)
         {
-            _logger.LogInformation("Getting Attractions");
-
+            _logger.LogInformation("Get all Attractions");
             IQueryable<AttractionModel> query = _travelAPIContext.Attractions;
 
             if (includeCities) query = query.Include(a => a.City);
-
             if (isChildFriendly) query = query.Where(a => a.IsChildFriendly == true);
-            
 
             query = query.OrderBy(a => a.CityId);
             query = GetAttractionByRating(minRating, maxRating, query);
