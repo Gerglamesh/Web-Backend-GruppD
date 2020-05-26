@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using TravelAPI.Models;
 
@@ -15,9 +16,20 @@ namespace TravelAPI.Services
             _travelApiContext = travelAPIContext;
         }
 
-        public async Task<ICollection<CountryInfoModel>> GetCountryInfos()
+        public async Task<CountryInfoModel[]> GetCountryInfo()
         {
-            return await _travelApiContext.Set<CountryInfoModel>().ToListAsync();
+            IQueryable<CountryInfoModel> query = _travelAPIContext.CountryInfo;
+
+            query = query.OrderBy(a => a.CountryInfoId);
+
+            return await query.ToArrayAsync();
+        }
+
+        public async Task<CountryInfoModel> GetCountryInfoByID(int id)
+        {
+            var query = _travelAPIContext.CountryInfo
+                .Where(q => q.CountryInfoId == id);
+            return await query.FirstOrDefaultAsync();
         }
     }
 }
