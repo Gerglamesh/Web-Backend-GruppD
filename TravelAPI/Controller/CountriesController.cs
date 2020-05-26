@@ -25,24 +25,22 @@ namespace TravelAPI.Controller
         [HttpGet]
         public async Task<ActionResult<CountryDto[]>> GetCountries(
             [FromQuery]bool includeCities = false,
-            [FromQuery]bool includeTravelRestrictions = false,
-            [FromQuery]bool includeAttractions = false,
-            [FromQuery]int attractionsMinRating = 0,
-            [FromQuery]int attractionsMaxRating = 5)
+            [FromQuery]bool isRightHandTraffic = false,
+            [FromQuery]bool isLeftHandTraffic = false,
+            [FromQuery]string language = "")
         {
             try
             {
                 var results = await _countryRepo.GetCountries
                 (
                     includeCities,
-                    includeTravelRestrictions,
-                    includeAttractions,
-                    attractionsMinRating,
-                    attractionsMaxRating
+                    isRightHandTraffic,
+                    isLeftHandTraffic,
+                    language
                 );
 
                 var mappedResult = _mapper.Map<CountryDto[]>(results);
-                return Ok(results);
+                return Ok(mappedResult);
             }
             catch (Exception e)
             {
@@ -54,10 +52,8 @@ namespace TravelAPI.Controller
         public async Task<ActionResult<CountryDto>> GetCountryByName(
             string name = "",
             [FromQuery]bool includeCities = false,
-            [FromQuery]bool includeTravelRestrictions = false,
-            [FromQuery]bool includeAttractions = false,
-            [FromQuery]int attractionsMinRating = 0,
-            [FromQuery]int attractionsMaxRating = 5)
+            [FromQuery]bool isRightHandTraffic = false,
+            [FromQuery]bool isLeftHandTraffic = false)
         {
             try
             {
@@ -65,14 +61,12 @@ namespace TravelAPI.Controller
                 (
                     name,
                     includeCities,
-                    includeTravelRestrictions,
-                    includeAttractions,
-                    attractionsMinRating,
-                    attractionsMaxRating
+                    isRightHandTraffic,
+                    isLeftHandTraffic
                 );
 
                 var mappedResult = _mapper.Map<CountryDto>(result);
-                return Ok(result);
+                return Ok(mappedResult);
             }
             catch (Exception e)
             {
@@ -80,14 +74,12 @@ namespace TravelAPI.Controller
             }
         }
 
-        [HttpGet("{id:int}")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<CountryDto>> GetCountryById(
             int id,
             [FromQuery]bool includeCities = false,
-            [FromQuery]bool includeTravelRestrictions = false,
-            [FromQuery]bool includeAttractions = false,
-            [FromQuery]int attractionsMinRating = 0,
-            [FromQuery]int AttractionsMaxRating = 5)
+            [FromQuery]bool isRightHandTraffic = false,
+            [FromQuery]bool isLeftHandTraffic = false)
         {
             try
             {
@@ -95,10 +87,8 @@ namespace TravelAPI.Controller
                 (
                     id,
                     includeCities,
-                    includeTravelRestrictions,
-                    includeAttractions,
-                    attractionsMinRating,
-                    AttractionsMaxRating
+                    isRightHandTraffic,
+                    isLeftHandTraffic
                 );
 
                 if (result == null)
@@ -107,67 +97,7 @@ namespace TravelAPI.Controller
                 }
 
                 var mappedResult = _mapper.Map<CountryDto>(result);
-                return Ok(result);
-            }
-            catch (Exception e)
-            {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
-            }
-        }
-
-        [HttpGet("{isRightHandTraffic}")]
-        public async Task<ActionResult<CountryDto[]>> GetCountriesByIsRightHandTraffic(
-        [FromQuery]bool isRightHandTraffic = false,
-        [FromQuery]bool includeCities = false,
-        [FromQuery]bool includeTravelRestrictions = false,
-        [FromQuery]bool includeAttractions = false,
-        [FromQuery]int attractionsMinRating = 0,
-        [FromQuery]int attractionsMaxRating = 5)
-        {
-            try
-            {
-                var results = await _countryRepo.GetCountriesByRightHandTraffic
-                (
-                    isRightHandTraffic,
-                    includeCities,
-                    includeTravelRestrictions,
-                    includeAttractions,
-                    attractionsMinRating,
-                    attractionsMaxRating
-                );
-
-                var mappedResult = _mapper.Map<CountryDto[]>(results);
-                return Ok(results);
-            }
-            catch (Exception e)
-            {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
-            }
-        }
-
-        [HttpGet("search={language}")]
-        public async Task<ActionResult<CountryDto[]>> GetCountriesByLanguage(
-            string language,
-            [FromQuery]bool includeCities = false,
-            [FromQuery]bool includeTravelRestrictions = false,
-            [FromQuery]bool includeAttractions = false,
-            [FromQuery]int attractionsMinRating = 0,
-            [FromQuery]int attractionsMaxRating = 5)
-        {
-            try
-            {
-                var results = await _countryRepo.GetCountriesByLanguage
-                (
-                    language,
-                    includeCities,
-                    includeTravelRestrictions,
-                    includeAttractions,
-                    attractionsMinRating,
-                    attractionsMaxRating
-                );
-
-                var mappedResult = _mapper.Map<CountryDto[]>(results);
-                return Ok(results);
+                return Ok(mappedResult);
             }
             catch (Exception e)
             {
