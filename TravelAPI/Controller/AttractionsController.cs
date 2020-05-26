@@ -27,7 +27,7 @@ namespace TravelAPI.Controller
             [FromQuery]int minRating,
             [FromQuery]int maxRating,
             [FromQuery]bool includeCities = false,
-            [FromQuery]bool isChildFriendly = false)            
+            [FromQuery]bool isChildFriendly = false)       
         {
             try
             {
@@ -64,21 +64,6 @@ namespace TravelAPI.Controller
                 var results = await _attractionRepo.GetAttractionByName(name);
                 var mappedResults = _mapper.Map<AttractionDto>(results);
                 return Ok(mappedResults);
-            }
-            catch (Exception e)
-            {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
-            }
-        }
-
-        [HttpGet("{rating:int}")]
-        public async Task<ActionResult<AttractionDto[]>> GetAttractionByRating(int rating)
-        {
-            try
-            {
-                var result = await _attractionRepo.GetAttractionByRating(rating);
-                var mappedResult = _mapper.Map<AttractionDto[]>(result);
-                return Ok(mappedResult);
             }
             catch (Exception e)
             {

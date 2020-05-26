@@ -82,13 +82,5 @@ namespace TravelAPI.Services
 
             return await query.ToArrayAsync();
         }
-
-        public async Task<ICollection<AttractionModel>> GetAttractionByRating(int rating)
-        {
-            var query = _travelAPIContext.Attractions
-                .Where(q => q.Rating == rating);
-
-            return await query.ToListAsync();
-        }
     }
 }

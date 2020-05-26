@@ -13,7 +13,6 @@ namespace TravelAPI.Services
             bool isChildFriendly = false);
         Task<AttractionModel>GetAttractionByID(int id);
         Task<AttractionModel>GetAttractionByName(string name);
-        Task<ICollection<AttractionModel>>GetAttractionByRating(int rating);
         Task<ICollection<AttractionModel>> GetIschildfriendly(bool IsChildFriendly = false);
     }
 }
