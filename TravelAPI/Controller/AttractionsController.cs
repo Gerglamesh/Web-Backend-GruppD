@@ -24,12 +24,14 @@ namespace TravelAPI.Controller
 
         [HttpGet]
         public async Task<ActionResult<AttractionDto[]>> GetAttractions(
+            [FromQuery]int minRating,
+            [FromQuery]int maxRating,
             [FromQuery]bool includeCities = false,
             [FromQuery]bool isChildFriendly = false)            
         {
             try
             {
-                var results = await _attractionRepo.GetAttractions(includeCities, isChildFriendly);
+                var results = await _attractionRepo.GetAttractions(minRating,maxRating,includeCities, isChildFriendly);
                 var mappedResults = _mapper.Map<AttractionDto[]>(results);
                 return Ok(mappedResults);
             }

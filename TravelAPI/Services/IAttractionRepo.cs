@@ -6,7 +6,9 @@ namespace TravelAPI.Services
 {
     public interface IAttractionRepo : IRepository
     {
-        Task<ICollection<AttractionModel>> GetAttractions(
+        Task<AttractionModel[]> GetAttractions(
+            int minRating,
+            int maxRating,
             bool includeCities = false,
             bool isChildFriendly = false);
         Task<AttractionModel>GetAttractionByID(int id);
