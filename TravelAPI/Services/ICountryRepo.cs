@@ -6,7 +6,7 @@ namespace TravelAPI.Services
 {
     public interface ICountryRepo : IRepository
     {
-        Task<ICollection<CountryModel>> GetCountries(
+        Task<CountryModel[]> GetCountries(
             bool includeCities = false,
             bool includeTravelRestrictions = false,
             bool includeAttractions = false,
@@ -32,7 +32,7 @@ namespace TravelAPI.Services
             int attractionsMaxRating = 5
             );
 
-        Task<ICollection<CountryModel>> GetCountriesByRightHandTraffic(
+        Task<CountryModel[]> GetCountriesByRightHandTraffic(
             bool rightHandTraffic,
             bool includeCities = false,
             bool includeTravelRestrictions = false,
@@ -41,6 +41,13 @@ namespace TravelAPI.Services
             int attractionsMaxRating = 5
             );
 
-        Task<ICollection<CountryModel>> GetCountriesByLanguage(string language);
+        Task<CountryModel[]> GetCountriesByLanguage(
+            string language,
+            bool includeCities = false,
+            bool includeTravelRestrictions = false,
+            bool includeAttractions = false,
+            int attractionsMinRating = 0,
+            int attractionsMaxRating = 5
+            );
     }
 }

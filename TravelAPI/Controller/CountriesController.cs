@@ -41,6 +41,7 @@ namespace TravelAPI.Controller
                     attractionsMaxRating
                 );
 
+                var mappedResult = _mapper.Map<CountryDto[]>(results);
                 return Ok(results);
             }
             catch (Exception e)
@@ -49,9 +50,9 @@ namespace TravelAPI.Controller
             }
         }
 
-        [HttpGet("{name}")]
+        [HttpGet("search={name}")]
         public async Task<ActionResult<CountryDto>> GetCountryByName(
-            string name,
+            string name = "",
             [FromQuery]bool includeCities = false,
             [FromQuery]bool includeTravelRestrictions = false,
             [FromQuery]bool includeAttractions = false,
@@ -60,7 +61,7 @@ namespace TravelAPI.Controller
         {
             try
             {
-                var results = await _countryRepo.GetCountryByName
+                var result = await _countryRepo.GetCountryByName
                 (
                     name,
                     includeCities,
@@ -70,7 +71,8 @@ namespace TravelAPI.Controller
                     attractionsMaxRating
                 );
 
-                return Ok(results);
+                var mappedResult = _mapper.Map<CountryDto>(result);
+                return Ok(result);
             }
             catch (Exception e)
             {
@@ -89,7 +91,7 @@ namespace TravelAPI.Controller
         {
             try
             {
-                var results = await _countryRepo.GetCountryById
+                var result = await _countryRepo.GetCountryById
                 (
                     id,
                     includeCities,
@@ -99,7 +101,13 @@ namespace TravelAPI.Controller
                     AttractionsMaxRating
                 );
 
-                return Ok(results);
+                if (result == null)
+                {
+                    return NotFound($"Couldn't find any cities with ID: {id}");
+                }
+
+                var mappedResult = _mapper.Map<CountryDto>(result);
+                return Ok(result);
             }
             catch (Exception e)
             {
@@ -128,6 +136,37 @@ namespace TravelAPI.Controller
                     attractionsMaxRating
                 );
 
+                var mappedResult = _mapper.Map<CountryDto[]>(results);
+                return Ok(results);
+            }
+            catch (Exception e)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
+            }
+        }
+
+        [HttpGet("search={language}")]
+        public async Task<ActionResult<CountryDto[]>> GetCountriesByLanguage(
+            string language,
+            [FromQuery]bool includeCities = false,
+            [FromQuery]bool includeTravelRestrictions = false,
+            [FromQuery]bool includeAttractions = false,
+            [FromQuery]int attractionsMinRating = 0,
+            [FromQuery]int attractionsMaxRating = 5)
+        {
+            try
+            {
+                var results = await _countryRepo.GetCountriesByLanguage
+                (
+                    language,
+                    includeCities,
+                    includeTravelRestrictions,
+                    includeAttractions,
+                    attractionsMinRating,
+                    attractionsMaxRating
+                );
+
+                var mappedResult = _mapper.Map<CountryDto[]>(results);
                 return Ok(results);
             }
             catch (Exception e)

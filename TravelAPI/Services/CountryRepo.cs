@@ -50,7 +50,7 @@ namespace TravelAPI.Services
             return query;
         }
 
-        public async Task<ICollection<CountryModel>> GetCountries(
+        public async Task<CountryModel[]> GetCountries(
             bool includeCities = false,
             bool includeTravelRestrictions = false,
             bool includeAttractions = false,
@@ -79,7 +79,7 @@ namespace TravelAPI.Services
             _logger.LogInformation($"Getting Country named '{name}'");
 
             IQueryable<CountryModel> query = _travelAPIContext
-                .Countries.Where(c => c.Name == name)
+                .Countries.Where(c => c.Name.Contains(name))
                 .Include(i => i.CountryInfo);
 
             query = CountryQuery(includeCities, includeTravelRestrictions, includeAttractions, attractionsMinRating, attractionsMaxRating, query);
@@ -106,7 +106,7 @@ namespace TravelAPI.Services
             return await query.FirstOrDefaultAsync();
         }
 
-        public async Task<ICollection<CountryModel>> GetCountriesByRightHandTraffic(
+        public async Task<CountryModel[]> GetCountriesByRightHandTraffic(
             bool isRightHandTraffic = false,
             bool includeCities = false,
             bool includeTravelRestrictions = false,
@@ -126,13 +126,21 @@ namespace TravelAPI.Services
             return await query.ToArrayAsync();
         }
 
-        public async Task<ICollection<CountryModel>> GetCountriesByLanguage(string language)
+        public async Task<CountryModel[]> GetCountriesByLanguage(
+            string language,
+            bool includeCities = false,
+            bool includeTravelRestrictions = false,
+            bool includeAttractions = false,
+            int attractionsMinRating = 0,
+            int attractionsMaxRating = 5)
         {
             _logger.LogInformation($"Getting Countries based on language: {language}");
 
             IQueryable<CountryModel> query = _travelAPIContext
                 .Countries.Where(c => c.CountryInfo.Language.Contains(language))
                 .Include(i => i.CountryInfo);
+
+            query = CountryQuery(includeCities, includeTravelRestrictions, includeAttractions, attractionsMinRating, attractionsMaxRating, query);
 
             query = query.OrderBy(e => e.Name);
             return await query.ToArrayAsync();
