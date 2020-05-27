@@ -20,7 +20,7 @@ namespace TravelAPI.Services
 
             if (includeTravelRestrictions)
             {
-                query = query.Include(c => c.TravelRestriction);
+              query = query.Include(c => c.TravelRestriction);
             }
 
             if (isRightHandTraffic)
@@ -54,7 +54,7 @@ namespace TravelAPI.Services
                 .Countries.Where(c => c.CountryInfo.Language.Contains(language))
                 .Include(i => i.CountryInfo);
 
-            query = CountryQuery(includeCities, includeTravelRestrictions, isRightHandTraffic, isLeftHandTraffic, query);
+            query = CountryQuery(includeCities, isRightHandTraffic, includeTravelRestrictions, isLeftHandTraffic, query);
 
             query = query.OrderBy(c => c.Name);
             return await query.ToArrayAsync();
