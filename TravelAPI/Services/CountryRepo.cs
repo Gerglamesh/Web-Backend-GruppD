@@ -11,11 +11,16 @@ namespace TravelAPI.Services
         public CountryRepo(TravelAPIContext travelAPIContext, ILogger<CountryRepo> logger) : base (travelAPIContext, logger)
         {}
 
-        private static IQueryable<CountryModel> CountryQuery(bool includeCities, bool isRightHandTraffic, bool isLeftHandTraffic, IQueryable<CountryModel> query)
+        private static IQueryable<CountryModel> CountryQuery(bool includeCities, bool includeTravelRestrictions, bool isRightHandTraffic, bool isLeftHandTraffic, IQueryable<CountryModel> query)
         {
             if (includeCities)
             {
                 query = query.Include(c => c.Cities);
+            }
+
+            if (includeTravelRestrictions)
+            {
+              query = query.Include(c => c.TravelRestriction);
             }
 
             if (isRightHandTraffic)
@@ -38,6 +43,7 @@ namespace TravelAPI.Services
 
         public async Task<CountryModel[]> GetCountries(
             bool includeCities = false,
+            bool includeTravelRestrictions = false,
             bool isRightHandTraffic = false,
             bool isLeftHandTraffic = false,
             string language = "")
@@ -48,7 +54,7 @@ namespace TravelAPI.Services
                 .Countries.Where(c => c.CountryInfo.Language.Contains(language))
                 .Include(i => i.CountryInfo);
 
-            query = CountryQuery(includeCities, isRightHandTraffic, isLeftHandTraffic, query);
+            query = CountryQuery(includeCities, isRightHandTraffic, includeTravelRestrictions, isLeftHandTraffic, query);
 
             query = query.OrderBy(c => c.Name);
             return await query.ToArrayAsync();
@@ -57,6 +63,7 @@ namespace TravelAPI.Services
         public async Task<CountryModel> GetCountryByName(
             string name, 
             bool includeCities = false,
+            bool includeTravelRestrictions = false,
             bool isRightHandTraffic = false,
             bool isLeftHandTraffic = false)
         {
@@ -66,7 +73,7 @@ namespace TravelAPI.Services
                 .Countries.Where(c => c.Name.Contains(name))
                 .Include(i => i.CountryInfo);
 
-            query = CountryQuery(includeCities, isRightHandTraffic, isLeftHandTraffic, query);
+            query = CountryQuery(includeCities, includeTravelRestrictions, isRightHandTraffic, isLeftHandTraffic, query);
 
             return await query.FirstOrDefaultAsync();
         }
@@ -74,6 +81,7 @@ namespace TravelAPI.Services
         public async Task<CountryModel> GetCountryById(
             int id, 
             bool includeCities = false,
+            bool includeTravelRestrictions = false,
             bool isRightHandTraffic = false,
             bool isLeftHandTraffic = false)
         {
@@ -83,7 +91,7 @@ namespace TravelAPI.Services
                 .Countries.Where(c => c.CountryId == id)
                 .Include(i => i.CountryInfo);
 
-            query = CountryQuery(includeCities, isRightHandTraffic, isLeftHandTraffic, query);
+            query = CountryQuery(includeCities, includeTravelRestrictions, isRightHandTraffic, isLeftHandTraffic, query);
 
             return await query.SingleOrDefaultAsync();
         }

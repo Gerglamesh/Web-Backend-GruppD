@@ -7,6 +7,7 @@ namespace TravelAPI.Services
     {
         Task<CountryModel[]> GetCountries(
             bool includeCities = false,
+            bool includeTravelRestrictions = false,
             bool isRightHandTraffic = false,
             bool isLeftHandTraffic = false,
             string language = ""
@@ -15,6 +16,7 @@ namespace TravelAPI.Services
         Task<CountryModel> GetCountryByName(
             string name,
             bool includeCities = false,
+            bool includeTravelRestrictions = false,
             bool isRightHandTraffic = false,
             bool isLeftHandTraffic = false
             );
@@ -22,6 +24,7 @@ namespace TravelAPI.Services
         Task<CountryModel> GetCountryById(
             int id,
             bool includeCities = false,
+            bool includeTravelRestrictions = false,
             bool isRightHandTraffic = false,
             bool isLeftHandTraffic = false
             );
