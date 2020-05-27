@@ -84,7 +84,7 @@ namespace TravelAPI.Controller
             }
         }
 
-        //GET: api/v1.0/cities/barb                                  Search cities containing
+        //GET: api/v1.0/cities/search=barb                                  Search cities containing keyword
         [HttpGet("search={keyword}")]
         public async Task<ActionResult<CityDto>> SearchCityByName(string keyword, bool includeCountries = false)
         {
@@ -116,7 +116,7 @@ namespace TravelAPI.Controller
                 _cityRepo.Add(mappedEntity);
                 if (await _cityRepo.Save())
                 {
-                    return Created($"/api/v1.0/city/{mappedEntity.CityId}", _mapper.Map<CityDto>(mappedEntity));
+                    return Created($"/api/v1.0/cities/{mappedEntity.CityId}", _mapper.Map<CityDto>(mappedEntity));
                 }
             }
             catch (Exception e)
