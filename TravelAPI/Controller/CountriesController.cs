@@ -133,7 +133,7 @@ namespace TravelAPI.Controller
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<CountryDto>> PutEvent(int id, [FromBody]CountryDto countryDto)
+        public async Task<ActionResult<CountryDto>> ChangeCountryByID(int id, [FromBody]CountryDto countryDto)
         {
             try
             {
