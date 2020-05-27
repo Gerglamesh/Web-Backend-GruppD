@@ -158,5 +158,31 @@ namespace TravelAPI.Controller
             }
             return BadRequest();
         }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteCountryByID(int id)
+        {
+            try
+            {
+                var oldCountry = await _countryRepo.GetCountryById(id);
+
+                if (oldCountry == null)
+                {
+                    return NotFound($"Couldn't find any country with id: {id}");
+                }
+
+                _countryRepo.Delete(oldCountry);
+
+                if (await _countryRepo.Save())
+                {
+                    return NoContent();
+                }
+            }
+            catch (Exception e)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
+            }
+            return BadRequest();
+        }
     }
 }
