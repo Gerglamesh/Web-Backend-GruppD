@@ -24,17 +24,30 @@ Include CountryInfo via HATEOAS
 
 
 
-**City**
+**City** Base URL: http://localhost:50615/api/v1.0/cities
 
-/Cities/ :heavy_check_mark:
+| Method | EndPoint                         | Usage                                        | Returns           |
+| ------ | -------------------------------- | -------------------------------------------- | ----------------- |
+| GET    | /v1.0/cities                     | Gets all cities                              | cities            |
+| GET    | /v1.0/cities/{id}                | Gets a city by ID                            | city              |
+| GET    | /v1.0/cities/{name}              | Gets a city by Name                          | city              |
+| GET    | /v1.0/cities/minpopulation={int} | Gets all cities with minimum population      | cities            |
+| GET    | /v1.0/cities/maxpopulation={int} | Gets all cities with maximum population      | cities            |
+| GET    | /v1.0/cities/?includecountry     | Gets all cities with from a specific country | cities            |
+| GET    | /v1.0/cities/search={string}     | Gets all cities with name containing string  | cities            |
+| PUT    | /v1.0/cities/{id}                | Change the values of a specific city         | 204 NoContent     |
+| POST   | /v1.0/cities/                    | Adds a new city                              | endpoint for city |
+| DELETE | /v1.0/cities/{id}                | Delete a specific city                       | 204 NoContent     |
+|        |                                  |                                              |                   |
+|        |                                  |                                              |                   |
+|        |                                  |                                              |                   |
+|        |                                  |                                              |                   |
 
-/Cities/name = \<name> || <id>  
+
 
 /Cities/name = \<name> & includeAttractions = \<bool> **HATEOAS?**
 
 /Cities/name = \<name> & includeAttractions = \<bool> & minRating = int (1-5) || maxRating = int (1-5) **HATEOAS?**
-
-/Cities/name = \<name> & minPopulation = <int> & maxPopulation = <int>
 
 
 
