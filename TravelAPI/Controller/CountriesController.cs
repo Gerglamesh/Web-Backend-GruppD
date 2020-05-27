@@ -25,6 +25,7 @@ namespace TravelAPI.Controller
         [HttpGet]
         public async Task<ActionResult<CountryDto[]>> GetCountries(
             [FromQuery]bool includeCities = false,
+            [FromQuery]bool includeTravelRestrictions = false,
             [FromQuery]bool isRightHandTraffic = false,
             [FromQuery]bool isLeftHandTraffic = false,
             [FromQuery]string language = "")
@@ -34,6 +35,7 @@ namespace TravelAPI.Controller
                 var results = await _countryRepo.GetCountries
                 (
                     includeCities,
+                    includeTravelRestrictions,
                     isRightHandTraffic,
                     isLeftHandTraffic,
                     language
@@ -52,6 +54,7 @@ namespace TravelAPI.Controller
         public async Task<ActionResult<CountryDto>> GetCountryByName(
             string name = "",
             [FromQuery]bool includeCities = false,
+            [FromQuery]bool includeTravelRestrictions = false,
             [FromQuery]bool isRightHandTraffic = false,
             [FromQuery]bool isLeftHandTraffic = false)
         {
@@ -61,6 +64,7 @@ namespace TravelAPI.Controller
                 (
                     name,
                     includeCities,
+                    includeTravelRestrictions,
                     isRightHandTraffic,
                     isLeftHandTraffic
                 );
@@ -78,6 +82,7 @@ namespace TravelAPI.Controller
         public async Task<ActionResult<CountryDto>> GetCountryById(
             int id,
             [FromQuery]bool includeCities = false,
+            [FromQuery]bool includeTravelRestrictions = false,
             [FromQuery]bool isRightHandTraffic = false,
             [FromQuery]bool isLeftHandTraffic = false)
         {
@@ -87,6 +92,7 @@ namespace TravelAPI.Controller
                 (
                     id,
                     includeCities,
+                    includeTravelRestrictions,
                     isRightHandTraffic,
                     isLeftHandTraffic
                 );
