@@ -75,14 +75,14 @@ namespace TravelAPI.Services
                 .SingleOrDefaultAsync();
         }
 
-        public async Task<CityModel> SearchCityByKeyword(string keyword, bool includeCountries = false)
+        public async Task<CityModel[]> SearchCityByKeyword(string keyword, bool includeCountries = false)
         {
             _logger.LogInformation($"Searching for city name containing '{keyword}'.");
             IQueryable<CityModel> query = _travelAPIContext.Cities.Where(n => n.Name.Contains(keyword));
 
             return await Include(query, includeCountries)
                 .OrderBy(c => c.Name)
-                .SingleOrDefaultAsync();
+                .ToArrayAsync();
         }
     }
 }
