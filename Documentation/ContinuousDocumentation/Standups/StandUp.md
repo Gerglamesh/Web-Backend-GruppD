@@ -966,28 +966,23 @@ What did All Do
 
 * 
 
-What did Irvin yesterday
+What did Eric yesterday
 
-* 
-* 
+* Arbetade hela dagen med GetAttractionByMin/MaxRating
 
-What did Jakob yesterday
+What did Benjamin yesterday
 
-* 
+* Lade in put och delete för cities
+* Implementerade HATEOAS för citiesControllern och skapade generella klasserna för det
 
-What did Mirko yesterday
+* What will Oscar k do today
 
-* 
+  * Försökte få put requestet för CountryInfo att fungera
 
-What did Hampus yesterday
+  What will Oskar do today
 
-* 
-
-* 
-
-  
-
-* 
+  * Höll också på med put och delete
+  * lade även till searchByName I CountiesControllern
 
 =======================
 
@@ -995,23 +990,29 @@ What did Hampus yesterday
 
 What will All do today
 
-* 
+* Komma på hur man ska göra dokumentationen för APi:t, vem som ska göra vad och hur Swagger fungerar.
+* Vi behöver även se över alla get calls främst så vi kan börja med dokumentationen utan att behöva skriva om den senare.
 
-What will Irvin do today
+What will Eric do today
 
-* 
+* Ska kolla dokumentationen på swagger
+* Fixa Post/put/delete för AttractionsController
+* Formatera Attraction request i request.md
 
-What will Mirko do today
+What will Benjamin do today
 
-* * 
+* Få det att fungera med hateoas och data access
+* Formatera Cities request i request.md
 
-What will Jakob do today
+What will Oscar K do today
 
-* 
+* Fixa put/post för Countryinfo
+* Formatera Countryinfo request i request.md
 
-What will Hampus do today
+What will Oskar 2 do today
 
-* 
+* Göra klart Post/Put/delete för country
+* Formatera country request i request.md
 
 
 
