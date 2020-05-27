@@ -13,7 +13,7 @@ namespace TravelAPI.Services
             string language = ""
             );
 
-        Task<CountryModel> GetCountryByName(
+        Task<CountryModel[]> GetCountryByName(
             string name,
             bool includeCities = false,
             bool includeTravelRestrictions = false,

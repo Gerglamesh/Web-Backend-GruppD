@@ -60,7 +60,7 @@ namespace TravelAPI.Services
             return await query.ToArrayAsync();
         }
 
-        public async Task<CountryModel> GetCountryByName(
+        public async Task<CountryModel[]> GetCountryByName(
             string name, 
             bool includeCities = false,
             bool includeTravelRestrictions = false,
@@ -75,7 +75,7 @@ namespace TravelAPI.Services
 
             query = CountryQuery(includeCities, includeTravelRestrictions, isRightHandTraffic, isLeftHandTraffic, query);
 
-            return await query.FirstOrDefaultAsync();
+            return await query.ToArrayAsync();
         }
 
         public async Task<CountryModel> GetCountryById(

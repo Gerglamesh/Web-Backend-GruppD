@@ -51,7 +51,7 @@ namespace TravelAPI.Controller
         }
 
         [HttpGet("search={name}")]
-        public async Task<ActionResult<CountryDto>> GetCountryByName(
+        public async Task<ActionResult<CountryDto[]>> GetCountryByName(
             string name = "",
             [FromQuery]bool includeCities = false,
             [FromQuery]bool includeTravelRestrictions = false,
@@ -60,7 +60,7 @@ namespace TravelAPI.Controller
         {
             try
             {
-                var result = await _countryRepo.GetCountryByName
+                var results = await _countryRepo.GetCountryByName
                 (
                     name,
                     includeCities,
@@ -69,7 +69,7 @@ namespace TravelAPI.Controller
                     isLeftHandTraffic
                 );
 
-                var mappedResult = _mapper.Map<CountryDto>(result);
+                var mappedResult = _mapper.Map<CountryDto[]>(results);
                 return Ok(mappedResult);
             }
             catch (Exception e)
