@@ -51,7 +51,7 @@ namespace TravelAPI.Controller
         }
 
         [HttpGet("search={name}")]
-        public async Task<ActionResult<CountryDto>> GetCountryByName(
+        public async Task<ActionResult<CountryDto[]>> GetCountryByName(
             string name = "",
             [FromQuery]bool includeCities = false,
             [FromQuery]bool includeTravelRestrictions = false,
@@ -60,7 +60,7 @@ namespace TravelAPI.Controller
         {
             try
             {
-                var result = await _countryRepo.GetCountryByName
+                var results = await _countryRepo.GetCountryByName
                 (
                     name,
                     includeCities,
@@ -69,7 +69,7 @@ namespace TravelAPI.Controller
                     isLeftHandTraffic
                 );
 
-                var mappedResult = _mapper.Map<CountryDto>(result);
+                var mappedResult = _mapper.Map<CountryDto[]>(results);
                 return Ok(mappedResult);
             }
             catch (Exception e)
@@ -146,6 +146,32 @@ namespace TravelAPI.Controller
 
                 var newCountry = _mapper.Map(countryDto, oldCountry);
                 _countryRepo.Update(newCountry);
+
+                if (await _countryRepo.Save())
+                {
+                    return NoContent();
+                }
+            }
+            catch (Exception e)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
+            }
+            return BadRequest();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteCountryByID(int id)
+        {
+            try
+            {
+                var oldCountry = await _countryRepo.GetCountryById(id);
+
+                if (oldCountry == null)
+                {
+                    return NotFound($"Couldn't find any country with id: {id}");
+                }
+
+                _countryRepo.Delete(oldCountry);
 
                 if (await _countryRepo.Save())
                 {
