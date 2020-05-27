@@ -106,7 +106,7 @@ namespace TravelAPI.Controller
             }
         }
 
-
+        //PUT: api/v1.0/city                                     POST City
         [HttpPost]
         public async Task<ActionResult<CityDto>> PostEvent(CityDto cityDto)
         {
@@ -117,6 +117,34 @@ namespace TravelAPI.Controller
                 if (await _cityRepo.Save())
                 {
                     return Created($"/api/v1.0/city/{mappedEntity.CityId}", _mapper.Map<CityDto>(mappedEntity));
+                }
+            }
+            catch (Exception e)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
+            }
+            return BadRequest();
+        }
+
+        //PUT: api/v1.0/flights/1                                 PUT City
+        [HttpPut("{id}")]
+        public async Task<ActionResult<CityDto>> PutEvent(int id, [FromBody]CityDto cityDto)
+        {
+            try
+            {
+                var oldCity = await _cityRepo.GetCityById(id);
+
+                if (oldCity == null)
+                {
+                    return NotFound($"Couldn't find any city with id: {id}");
+                }
+
+                var newFlight = _mapper.Map(cityDto, oldCity);
+                _cityRepo.Update(newFlight);
+
+                if (await _cityRepo.Save())
+                {
+                    return NoContent();
                 }
             }
             catch (Exception e)
