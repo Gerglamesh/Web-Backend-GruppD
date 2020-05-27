@@ -41,13 +41,13 @@ namespace TravelAPI.Controller
                 var cities = await _cityRepo.GetCities(includeCountry, minPopulation, maxPopulation);
                 var mappedCities = _mapper.Map<CityDto[]>(cities);
 
-
                 for (var index = 0; index < mappedCities.Count(); index++)
                 {
-                    var cityLinks = CreateLinksForOwner(mappedCities[index].CityId, includeCountry, minPopulation, maxPopulation);
-                    mappedCities[index].Add("Links", cityLinks)
-
+                    var cityLinks = CreateLinksForCity(mappedCities[index].CityId, includeCountry, minPopulation, maxPopulation);
+                    
+                    mappedCities[index].Add(cityLinks);
                 }
+
                 return Ok(mappedCities);
             }
             catch (Exception e)
@@ -69,23 +69,26 @@ namespace TravelAPI.Controller
                 "self",
                 "GET"),
 
-                new Link(_linkGenerator.GetUriByAction(HttpContext, nameof(PostEvent), values: new { id }),
-                "update_owner",
-                "PUT")
+                new Link(_linkGenerator.GetUriByAction(HttpContext, nameof(DeleteCityByID), values: new { cityId }),
+                "update_city",
+                "DELETE"),
 
-                new Link(_linkGenerator.GetUriByAction(HttpContext, nameof(UpdateOwner), values: new { id }),
-                "update_owner",
-                "PUT")
-
-                //new Link(_linkGenerator.GetUriByAction(HttpContext, nameof(DeleteCityByID), values: new { id }),
-                //"delete_owner",
-                //"DELETE"),
+                new Link(_linkGenerator.GetUriByAction(HttpContext, nameof(ChangeCityByID), values: new { cityId }),
+                "delete_city",
+                "PUT"),
             };
 
             return links;
         }
 
+        private LinkCollectionWrapper<CityDto> CreateLinksForCities(LinkCollectionWrapper<CityDto> ownersWrapper)
+        {
+            ownersWrapper.Links.Add(new Link(_linkGenerator.GetUriByAction(HttpContext, nameof(GetCities), values: new { }),
+                    "self",
+                    "GET"));
 
+            return ownersWrapper;
+        }
 
         //GET: api/v1.0/cities/1                                 Get cities by id
         [HttpGet("{id}")]
@@ -155,7 +158,7 @@ namespace TravelAPI.Controller
 
         //PUT: api/v1.0/city                                     POST City
         [HttpPost]
-        public async Task<ActionResult<CityDto>> PostEvent(CityDto cityDto)
+        public async Task<ActionResult<CityDto>> PostCity(CityDto cityDto)
         {
             try
             {

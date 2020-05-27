@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace TravelAPI.Hateoas
 {
@@ -17,5 +18,7 @@ namespace TravelAPI.Hateoas
 		{
 			Value = value;
 		}
+
+
 	}
 }
