@@ -125,5 +125,32 @@ namespace TravelAPI.Controller
 
             return BadRequest();
         }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<CountryDto>> ChangeCountryByID(int id, [FromBody]CountryDto countryDto)
+        {
+            try
+            {
+                var oldCountry = await _countryRepo.GetCountryById(id);
+
+                if (oldCountry == null)
+                {
+                    return NotFound($"Couldn't find any country with id: {id}");
+                }
+
+                var newCountry = _mapper.Map(countryDto, oldCountry);
+                _countryRepo.Update(newCountry);
+
+                if (await _countryRepo.Save())
+                {
+                    return NoContent();
+                }
+            }
+            catch (Exception e)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
+            }
+            return BadRequest();
+        }
     }
 }
