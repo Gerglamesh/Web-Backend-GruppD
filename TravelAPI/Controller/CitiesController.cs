@@ -1,9 +1,14 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using TravelAPI.DTO;
+using TravelAPI.Hateoas;
 using TravelAPI.Models;
 using TravelAPI.Services;
 
@@ -15,30 +20,72 @@ namespace TravelAPI.Controller
     {
         private readonly ICityRepo _cityRepo;
         private readonly IMapper _mapper;
+        private LinkGenerator _linkGenerator;
 
-        public CitiesController(ICityRepo cityRepo, IMapper mapper)
+        public CitiesController(ICityRepo cityRepo, IMapper mapper, LinkGenerator linkGenerator)
         {
             _cityRepo = cityRepo;
             _mapper = mapper;
+            _linkGenerator = linkGenerator;
         }
 
         //GET: api/v1.0/cities/                                 Get all cities
         [HttpGet]
-        public async Task<ActionResult<CityModel[]>> GetCities(
+        public async Task<ActionResult<CityDto[]>> GetCities(
             [FromQuery] bool includeCountry = false,
             [FromQuery] int minPopulation = 0,
             [FromQuery] int maxPopulation = 0)
         {
             try
             {
-                var results = await _cityRepo.GetCities(includeCountry, minPopulation, maxPopulation);
-                return Ok(results);
+                var cities = await _cityRepo.GetCities(includeCountry, minPopulation, maxPopulation);
+                var mappedCities = _mapper.Map<CityDto[]>(cities);
+
+
+                for (var index = 0; index < mappedCities.Count(); index++)
+                {
+                    var cityLinks = CreateLinksForOwner(mappedCities[index].CityId, includeCountry, minPopulation, maxPopulation);
+                    mappedCities[index].Add("Links", cityLinks)
+
+                }
+                return Ok(mappedCities);
             }
             catch (Exception e)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
             }
         }
+
+        private IEnumerable<Link> CreateLinksForCity(
+            int cityId, 
+            bool includeCountry = false, 
+            int minPopulation = 0, 
+            int maxPopulation = 0)
+        {
+            var links = new List<Link>
+            {
+
+                new Link(_linkGenerator.GetUriByAction(HttpContext, nameof(GetCityById), values: new { cityId, includeCountry}),
+                "self",
+                "GET"),
+
+                new Link(_linkGenerator.GetUriByAction(HttpContext, nameof(PostEvent), values: new { id }),
+                "update_owner",
+                "PUT")
+
+                new Link(_linkGenerator.GetUriByAction(HttpContext, nameof(UpdateOwner), values: new { id }),
+                "update_owner",
+                "PUT")
+
+                //new Link(_linkGenerator.GetUriByAction(HttpContext, nameof(DeleteCityByID), values: new { id }),
+                //"delete_owner",
+                //"DELETE"),
+            };
+
+            return links;
+        }
+
+
 
         //GET: api/v1.0/cities/1                                 Get cities by id
         [HttpGet("{id}")]
