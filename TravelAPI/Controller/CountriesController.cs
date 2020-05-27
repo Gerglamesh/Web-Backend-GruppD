@@ -25,23 +25,22 @@ namespace TravelAPI.Controller
         [HttpGet]
         public async Task<ActionResult<CountryDto[]>> GetCountries(
             [FromQuery]bool includeCities = false,
-            [FromQuery]bool includeTravelRestrictions = false,
-            [FromQuery]bool includeAttractions = false,
-            [FromQuery]int attractionsMinRating = 0,
-            [FromQuery]int attractionsMaxRating = 5)
+            [FromQuery]bool isRightHandTraffic = false,
+            [FromQuery]bool isLeftHandTraffic = false,
+            [FromQuery]string language = "")
         {
             try
             {
                 var results = await _countryRepo.GetCountries
                 (
                     includeCities,
-                    includeTravelRestrictions,
-                    includeAttractions,
-                    attractionsMinRating,
-                    attractionsMaxRating
+                    isRightHandTraffic,
+                    isLeftHandTraffic,
+                    language
                 );
 
-                return Ok(results);
+                var mappedResult = _mapper.Map<CountryDto[]>(results);
+                return Ok(mappedResult);
             }
             catch (Exception e)
             {
@@ -49,28 +48,25 @@ namespace TravelAPI.Controller
             }
         }
 
-        [HttpGet("{name}")]
+        [HttpGet("search={name}")]
         public async Task<ActionResult<CountryDto>> GetCountryByName(
-            string name,
+            string name = "",
             [FromQuery]bool includeCities = false,
-            [FromQuery]bool includeTravelRestrictions = false,
-            [FromQuery]bool includeAttractions = false,
-            [FromQuery]int attractionsMinRating = 0,
-            [FromQuery]int attractionsMaxRating = 5)
+            [FromQuery]bool isRightHandTraffic = false,
+            [FromQuery]bool isLeftHandTraffic = false)
         {
             try
             {
-                var results = await _countryRepo.GetCountryByName
+                var result = await _countryRepo.GetCountryByName
                 (
                     name,
                     includeCities,
-                    includeTravelRestrictions,
-                    includeAttractions,
-                    attractionsMinRating,
-                    attractionsMaxRating
+                    isRightHandTraffic,
+                    isLeftHandTraffic
                 );
 
-                return Ok(results);
+                var mappedResult = _mapper.Map<CountryDto>(result);
+                return Ok(mappedResult);
             }
             catch (Exception e)
             {
@@ -78,28 +74,30 @@ namespace TravelAPI.Controller
             }
         }
 
-        [HttpGet("{id:int}")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<CountryDto>> GetCountryById(
             int id,
             [FromQuery]bool includeCities = false,
-            [FromQuery]bool includeTravelRestrictions = false,
-            [FromQuery]bool includeAttractions = false,
-            [FromQuery]int attractionsMinRating = 0,
-            [FromQuery]int AttractionsMaxRating = 5)
+            [FromQuery]bool isRightHandTraffic = false,
+            [FromQuery]bool isLeftHandTraffic = false)
         {
             try
             {
-                var results = await _countryRepo.GetCountryById
+                var result = await _countryRepo.GetCountryById
                 (
                     id,
                     includeCities,
-                    includeTravelRestrictions,
-                    includeAttractions,
-                    attractionsMinRating,
-                    AttractionsMaxRating
+                    isRightHandTraffic,
+                    isLeftHandTraffic
                 );
 
-                return Ok(results);
+                if (result == null)
+                {
+                    return NotFound($"Couldn't find any cities with ID: {id}");
+                }
+
+                var mappedResult = _mapper.Map<CountryDto>(result);
+                return Ok(mappedResult);
             }
             catch (Exception e)
             {

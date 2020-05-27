@@ -1,39 +1,29 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using TravelAPI.Models;
 
 namespace TravelAPI.Services
 {
     public interface ICountryRepo : IRepository
     {
-        Task<ICollection<CountryModel>> GetCountries(
+        Task<CountryModel[]> GetCountries(
             bool includeCities = false,
-            bool includeTravelRestrictions = false,
-            bool includeAttractions = false,
-            int attractionsMinRating = 0,
-            int attractionsMaxRating = 5
+            bool isRightHandTraffic = false,
+            bool isLeftHandTraffic = false,
+            string language = ""
             );
 
         Task<CountryModel> GetCountryByName(
             string name,
             bool includeCities = false,
-            bool includeTravelRestrictions = false,
-            bool includeAttractions = false,
-            int attractionsMinRating = 0,
-            int attractionsMaxRating = 5
+            bool isRightHandTraffic = false,
+            bool isLeftHandTraffic = false
             );
 
         Task<CountryModel> GetCountryById(
             int id,
             bool includeCities = false,
-            bool includeTravelRestrictions = false,
-            bool includeAttractions = false,
-            int attractionsMinRating = 0,
-            int attractionsMaxRating = 5
+            bool isRightHandTraffic = false,
+            bool isLeftHandTraffic = false
             );
-
-        Task<ICollection<CountryModel>> GetCountryByRightHandTraffic(bool rightHandTraffic);
-
-        Task<ICollection<CountryModel>> GetCountriesByLanguage(string language);
     }
 }
