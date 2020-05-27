@@ -2,21 +2,23 @@
 
 **Country**
 
-/Countries/   :heavy_check_mark:
-
-/Countries/name = \<name> || <id>   :heavy_check_mark:
-
-/Countries/name = \<name> & includeCities = \<bool>  :heavy_check_mark:
-
-/Countries/name = \<name> & includeTravelRestrictions = \<bool> :heavy_check_mark:
+| Method | Usage                                                        | Returns   |
+| ------ | ------------------------------------------------------------ | --------- |
+| GET    | /api/v1.0/Countries                                          | countries |
+| GET    | /api/v1.0/countries/?includeCities=true                      | countries |
+| GET    | /api/v1.0/countries/?includeTravelRestrictions=true          | countries |
+| GET    | /api/v1.0/countries/?isRightHandTraffic=true                 | countries |
+| GET    | /api/v1.0/countries/?isLeftHandTraffic=true                  | countries |
+| GET    | /api/v1.0/countries/?language={language}                     | countries |
+| GET    | /api/v1.0/countries/search={name}                            | country   |
+| GET    | /api/v1.0/countries/search={name}?includeCities=true         | country   |
+| GET    | /api/v1.0/countries/search={name}?includeTravelRestrictions=true | country   |
+| GET    | /api/v1.0/countries/search={name}?isRightHandTraffic=true    | country   |
+| GET    | /api/v1.0/countries/search={name}?isLeftHandTraffic=true     | country   |
 
 /Countries/name = \<name> & includeAttractions = \<bool> **HATEOAS?**
 
 /Countries/name = \<name> & includeAttractions = \<bool> & minRating = int (1-5) || maxRating = int (1-5) **HATEOAS?**
-
-/Countries/rightHandTraffic = \<bool> ​​
-
-/Countries/language = \<language>  ​​
 
 Include CountryInfo via HATEOAS
 
