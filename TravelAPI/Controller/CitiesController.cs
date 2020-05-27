@@ -42,18 +42,16 @@ namespace TravelAPI.Controller
 
         //GET: api/v1.0/cities/1                                 Get cities by id
         [HttpGet("{id}")]
-        public async Task<ActionResult<CityDto>> GetCityById(int id, bool includeCountries = false)
+        public async Task<ActionResult<CityDto>> GetCityById(int id, [FromQuery] bool includeCountries = false)
         {
             try
             {
-                var result = await _cityRepo.GetCityById(id);
+                var result = await _cityRepo.GetCityById(id, includeCountries);
 
-                if (result == null)
-                {
-                    return NotFound($"Couldn't find any cities with ID: {id}");
-                }
-
+                if (result == null) return NotFound($"Couldn't find any cities with ID: {id}");
+                
                 var mappedResult = _mapper.Map<CityDto>(result);
+
                 return Ok(mappedResult);
             }
             catch (Exception e)
@@ -70,12 +68,10 @@ namespace TravelAPI.Controller
             {
                 var result = await _cityRepo.GetCityByName(name, includeCountries);
 
-                if (result == null)
-                {
-                    return NotFound($"Couldn't find any cities with name: {name}");
-                }
-
+                if (result == null) return NotFound($"Couldn't find any cities with name: {name}");
+                
                 var mappedResult = _mapper.Map<CityDto>(result);
+                
                 return Ok(mappedResult);
             }
             catch (Exception e)
@@ -86,18 +82,16 @@ namespace TravelAPI.Controller
 
         //GET: api/v1.0/cities/barb                                  Search cities containing
         [HttpGet("search={keyword}")]
-        public async Task<ActionResult<CityDto>> SearchCityByName(string keyword, bool includeCountries = false)
+        public async Task<ActionResult<CityDto[]>> SearchCityByName(string keyword, bool includeCountries = false)
         {
             try
             {
                 var result = await _cityRepo.SearchCityByKeyword(keyword, includeCountries);
 
-                if (result == null)
-                {
-                    return NotFound($"Couldn't find any cities containing '{keyword}'");
-                }
+                if (result == null) return NotFound($"Couldn't find any cities containing '{keyword}'");
 
-                var mappedResult = _mapper.Map<CityDto>(result);
+                var mappedResult = _mapper.Map<CityDto[]>(result);
+                
                 return Ok(mappedResult);
             }
             catch (Exception e)
@@ -108,12 +102,13 @@ namespace TravelAPI.Controller
 
         //PUT: api/v1.0/city                                     POST City
         [HttpPost]
-        public async Task<ActionResult<CityDto>> PostEvent(CityDto cityDto)
+        public async Task<ActionResult<CityDto>> PostEvent([FromBody] CityDto cityDto)
         {
             try
             {
                 var mappedEntity = _mapper.Map<CityModel>(cityDto);
                 _cityRepo.Add(mappedEntity);
+
                 if (await _cityRepo.Save())
                 {
                     return Created($"/api/v1.0/city/{mappedEntity.CityId}", _mapper.Map<CityDto>(mappedEntity));
@@ -121,35 +116,29 @@ namespace TravelAPI.Controller
             }
             catch (Exception e)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
             }
             return BadRequest();
         }
 
         //PUT: api/v1.0/flights/1                                 PUT City
         [HttpPut("{id}")]
-        public async Task<ActionResult<CityDto>> ChangeCityByID(int id, [FromBody]CityDto cityDto)
+        public async Task<ActionResult<CityDto>> ChangeCityByID(int id, [FromBody] CityDto cityDto)
         {
             try
             {
                 var oldCity = await _cityRepo.GetCityById(id);
 
-                if (oldCity == null)
-                {
-                    return NotFound($"Couldn't find any city with ID: {id}");
-                }
+                if (oldCity == null) return NotFound($"Couldn't find any city with ID: {id}");
 
                 var newFlight = _mapper.Map(cityDto, oldCity);
                 _cityRepo.Update(newFlight);
 
-                if (await _cityRepo.Save())
-                {
-                    return NoContent();
-                }
+                if (await _cityRepo.Save()) return NoContent();
             }
             catch (Exception e)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
             }
             return BadRequest();
         }
@@ -162,17 +151,11 @@ namespace TravelAPI.Controller
             {
                 var oldCity = await _cityRepo.GetCityById(id);
 
-                if (oldCity == null)
-                {
-                    return NotFound($"Couldn't find any city with id: {id}");
-                }
+                if (oldCity == null) return NotFound($"Couldn't find any city with id: {id}");
 
                 _cityRepo.Delete(oldCity);
 
-                if (await _cityRepo.Save())
-                {
-                    return NoContent();
-                }
+                if (await _cityRepo.Save()) return NoContent();
             }
             catch (Exception e)
             {
