@@ -958,7 +958,7 @@ What will Oskar do today
 
 * put och delete på country. Och kika på HATEOAS
 
-# SKRIV DATUM 
+# 27/5 
 
 ### Yesterday
 
@@ -1013,5 +1013,50 @@ What will Oskar 2 do today
 
 * Göra klart Post/Put/delete för country
 * Formatera country request i request.md
+
+# 28/5 Oscar K
+
+### Yesterday
+
+What did All Do
+
+* 
+
+What did Eric yesterday
+
+* Implemmentera Swagger
+
+What did Oscar k do yesterday
+
+* Fick en allergisk reaktion och fick inget gjort.
+
+What will Oskar M do yesterday
+
+* Put/Post/Delete för Country
+
+What did Benjamin do yesterday
+
+* försökte implemmentera HATEOAS
+* Delete Request för Cities
+
+=======================
+
+### Today
+
+What will Eric do today
+
+* Fixa Post/put/delete för AttractionsController
+
+What will Benjamin do today
+
+* IncludeAttractions för Cities
+
+What will Oscar K do today
+
+* Fixa put/post för Countryinfo
+
+What will Oskar 2 do today
+
+* IncludeAttractions/IncludeRating för Countries
 
 
