@@ -71,6 +71,31 @@ namespace TravelAPI.Controller
             }
         }
 
+
+        [HttpPut("{attractionid}")]
+        public async Task<ActionResult<AttractionDto>> PutAttraction(int attractionid, [FromBody] AttractionDto attractionDto)
+        {
+            try
+            {
+                var oldattraction = await _attractionRepo.GetAttractionByID(attractionid);
+                if (oldattraction == null)
+                {
+                    return NotFound($"There is no attraction with id:{attractionid}");
+                }
+                var newAttraction = _mapper.Map(attractionDto, oldattraction);
+                _attractionRepo.Update(newAttraction);
+                if (await _attractionRepo.Save())
+                {
+                    return NoContent();
+                }
+            }
+            catch (Exception e)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure:{e.Message}");
+            }
+            return BadRequest();
+        }
+
         [HttpPost]
         public async Task<ActionResult<AttractionDto>> PostEvent(AttractionDto attractionDto)
         {

@@ -49,19 +49,21 @@ Include CountryInfo via HATEOAS
 
 /Cities/name = \<name> & includeAttractions = \<bool> & minRating = int (1-5) || maxRating = int (1-5) **HATEOAS?**
 
+**Attraction**
 
-
-**Attraction **
-
-/Attractions/
-
-/Attractions/name = \<name> || <id>
-
-/Attractions/childFriendly = \<bool>
-
-/Attractions/rating = \<int> 
-
-/Attractions/minRating = \<int> & maxRating = \<int> 
+| Method | Usage                                                        | Returns    |
+| ------ | ------------------------------------------------------------ | ---------- |
+| GET    | /api/v1.0/attractions                                        | attraction |
+| GET    | /api/v1.0/attractions/name=<name>                            | attraction |
+| GET    | /api/v1.0/attractions/childFriendly = <bool>                 | attraction |
+| GET    | /api/v1.0/attraction/minrating=<int>                         | attraction |
+| GET    | /api/v1.0/attraction/minrating=<int>&maxrating=<int>         | attraction |
+| GET    | /api/v1.0/attraction/maxrating=<int>                         | attraction |
+| GET    | /api/v1.0/attraction/minrating=<int>&maxrating=<int>         | attraction |
+| GET    | /api/v1.0/Attractions?includeCities=<bool>                   | attraction |
+| GET    | /api/v1.0/Attractions?isChildFriendly=<bool>                 | attraction |
+| GET    | /api/v1.0/Attractions?includeCities=<bool>&isChildFriendly=<bool> | attraction |
+| GET    | /api/v1.0/Attractions?minRating=<int>&maxRating=<int>&includeCities=<bool>&isChildFriendly=<bool> | attraction |
 
 
 
