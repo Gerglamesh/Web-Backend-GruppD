@@ -72,7 +72,7 @@ namespace TravelAPI.Controller
         }
 
         [HttpPost]
-        public async Task<ActionResult<AttractionDto>> PostEvent(AttractionDto attractionDto)
+        public async Task<ActionResult<AttractionDto>> PostAttraction(AttractionDto attractionDto)
         {
             try
             {
@@ -88,6 +88,32 @@ namespace TravelAPI.Controller
                 return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
             }
 
+            return BadRequest();
+        }
+
+
+        [HttpDelete("{attractionid}")]
+        public async Task<ActionResult<AttractionDto>> DeleteAttraction(int attractionid)
+        {
+            try
+            {
+                var oldAttraction = await _attractionRepo.GetAttractionByID(attractionid);
+                if (oldAttraction == null)
+                {
+                    return NotFound($"There is no attraction with the id: {attractionid}");
+                }
+
+                _attractionRepo.Delete(oldAttraction);
+
+                if (await _attractionRepo.Save())
+                {
+                    return NoContent();
+                }
+            }
+            catch (Exception e)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure:{e.Message}");
+            }
             return BadRequest();
         }
     }
