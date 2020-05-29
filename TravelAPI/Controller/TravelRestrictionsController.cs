@@ -59,12 +59,12 @@ namespace TravelAPI.Controller
         {
             try
             {
-                var oldCity = await _travelRestrictionRepo.GetTravelRestrictionByID(id);
+                var oldTravelRestriction = await _travelRestrictionRepo.GetTravelRestrictionByID(id);
 
-                if (oldCity == null) return NotFound($"Couldn't find any city with ID: {id}");
+                if (oldTravelRestriction == null) return NotFound($"Couldn't find any city with ID: {id}");
 
-                var newFlight = _mapper.Map(travelRestrictionDto, oldCity);
-                _travelRestrictionRepo.Update(newFlight);
+                var newTravelRestriction = _mapper.Map(travelRestrictionDto, oldTravelRestriction);
+                _travelRestrictionRepo.Update(newTravelRestriction);
 
                 if (await _travelRestrictionRepo.Save()) return NoContent();
             }
