@@ -13,14 +13,13 @@
 | GET    | /api/v1.0/countries/search={name}                            | country   |
 | GET    | /api/v1.0/countries/search={name}?includeCities=true         | country   |
 | GET    | /api/v1.0/countries/search={name}?includeTravelRestrictions=true | country   |
-| GET    | /api/v1.0/countries/search={name}?isRightHandTraffic=true    | country   |
-| GET    | /api/v1.0/countries/search={name}?isLeftHandTraffic=true     | country   |
+| GET    | /api/v1.0/countries/{id}                                     | country   |
+| GET    | /api/v1.0/countries/{id}?includeCities=true                  | country   |
+| GET    | /api/v1.0/countries/{id}?includeTravelRestrictions=true      | country   |
 
-/Countries/name = \<name> & includeAttractions = \<bool> **HATEOAS?**
+/Countries/name = \<name> & includeAttractions = \<bool>
 
-/Countries/name = \<name> & includeAttractions = \<bool> & minRating = int (1-5) || maxRating = int (1-5) **HATEOAS?**
-
-Include CountryInfo via HATEOAS
+/Countries/name = \<name> & includeAttractions = \<bool> & minRating = int (1-5) || maxRating = int 
 
 
 

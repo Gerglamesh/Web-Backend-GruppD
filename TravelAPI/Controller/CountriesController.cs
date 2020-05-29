@@ -54,9 +54,7 @@ namespace TravelAPI.Controller
         public async Task<ActionResult<CountryDto[]>> GetCountryByName(
             string name = "",
             [FromQuery]bool includeCities = false,
-            [FromQuery]bool includeTravelRestrictions = false,
-            [FromQuery]bool isRightHandTraffic = false,
-            [FromQuery]bool isLeftHandTraffic = false)
+            [FromQuery]bool includeTravelRestrictions = false)
         {
             try
             {
@@ -64,9 +62,7 @@ namespace TravelAPI.Controller
                 (
                     name,
                     includeCities,
-                    includeTravelRestrictions,
-                    isRightHandTraffic,
-                    isLeftHandTraffic
+                    includeTravelRestrictions
                 );
 
                 var mappedResult = _mapper.Map<CountryDto[]>(results);
@@ -82,9 +78,7 @@ namespace TravelAPI.Controller
         public async Task<ActionResult<CountryDto>> GetCountryById(
             int id,
             [FromQuery]bool includeCities = false,
-            [FromQuery]bool includeTravelRestrictions = false,
-            [FromQuery]bool isRightHandTraffic = false,
-            [FromQuery]bool isLeftHandTraffic = false)
+            [FromQuery]bool includeTravelRestrictions = false)
         {
             try
             {
@@ -92,9 +86,7 @@ namespace TravelAPI.Controller
                 (
                     id,
                     includeCities,
-                    includeTravelRestrictions,
-                    isRightHandTraffic,
-                    isLeftHandTraffic
+                    includeTravelRestrictions
                 );
 
                 if (result == null)

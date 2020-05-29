@@ -16,17 +16,13 @@ namespace TravelAPI.Services
         Task<CountryModel[]> GetCountryByName(
             string name,
             bool includeCities = false,
-            bool includeTravelRestrictions = false,
-            bool isRightHandTraffic = false,
-            bool isLeftHandTraffic = false
+            bool includeTravelRestrictions = false
             );
 
         Task<CountryModel> GetCountryById(
             int id,
             bool includeCities = false,
-            bool includeTravelRestrictions = false,
-            bool isRightHandTraffic = false,
-            bool isLeftHandTraffic = false
+            bool includeTravelRestrictions = false
             );
     }
 }
