@@ -61,7 +61,7 @@ namespace TravelAPI.Controller
             {
                 var oldTravelRestriction = await _travelRestrictionRepo.GetTravelRestrictionByID(id);
 
-                if (oldTravelRestriction == null) return NotFound($"Couldn't find any city with ID: {id}");
+                if (oldTravelRestriction == null) return NotFound($"Couldn't find any travel restriction with ID: {id}");
 
                 var newTravelRestriction = _mapper.Map(travelRestrictionDto, oldTravelRestriction);
                 _travelRestrictionRepo.Update(newTravelRestriction);
