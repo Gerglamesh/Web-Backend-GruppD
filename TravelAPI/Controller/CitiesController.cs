@@ -131,8 +131,8 @@ namespace TravelAPI.Controller
 
                 if (oldCity == null) return NotFound($"Couldn't find any city with ID: {id}");
 
-                var newFlight = _mapper.Map(cityDto, oldCity);
-                _cityRepo.Update(newFlight);
+                var newCity = _mapper.Map(cityDto, oldCity);
+                _cityRepo.Update(newCity);
 
                 if (await _cityRepo.Save()) return NoContent();
             }

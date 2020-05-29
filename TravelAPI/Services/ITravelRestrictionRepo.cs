@@ -7,5 +7,6 @@ namespace TravelAPI.Services
     public interface ITravelRestrictionRepo : IRepository
     {
         Task<ICollection<TravelRestrictionModel>> GetTravelRestrictions();
+        Task<TravelRestrictionModel> GetTravelRestrictionByID(int id);
     }
 }
