@@ -63,6 +63,9 @@
 | GET    | /api/v1.0/Attractions?isChildFriendly=<bool>                 | attraction |
 | GET    | /api/v1.0/Attractions?includeCities=<bool>&isChildFriendly=<bool> | attraction |
 | GET    | /api/v1.0/Attractions?minRating=<int>&maxRating=<int>&includeCities=<bool>&isChildFriendly=<bool> | attraction |
+| PUT    | /api/v1.0/Attractions/<int>                                  | attraction |
+| DELETE | /api/v1.0/Attractions/<int>                                  | attraction |
+| POST   | /api/v1.0/Attractions                                        | attraction |
 
 
 
