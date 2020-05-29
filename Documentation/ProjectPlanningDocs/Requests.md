@@ -71,6 +71,13 @@ Include CountryInfo via HATEOAS
 
 /Countries/Info/id = <id>
 
+| Method | EndPoint                   | Usage                                    | Returns          |
+| ------ | -------------------------- | ---------------------------------------- | ---------------- |
+| GET    | api/v1.0/Country/Info      | Gets all Country Info                    | All Country Info |
+| GET    | api/v1.0/Country/Info/{id} | Gets a Country Info by ID                | Country Info     |
+| POST   | api/v1.0/Country/Info      | Adds new Country Info                    |                  |
+| PUT    | api/v1.0/Country/Info/{id} | Changes or adds values to a Country Info |                  |
+
 
 
 **TravelRestriction**
