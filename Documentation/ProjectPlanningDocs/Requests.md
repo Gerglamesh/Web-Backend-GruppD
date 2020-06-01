@@ -13,42 +13,59 @@
 | GET    | /api/v1.0/countries/search={name}                            | country   |
 | GET    | /api/v1.0/countries/search={name}?includeCities=true         | country   |
 | GET    | /api/v1.0/countries/search={name}?includeTravelRestrictions=true | country   |
-| GET    | /api/v1.0/countries/search={name}?isRightHandTraffic=true    | country   |
-| GET    | /api/v1.0/countries/search={name}?isLeftHandTraffic=true     | country   |
+| GET    | /api/v1.0/countries/{id}                                     | country   |
+| GET    | /api/v1.0/countries/{id}?includeCities=true                  | country   |
+| GET    | /api/v1.0/countries/{id}?includeTravelRestrictions=true      | country   |
 
-/Countries/name = \<name> & includeAttractions = \<bool> **HATEOAS?**
+/Countries/name = \<name> & includeAttractions = \<bool>
 
-/Countries/name = \<name> & includeAttractions = \<bool> & minRating = int (1-5) || maxRating = int (1-5) **HATEOAS?**
-
-Include CountryInfo via HATEOAS
-
+/Countries/name = \<name> & includeAttractions = \<bool> & minRating = int (1-5) || maxRating = int 
 
 
-**City**
 
-/Cities/ :heavy_check_mark:
+**City** Base URL: http://localhost:50615/api/v1.0/cities
 
-/Cities/name = \<name> || <id>  
+| Method | EndPoint                         | Usage                                        | Returns           |
+| ------ | -------------------------------- | -------------------------------------------- | ----------------- |
+| GET    | /v1.0/cities                     | Gets all cities                              | cities            |
+| GET    | /v1.0/cities/{id}                | Gets a city by ID                            | city              |
+| GET    | /v1.0/cities/{name}              | Gets a city by Name                          | city              |
+| GET    | /v1.0/cities/minpopulation={int} | Gets all cities with minimum population      | cities            |
+| GET    | /v1.0/cities/maxpopulation={int} | Gets all cities with maximum population      | cities            |
+| GET    | /v1.0/cities/?includecountry     | Gets all cities with from a specific country | cities            |
+| GET    | /v1.0/cities/search={string}     | Gets all cities with name containing string  | cities            |
+| PUT    | /v1.0/cities/{id}                | Change the values of a specific city         | 204 NoContent     |
+| POST   | /v1.0/cities/                    | Adds a new city                              | endpoint for city |
+| DELETE | /v1.0/cities/{id}                | Delete a specific city                       | 204 NoContent     |
+|        |                                  |                                              |                   |
+|        |                                  |                                              |                   |
+|        |                                  |                                              |                   |
+|        |                                  |                                              |                   |
+
+
 
 /Cities/name = \<name> & includeAttractions = \<bool> **HATEOAS?**
 
 /Cities/name = \<name> & includeAttractions = \<bool> & minRating = int (1-5) || maxRating = int (1-5) **HATEOAS?**
 
-/Cities/name = \<name> & minPopulation = <int> & maxPopulation = <int>
+**Attraction**
 
-
-
-**Attraction **
-
-/Attractions/
-
-/Attractions/name = \<name> || <id>
-
-/Attractions/childFriendly = \<bool>
-
-/Attractions/rating = \<int> 
-
-/Attractions/minRating = \<int> & maxRating = \<int> 
+| Method | Usage                                                        | Returns    |
+| ------ | ------------------------------------------------------------ | ---------- |
+| GET    | /api/v1.0/attractions                                        | attraction |
+| GET    | /api/v1.0/attractions/name=<name>                            | attraction |
+| GET    | /api/v1.0/attractions/childFriendly = <bool>                 | attraction |
+| GET    | /api/v1.0/attraction/minrating=<int>                         | attraction |
+| GET    | /api/v1.0/attraction/minrating=<int>&maxrating=<int>         | attraction |
+| GET    | /api/v1.0/attraction/maxrating=<int>                         | attraction |
+| GET    | /api/v1.0/attraction/minrating=<int>&maxrating=<int>         | attraction |
+| GET    | /api/v1.0/Attractions?includeCities=<bool>                   | attraction |
+| GET    | /api/v1.0/Attractions?isChildFriendly=<bool>                 | attraction |
+| GET    | /api/v1.0/Attractions?includeCities=<bool>&isChildFriendly=<bool> | attraction |
+| GET    | /api/v1.0/Attractions?minRating=<int>&maxRating=<int>&includeCities=<bool>&isChildFriendly=<bool> | attraction |
+| PUT    | /api/v1.0/Attractions/<int>                                  | attraction |
+| DELETE | /api/v1.0/Attractions/<int>                                  | attraction |
+| POST   | /api/v1.0/Attractions                                        | attraction |
 
 
 
@@ -57,6 +74,13 @@ Include CountryInfo via HATEOAS
 /Countries/Info/   (Get All)
 
 /Countries/Info/id = <id>
+
+| Method | EndPoint                   | Usage                                     | Returns          |
+| ------ | -------------------------- | ----------------------------------------- | ---------------- |
+| GET    | api/v1.0/Country/Info      | Gets all Country Info                     | All Country Info |
+| GET    | api/v1.0/Country/Info/{id} | Gets a Country Info by ID                 | Country Info     |
+| POST   | api/v1.0/Country/Info      | Adds new Country Info                     |                  |
+| PUT    | api/v1.0/Country/Info/{id} | Changes values to a specific Country Info | 204 NoContent    |
 
 
 

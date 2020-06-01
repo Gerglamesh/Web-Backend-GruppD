@@ -16,7 +16,10 @@ namespace TravelAPI.Services
                 .ReverseMap();
 
             CreateMap<CountryModel, CountryDto>()
-                .ReverseMap();
+                .ReverseMap()
+                .ForMember(i => i.CountryInfo, o => o.Ignore())
+                .ForMember(c => c.Cities, o => o.Ignore())
+                .ForMember(t => t.TravelRestriction, o => o.Ignore());
 
             CreateMap<CountryInfoModel, CountryInfoDto>()
                 .ReverseMap();

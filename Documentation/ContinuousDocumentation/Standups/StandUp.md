@@ -958,7 +958,7 @@ What will Oskar do today
 
 * put och delete på country. Och kika på HATEOAS
 
-# SKRIV DATUM 
+# 27/5 
 
 ### Yesterday
 
@@ -1014,9 +1014,7 @@ What will Oskar 2 do today
 * Göra klart Post/Put/delete för country
 * Formatera country request i request.md
 
-
-
-# SKRIV DATUM 
+# 28/5 Oscar K
 
 ### Yesterday
 
@@ -1024,389 +1022,41 @@ What did All Do
 
 * 
 
-What did Irvin yesterday
+What did Eric yesterday
 
-* 
-* 
+* Implemmentera Swagger
 
-What did Jakob yesterday
+What did Oscar k do yesterday
 
-* 
+* Fick en allergisk reaktion och fick inget gjort.
 
-What did Mirko yesterday
+What will Oskar M do yesterday
 
-* 
+* Put/Post/Delete för Country
 
-What did Hampus yesterday
+What did Benjamin do yesterday
 
-* 
-
-* 
-
-  
-
-* 
+* försökte implemmentera HATEOAS
+* Delete Request för Cities
 
 =======================
 
 ### Today
 
-What will All do today
+What will Eric do today
 
-* 
+* Fixa Post/put/delete för AttractionsController
 
-What will Irvin do today
+What will Benjamin do today
 
-* 
+* IncludeAttractions för Cities
 
-What will Mirko do today
+What will Oscar K do today
 
-* * 
+* Fixa put/post för Countryinfo
 
-What will Jakob do today
+What will Oskar 2 do today
 
-* 
+* IncludeAttractions/IncludeRating för Countries
 
-What will Hampus do today
 
-* 
-
-
-
-# SKRIV DATUM 
-
-### Yesterday
-
-What did All Do
-
-* 
-
-What did Irvin yesterday
-
-* 
-* 
-
-What did Jakob yesterday
-
-* 
-
-What did Mirko yesterday
-
-* 
-
-What did Hampus yesterday
-
-* 
-
-* 
-
-  
-
-* 
-
-=======================
-
-### Today
-
-What will All do today
-
-* 
-
-What will Irvin do today
-
-* 
-
-What will Mirko do today
-
-* * 
-
-What will Jakob do today
-
-* 
-
-What will Hampus do today
-
-* 
-
-# SKRIV DATUM 
-
-### Yesterday
-
-What did All Do
-
-* 
-
-What did Irvin yesterday
-
-* 
-* 
-
-What did Jakob yesterday
-
-* 
-
-What did Mirko yesterday
-
-* 
-
-What did Hampus yesterday
-
-* 
-
-* 
-
-  
-
-* 
-
-=======================
-
-### Today
-
-What will All do today
-
-* 
-
-What will Irvin do today
-
-* 
-
-What will Mirko do today
-
-* * 
-
-What will Jakob do today
-
-* 
-
-What will Hampus do today
-
-* 
-
-
-
-# SKRIV DATUM 
-
-### Yesterday
-
-What did All Do
-
-* 
-
-What did Irvin yesterday
-
-* 
-* 
-
-What did Jakob yesterday
-
-* 
-
-What did Mirko yesterday
-
-* 
-
-What did Hampus yesterday
-
-* 
-
-* 
-
-  
-
-* 
-
-=======================
-
-### Today
-
-What will All do today
-
-* 
-
-What will Irvin do today
-
-* 
-
-What will Mirko do today
-
-* * 
-
-What will Jakob do today
-
-* 
-
-What will Hampus do today
-
-* 
-
-
-
-# SKRIV DATUM 
-
-### Yesterday
-
-What did All Do
-
-* 
-
-What did Irvin yesterday
-
-* 
-* 
-
-What did Jakob yesterday
-
-* 
-
-What did Mirko yesterday
-
-* 
-
-What did Hampus yesterday
-
-* 
-
-* 
-
-  
-
-* 
-
-=======================
-
-### Today
-
-What will All do today
-
-* 
-
-What will Irvin do today
-
-* 
-
-What will Mirko do today
-
-* * 
-
-What will Jakob do today
-
-* 
-
-What will Hampus do today
-
-* 
-
-
-
-# SKRIV DATUM 
-
-### Yesterday
-
-What did All Do
-
-* 
-
-What did Irvin yesterday
-
-* 
-* 
-
-What did Jakob yesterday
-
-* 
-
-What did Mirko yesterday
-
-* 
-
-What did Hampus yesterday
-
-* 
-
-* 
-
-  
-
-* 
-
-=======================
-
-### Today
-
-What will All do today
-
-* 
-
-What will Irvin do today
-
-* 
-
-What will Mirko do today
-
-* * 
-
-What will Jakob do today
-
-* 
-
-What will Hampus do today
-
-* 
-
-
-
-# SKRIV DATUM 
-
-### Yesterday
-
-What did All Do
-
-* 
-
-What did Irvin yesterday
-
-* 
-* 
-
-What did Jakob yesterday
-
-* 
-
-What did Mirko yesterday
-
-* 
-
-What did Hampus yesterday
-
-* 
-
-* 
-
-  
-
-* 
-
-=======================
-
-### Today
-
-What will All do today
-
-* 
-
-What will Irvin do today
-
-* 
-
-What will Mirko do today
-
-* * 
-
-What will Jakob do today
-
-* 
-
-What will Hampus do today
-
-* 

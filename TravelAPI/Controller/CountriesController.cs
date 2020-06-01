@@ -51,25 +51,21 @@ namespace TravelAPI.Controller
         }
 
         [HttpGet("search={name}")]
-        public async Task<ActionResult<CountryDto>> GetCountryByName(
+        public async Task<ActionResult<CountryDto[]>> GetCountryByName(
             string name = "",
             [FromQuery]bool includeCities = false,
-            [FromQuery]bool includeTravelRestrictions = false,
-            [FromQuery]bool isRightHandTraffic = false,
-            [FromQuery]bool isLeftHandTraffic = false)
+            [FromQuery]bool includeTravelRestrictions = false)
         {
             try
             {
-                var result = await _countryRepo.GetCountryByName
+                var results = await _countryRepo.GetCountryByName
                 (
                     name,
                     includeCities,
-                    includeTravelRestrictions,
-                    isRightHandTraffic,
-                    isLeftHandTraffic
+                    includeTravelRestrictions
                 );
 
-                var mappedResult = _mapper.Map<CountryDto>(result);
+                var mappedResult = _mapper.Map<CountryDto[]>(results);
                 return Ok(mappedResult);
             }
             catch (Exception e)
@@ -82,9 +78,7 @@ namespace TravelAPI.Controller
         public async Task<ActionResult<CountryDto>> GetCountryById(
             int id,
             [FromQuery]bool includeCities = false,
-            [FromQuery]bool includeTravelRestrictions = false,
-            [FromQuery]bool isRightHandTraffic = false,
-            [FromQuery]bool isLeftHandTraffic = false)
+            [FromQuery]bool includeTravelRestrictions = false)
         {
             try
             {
@@ -92,9 +86,7 @@ namespace TravelAPI.Controller
                 (
                     id,
                     includeCities,
-                    includeTravelRestrictions,
-                    isRightHandTraffic,
-                    isLeftHandTraffic
+                    includeTravelRestrictions
                 );
 
                 if (result == null)
@@ -133,7 +125,7 @@ namespace TravelAPI.Controller
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<CountryDto>> PutEvent(int id, [FromBody]CountryDto countryDto)
+        public async Task<ActionResult<CountryDto>> ChangeCountryByID(int id, [FromBody]CountryDto countryDto)
         {
             try
             {
@@ -146,6 +138,32 @@ namespace TravelAPI.Controller
 
                 var newCountry = _mapper.Map(countryDto, oldCountry);
                 _countryRepo.Update(newCountry);
+
+                if (await _countryRepo.Save())
+                {
+                    return NoContent();
+                }
+            }
+            catch (Exception e)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
+            }
+            return BadRequest();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteCountryByID(int id)
+        {
+            try
+            {
+                var oldCountry = await _countryRepo.GetCountryById(id);
+
+                if (oldCountry == null)
+                {
+                    return NotFound($"Couldn't find any country with id: {id}");
+                }
+
+                _countryRepo.Delete(oldCountry);
 
                 if (await _countryRepo.Save())
                 {

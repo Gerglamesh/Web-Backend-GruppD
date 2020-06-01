@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using TravelAPI.Models;
 
@@ -14,11 +15,16 @@ namespace TravelAPI.Services
         {
             _travelApiContext = Context;
         }
-
         public async Task<ICollection<TravelRestrictionModel>> GetTravelRestrictions()
         {
             _logger.LogInformation("Getting Travel restrictions");
             return await _travelApiContext.Set<TravelRestrictionModel>().ToListAsync();
+        }
+        public async Task<TravelRestrictionModel> GetTravelRestrictionByID(int id)
+        {
+            var query = _travelAPIContext.TravelRestrictions
+                .Where(q => q.TravelRestrictionId == id);
+            return await query.SingleOrDefaultAsync();
         }
     }
 }
