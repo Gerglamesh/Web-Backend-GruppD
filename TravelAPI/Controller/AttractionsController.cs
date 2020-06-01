@@ -6,6 +6,7 @@ using TravelAPI.Services;
 using AutoMapper;
 using TravelAPI.DTO;
 using TravelAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TravelAPI.Controller
 {
@@ -23,6 +24,7 @@ namespace TravelAPI.Controller
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<AttractionDto[]>> GetAttractions(
             [FromQuery]int minRating,
             [FromQuery]int maxRating,
