@@ -21,7 +21,8 @@ namespace TravelAPI.Services
 
             if (includeCoutry)
             {
-                query.Include(c => c.Country);
+                query = query.AsNoTracking()
+                    .Include(c => c.Country);
             }
 
             if (minPopulation > 0 && maxPopulation > 0)

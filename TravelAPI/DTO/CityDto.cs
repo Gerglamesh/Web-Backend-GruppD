@@ -20,7 +20,7 @@ namespace TravelAPI.DTO
         public IEnumerable<Link> Attractions { get; set; } = null;
         public IEnumerable<Link> Links { get; set; }
 
-        public void Add(IEnumerable<Link> links, IEnumerable<Link> attractionLinks)
+        public void Add(IEnumerable<Link> links, IEnumerable<Link> attractionLinks = null)
         {
             Links = links;
             Attractions = attractionLinks;
