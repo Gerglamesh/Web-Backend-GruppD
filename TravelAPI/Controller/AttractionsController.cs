@@ -24,7 +24,6 @@ namespace TravelAPI.Controller
         }
 
         [HttpGet]
-        [Authorize]
         public async Task<ActionResult<AttractionDto[]>> GetAttractions(
             [FromQuery]int minRating,
             [FromQuery]int maxRating,
@@ -73,7 +72,7 @@ namespace TravelAPI.Controller
             }
         }
 
-
+        [Authorize]
         [HttpPut("{attractionid}")]
         public async Task<ActionResult<AttractionDto>> PutAttraction(int attractionid, [FromBody] AttractionDto attractionDto)
         {
@@ -98,6 +97,7 @@ namespace TravelAPI.Controller
             return BadRequest();
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<AttractionDto>> PostAttraction(AttractionDto attractionDto)
         {
@@ -118,7 +118,7 @@ namespace TravelAPI.Controller
             return BadRequest();
         }
 
-
+        [Authorize]
         [HttpDelete("{attractionid}")]
         public async Task<ActionResult<AttractionDto>> DeleteAttraction(int attractionid)
         {
