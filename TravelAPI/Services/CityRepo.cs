@@ -63,6 +63,7 @@ namespace TravelAPI.Services
             IQueryable<CityModel> query = _travelAPIContext.Cities.Where(n => n.Name == name);
 
             return await Include(query, includeCountries)
+                .Include(x => x.Attractions)
                 .OrderBy(c => c.Name)
                 .SingleOrDefaultAsync();
         }
@@ -73,6 +74,7 @@ namespace TravelAPI.Services
             IQueryable<CityModel> query = _travelAPIContext.Cities.Where(i => i.CityId == cityId);
 
             return await Include(query, includeCountries)
+                .Include(x => x.Attractions)
                 .OrderBy(c => c.CityId)
                 .SingleOrDefaultAsync();
         }
@@ -83,6 +85,7 @@ namespace TravelAPI.Services
             IQueryable<CityModel> query = _travelAPIContext.Cities.Where(n => n.Name.Contains(keyword));
 
             return await Include(query, includeCountries)
+                .Include(x => x.Attractions)
                 .OrderBy(c => c.Name)
                 .ToArrayAsync();
         }

@@ -46,7 +46,7 @@ namespace TravelAPI.Controller
                 for (var index = 0; index < mappedCities.Count(); index++)
                 {
                     var cityLinks = CreateLinksForCities(mappedCities[index].CityId);
-                    var attractionLinks = CreateLinksForCityAttractions(cities[index], mappedCities[index]);
+                    var attractionLinks = CreateLinksForCityAttractions(cities[index]);
 
                     mappedCities[index].Add(cityLinks, attractionLinks);
                 }
@@ -65,13 +65,18 @@ namespace TravelAPI.Controller
         {
             try
             {
-                var result = await _cityRepo.GetCityById(id, includeCountries);
+                var city = await _cityRepo.GetCityById(id, includeCountries);
 
-                if (result == null) return NotFound($"Couldn't find any cities with ID: {id}");
+                if (city == null) return NotFound($"Couldn't find any cities with ID: {id}");
                 
-                var mappedResult = _mapper.Map<CityDto>(result);
+                var mappedCity = _mapper.Map<CityDto>(city);
 
-                return Ok(mappedResult);
+                var cityLinks = CreateLinksForCity(mappedCity.CityId);
+                var attractionLinks = CreateLinksForCityAttractions(city);
+
+                mappedCity.Add(cityLinks, attractionLinks);
+
+                return Ok(mappedCity);
             }
             catch (Exception e)
             {
@@ -183,27 +188,61 @@ namespace TravelAPI.Controller
             return BadRequest();
         }
 
-        private IEnumerable<Link> CreateLinksForCities(int cityId)
+        private IEnumerable<Link> CreateLinksForCity(int cityId)
         {
+            string currentUrl = Request.GetDisplayUrl();
+            int count = cityId.ToString().Length;
+
             var links = new List<Link>
             {
-                new Link(Request.GetDisplayUrl()+ $"/{cityId}",
+                new Link(currentUrl,
                 "self",
-                Request.Method),
-
-                new Link(Request.GetDisplayUrl()+ $"/{cityId}",
-                "get_cities",
                 "GET"),
 
-                new Link(Request.GetDisplayUrl(),
+                new Link(currentUrl.Remove(currentUrl.Length -1, count),
+                "get_cities",
+                Request.Method),
+
+
+                new Link(currentUrl,
                 "post_cities",
                 "POST"),
 
-                 new Link(Request.GetDisplayUrl() + $"/{cityId}",
+                 new Link(currentUrl,
                 "put_cities",
                 "PUT"),
 
-                 new Link(Request.GetDisplayUrl() + $"/{cityId}",
+                 new Link(currentUrl,
+                "delete_city",
+                "DELETE")
+            };
+
+            return links;
+        }
+        private IEnumerable<Link> CreateLinksForCities(int cityId)
+        {
+            string currentUrl = Request.GetDisplayUrl();
+            int count = cityId.ToString().Length;
+
+            var links = new List<Link>
+            {
+                new Link($"{currentUrl}/{cityId}",
+                "self",
+                Request.Method),
+
+                new Link(currentUrl,
+                "get_cities",
+                "GET"),
+
+                new Link(currentUrl,
+                "post_cities",
+                "POST"),
+
+                 new Link($"{currentUrl}/{cityId}",
+                "put_cities",
+                "PUT"),
+
+                 new Link($"{currentUrl}/{cityId}",
                 "delete_city",
                 "DELETE")
             };
@@ -211,17 +250,21 @@ namespace TravelAPI.Controller
             return links;
         }
 
-        private IEnumerable<Link> CreateLinksForCityAttractions(CityModel citymodel, CityDto mappedCities)
+
+
+        private IEnumerable<Link> CreateLinksForCityAttractions(CityModel citymodel)
         {
             var links = new List<Link>();
 
-            foreach (var attraction in citymodel.Attractions)
+            if (citymodel.Attractions != null)
             {
-                links.Add(new Link($"http://localhost:50615/attractions/{attraction.AttractionId}", "self", "GET"));
+                foreach (var attraction in citymodel.Attractions)
+                {
+                    links.Add(new Link($"http://localhost:50615/attractions/{attraction.AttractionId}", "self", "GET"));
+                }
             }
 
             return links;
         }
-
     }
 }
