@@ -9,15 +9,37 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TravelAPI.Services;
 using AutoMapper;
+using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace TravelAPI
 {
     public class Startup
     {
+        
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            //var config = new ConfigurationBuilder()
+            //    .AddJsonFile("appsettings.json")
+            //    .Build();
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+                //options.Authority = $"https://{configuration["Auth0:Domain"]}/";
+                //options.Audience =  configuration["Auth0:Audience"];
+            });
+            services.AddControllers()
+                .AddNewtonsoftJson(options =>
+                {
+                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                });
+
             services.AddDbContext<TravelAPIContext>();
             services.AddScoped<ICountryRepo, CountryRepo>();
             services.AddScoped<ICityRepo, CityRepo>();
@@ -28,11 +50,6 @@ namespace TravelAPI
 
             services.AddMvc(options => options.EnableEndpointRouting = false).SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
 
-            services.AddControllers()
-                .AddNewtonsoftJson(options =>
-                {
-                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-                });
 
             services.AddSwaggerGen(c => c.SwaggerDoc("v1", new Info { Title = "Travel API", Version = "v1" }));
         }
@@ -50,6 +67,15 @@ namespace TravelAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseHttpsRedirection();
+            app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
 
             app.UseMvc();
 
