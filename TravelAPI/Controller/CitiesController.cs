@@ -1,9 +1,18 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Sockets;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using TravelAPI.DTO;
+using TravelAPI.Hateoas;
 using TravelAPI.Models;
 using TravelAPI.Services;
 
@@ -24,15 +33,25 @@ namespace TravelAPI.Controller
 
         //GET: api/v1.0/cities/                                 Get all cities
         [HttpGet]
-        public async Task<ActionResult<CityModel[]>> GetCities(
+        public async Task<ActionResult<CityDto[]>> GetCities(
             [FromQuery] bool includeCountry = false,
             [FromQuery] int minPopulation = 0,
             [FromQuery] int maxPopulation = 0)
         {
             try
             {
-                var results = await _cityRepo.GetCities(includeCountry, minPopulation, maxPopulation);
-                return Ok(results);
+                var cities = await _cityRepo.GetCities(includeCountry, minPopulation, maxPopulation);
+                var mappedCities = _mapper.Map<CityDto[]>(cities);
+
+                for (var index = 0; index < mappedCities.Count(); index++)
+                {
+                    var cityLinks = CreateLinksForCities(mappedCities[index].CityId);
+                    var attractionLinks = CreateLinksForCityAttractions(cities[index]);
+
+                    mappedCities[index].Add(cityLinks, attractionLinks);
+                }
+
+                return Ok(mappedCities);
             }
             catch (Exception e)
             {
@@ -46,13 +65,18 @@ namespace TravelAPI.Controller
         {
             try
             {
-                var result = await _cityRepo.GetCityById(id, includeCountries);
+                var city = await _cityRepo.GetCityById(id, includeCountries);
 
-                if (result == null) return NotFound($"Couldn't find any cities with ID: {id}");
+                if (city == null) return NotFound($"Couldn't find any cities with ID: {id}");
                 
-                var mappedResult = _mapper.Map<CityDto>(result);
+                var mappedCity = _mapper.Map<CityDto>(city);
 
-                return Ok(mappedResult);
+                var cityLinks = CreateLinksForCity(mappedCity.CityId);
+                var attractionLinks = CreateLinksForCityAttractions(city);
+
+                mappedCity.Add(cityLinks, attractionLinks);
+
+                return Ok(mappedCity);
             }
             catch (Exception e)
             {
@@ -162,6 +186,85 @@ namespace TravelAPI.Controller
                 return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
             }
             return BadRequest();
+        }
+
+        private IEnumerable<Link> CreateLinksForCity(int cityId)
+        {
+            string currentUrl = Request.GetDisplayUrl();
+            int count = cityId.ToString().Length;
+
+            var links = new List<Link>
+            {
+                new Link(currentUrl,
+                "self",
+                "GET"),
+
+                new Link(currentUrl.Remove(currentUrl.Length -1, count),
+                "get_cities",
+                Request.Method),
+
+
+                new Link(currentUrl,
+                "post_cities",
+                "POST"),
+
+                 new Link(currentUrl,
+                "put_cities",
+                "PUT"),
+
+                 new Link(currentUrl,
+                "delete_city",
+                "DELETE")
+            };
+
+            return links;
+        }
+        private IEnumerable<Link> CreateLinksForCities(int cityId)
+        {
+            string currentUrl = Request.GetDisplayUrl();
+            int count = cityId.ToString().Length;
+
+            var links = new List<Link>
+            {
+                new Link($"{currentUrl}/{cityId}",
+                "self",
+                Request.Method),
+
+                new Link(currentUrl,
+                "get_cities",
+                "GET"),
+
+                new Link(currentUrl,
+                "post_cities",
+                "POST"),
+
+                 new Link($"{currentUrl}/{cityId}",
+                "put_cities",
+                "PUT"),
+
+                 new Link($"{currentUrl}/{cityId}",
+                "delete_city",
+                "DELETE")
+            };
+
+            return links;
+        }
+
+
+
+        private IEnumerable<Link> CreateLinksForCityAttractions(CityModel citymodel)
+        {
+            var links = new List<Link>();
+
+            if (citymodel.Attractions != null)
+            {
+                foreach (var attraction in citymodel.Attractions)
+                {
+                    links.Add(new Link($"http://localhost:50615/attractions/{attraction.AttractionId}", "self", "GET"));
+                }
+            }
+
+            return links;
         }
     }
 }

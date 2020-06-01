@@ -1,4 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using TravelAPI.Hateoas;
 
 namespace TravelAPI.DTO
 {
@@ -22,5 +25,10 @@ namespace TravelAPI.DTO
 
         //Relationships
         public CityDto City { get; set; }
+        public IEnumerable<Link> Links { get; set; }
+        public void Add(IEnumerable<Link> links)
+        {
+            Links = links;
+        }
     }
 }

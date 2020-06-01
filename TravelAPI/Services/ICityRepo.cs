@@ -6,7 +6,7 @@ namespace TravelAPI.Services
 {
     public interface ICityRepo : IRepository
     {
-        Task<ICollection<CityModel>> GetCities(
+        Task<CityModel[]> GetCities(
             bool includeCoutry = false,
             int minPopulation = 0,
             int maxPopulation = 0);
