@@ -1059,4 +1059,26 @@ What will Oskar 2 do today
 
 * IncludeAttractions/IncludeRating för Countries
 
+# 1/6 Oskar M
 
+### Today
+
+What will all Do
+
+* Fyll på backlog
+
+What will Eric do today
+
+* Authentication
+
+What will Benjamin do today
+
+* HATEOAS, Authentication
+
+What will Oscar K do today
+
+* Authentication
+
+What will Oskar 2 do today
+
+* HATEOAS Get countries include attractions, Authentication
