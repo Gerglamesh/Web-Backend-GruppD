@@ -59,7 +59,6 @@ namespace TravelAPI.Controller
             }
         }
 
-
         //GET: api/v1.0/cities/1                                 Get cities by id
         [HttpGet("{id}")]
         public async Task<ActionResult<CityDto>> GetCityById(int id, [FromQuery] bool includeCountries = false)
