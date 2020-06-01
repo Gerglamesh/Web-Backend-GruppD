@@ -17,11 +17,13 @@ namespace TravelAPI.DTO
         [Range(1, 2147483647, ErrorMessage = "Value for {0} must be between {1} and {2}")] 
         public int Population { get; set; }
         public CountryDto Country { get; set; }
+        public IEnumerable<Link> Attractions { get; set; } = null;
         public IEnumerable<Link> Links { get; set; }
 
-        public void Add(IEnumerable<Link> links)
+        public void Add(IEnumerable<Link> links, IEnumerable<Link> attractionLinks)
         {
             Links = links;
+            Attractions = attractionLinks;
         }
     }
 }

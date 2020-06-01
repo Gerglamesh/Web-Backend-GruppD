@@ -51,6 +51,7 @@ namespace TravelAPI.Services
             IQueryable<CityModel> query = _travelAPIContext.Cities;
   
             return await Include(query, includeCoutry, minPopulation, maxPopulation)
+                .Include(x => x.Attractions)
                 .OrderBy(c => c.CityId)
                 .ToArrayAsync();
         }

@@ -12,6 +12,7 @@ namespace TravelAPI.Services
                 .ReverseMap();
                 
             CreateMap<CityModel, CityDto>()
+                .ForMember(x => x.Attractions, opt => opt.Ignore())
                 .ReverseMap();
 
             CreateMap<CountryModel, CountryDto>()
