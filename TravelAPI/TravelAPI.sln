@@ -5,7 +5,12 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelAPI", "TravelAPI.csproj", "{B1997656-DD94-4802-8E64-27E2D0846C25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelAPITests", "..\TravelAPITests\TravelAPITests.csproj", "{69756118-A45E-4AB7-AE46-CCE974949C98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelAPITests", "..\TravelAPITests\TravelAPITests.csproj", "{69756118-A45E-4AB7-AE46-CCE974949C98}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6B2F6C6E-E598-46B6-AD28-F74626A6983E}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

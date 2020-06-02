@@ -12,6 +12,8 @@ namespace TravelAPI.Controller
 {
     [Route("api/v1.0/[controller]")]
     [ApiController]
+
+    
     public class AttractionsController : ControllerBase
     {  
        private readonly IAttractionRepo _attractionRepo;
@@ -23,6 +25,16 @@ namespace TravelAPI.Controller
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Show all attractions.
+        /// </summary>
+        /// /// <remarks>
+        /// 1.Include Cities to see all attractions and where the attraction is located.<br/>
+        /// 2.Include isChildFriendly to see all the attractions that is ChildFriendly.<br/>
+        /// 3.If you put a number in minRating you will get attractions with the minimum rating.<br/>
+        /// 4.If you put a number in maxRating you will get attractions with the maxumim rating.<br/>
+        /// 5.If you put a number in both minRating and maxRating you will get attractions with the rating between the two numbers.<br/>
+        /// </remarks>
         [HttpGet]
         public async Task<ActionResult<AttractionDto[]>> GetAttractions(
             [FromQuery]int minRating,
@@ -42,6 +54,10 @@ namespace TravelAPI.Controller
             }
         }
 
+
+        /// <summary>
+        /// Show one attraction by its ID.
+        /// </summary>
         [HttpGet("{id:int}")]
         public async Task<ActionResult<AttractionDto>> GetAttractionByID(int id)
         {
@@ -57,6 +73,9 @@ namespace TravelAPI.Controller
             }
         }
 
+        /// <summary>
+        /// Show attraction by its name.
+        /// </summary>
         [HttpGet("{name}")]
         public async Task<ActionResult<AttractionDto>> GetAttractionByName(string name)
         {
@@ -72,6 +91,13 @@ namespace TravelAPI.Controller
             }
         }
 
+
+        /// <summary>
+        /// Change the conten of a attraction by ID.
+        /// </summary>
+        /// <remarks>
+        /// You need to get the authorization token to make this request.
+        /// </remarks>
         [Authorize]
         [HttpPut("{attractionid}")]
         public async Task<ActionResult<AttractionDto>> PutAttraction(int attractionid, [FromBody] AttractionDto attractionDto)
@@ -97,6 +123,13 @@ namespace TravelAPI.Controller
             return BadRequest();
         }
 
+
+        /// <summary>
+        /// Add a new attraction to database.
+        /// </summary>
+        /// <remarks>
+        /// You need to get the authorization token to make this request.
+        /// </remarks>
         [Authorize]
         [HttpPost]
         public async Task<ActionResult<AttractionDto>> PostAttraction(AttractionDto attractionDto)
@@ -118,6 +151,13 @@ namespace TravelAPI.Controller
             return BadRequest();
         }
 
+
+        /// <summary>
+        /// Delete attraction by ID.
+        /// </summary>
+        /// <remarks>
+        /// You need to get the authorization token to make this request.
+        /// </remarks>
         [Authorize]
         [HttpDelete("{attractionid}")]
         public async Task<ActionResult<AttractionDto>> DeleteAttraction(int attractionid)
