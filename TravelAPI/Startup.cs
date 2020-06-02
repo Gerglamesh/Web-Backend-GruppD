@@ -70,6 +70,17 @@ namespace TravelAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseHsts();
+            }
+            app.UseStatusCodePages(async context =>
+            {
+                if (context.HttpContext.Response.StatusCode == 401)
+                {
+                    await context.HttpContext.Response.WriteAsync("You lack the correct token, contact the API admin for access");
+                }
+            });
 
             app.UseHttpsRedirection();
             app.UseRouting();

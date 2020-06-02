@@ -23,6 +23,7 @@ namespace TravelAPI.Controller
             _mapper = mapper;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<AttractionDto[]>> GetAttractions(
             [FromQuery]int minRating,
