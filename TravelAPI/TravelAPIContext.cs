@@ -1,5 +1,4 @@
-﻿using EngineClasses;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using TravelAPI.Models;
 
@@ -26,7 +25,7 @@ namespace TravelAPI
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(ConnectionSetup.GetConnectionString());
+            optionsBuilder.UseSqlServer(_travelConfig.GetConnectionString("DefaultConnection"));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
