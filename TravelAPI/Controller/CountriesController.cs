@@ -6,6 +6,10 @@ using TravelAPI.Services;
 using AutoMapper;
 using TravelAPI.DTO;
 using TravelAPI.Models;
+using System.Linq;
+using TravelAPI.Hateoas;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Http.Extensions;
 
 namespace TravelAPI.Controller
 {
@@ -22,35 +26,36 @@ namespace TravelAPI.Controller
             _mapper = mapper;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<CountryDto[]>> GetCountries(
+    [HttpGet]
+    public async Task<ActionResult<CountryDto[]>> GetCountries(
             [FromQuery]bool includeCities = false,
             [FromQuery]bool includeTravelRestrictions = false,
             [FromQuery]bool isRightHandTraffic = false,
             [FromQuery]bool isLeftHandTraffic = false,
             [FromQuery]string language = "")
+    {
+        try
         {
-            try
-            {
-                var results = await _countryRepo.GetCountries
-                (
-                    includeCities,
-                    includeTravelRestrictions,
-                    isRightHandTraffic,
-                    isLeftHandTraffic,
-                    language
-                );
+            var countries = await _countryRepo.GetCountries(includeCities, includeTravelRestrictions, isRightHandTraffic, isLeftHandTraffic, language);
+            var mappedCountries = _mapper.Map<CountryDto[]>(countries);
 
-                var mappedResult = _mapper.Map<CountryDto[]>(results);
-                return Ok(mappedResult);
-            }
-            catch (Exception e)
+            for (var i = 0; i < mappedCountries.Count(); i++)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
+                var countryLinks = CreateLinksForCountries(mappedCountries[i].CountryId);
+                var attractionLinks = CreateLinksForCountryAttractions(countries[i]);
+
+                    mappedCountries[i].Add(countryLinks, attractionLinks);
             }
+
+            return Ok(mappedCountries);
         }
+        catch (Exception e)
+        {
+            return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
+        }
+    }
 
-        [HttpGet("search={name}")]
+    [HttpGet("search={name}")]
         public async Task<ActionResult<CountryDto[]>> GetCountryByName(
             string name = "",
             [FromQuery]bool includeCities = false,
@@ -175,6 +180,54 @@ namespace TravelAPI.Controller
                 return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
             }
             return BadRequest();
+        }
+
+        private IEnumerable<Link> CreateLinksForCountries(int countryId)
+        {
+            string currentUrl = Request.GetDisplayUrl();
+            int count = countryId.ToString().Length;
+
+            var links = new List<Link>
+            {
+                new Link($"{currentUrl}/{countryId}",
+                "self",
+                Request.Method),
+
+                new Link(currentUrl,
+                "get_countries",
+                "GET"),
+
+                new Link(currentUrl,
+                "post_countries",
+                "POST"),
+
+                new Link($"{currentUrl}/{countryId}",
+                "put_countries",
+                "PUT"),
+
+                new Link($"{currentUrl}/{countryId}",
+                "delete_country",
+                "DELETE")
+            };
+            return links;
+        }
+
+        private IEnumerable<Link> CreateLinksForCountryAttractions(CountryModel countrymodel)
+        {
+            var links = new List<Link>();
+
+            foreach(var city in countrymodel.Cities)
+            {
+                if(city.Attractions != null)
+                {
+                    foreach(var attraction in city.Attractions)
+                    {
+                        links.Add(new Link($"http://localhost:50615/attractions/{attraction.AttractionId}", "self", "GET"));
+                    }
+                }
+            }
+
+            return links;
         }
     }
 }
