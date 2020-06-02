@@ -11,6 +11,7 @@ using TravelAPI.Services;
 using AutoMapper;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.IO;
 
 namespace TravelAPI
 {
@@ -22,7 +23,7 @@ namespace TravelAPI
         }
 
         public IConfiguration Configuration { get; }
-        
+
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
@@ -54,11 +55,21 @@ namespace TravelAPI
             services.AddMvc(options => options.EnableEndpointRouting = false).SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
 
 
-            services.AddSwaggerGen(c => c.SwaggerDoc("v1", new Info { Title = "Travel API", Version = "v1" }));
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info
+                {
+                    Title = "TravelApi",
+                    Version = "v1",
+                });
+
+                var xmlFile = Path.ChangeExtension(typeof(Startup).Assembly.Location, ".xml");
+                c.IncludeXmlComments(xmlFile);
+            });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+            // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseSwagger();
             app.UseSwaggerUI(c =>
