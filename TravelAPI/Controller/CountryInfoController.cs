@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Update;
@@ -56,6 +57,7 @@ namespace TravelAPI.Controller
             }
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<CountryInfoDto>> PostCountry(CountryInfoDto countryInfoDto)
         {
@@ -76,6 +78,8 @@ namespace TravelAPI.Controller
 
             return BadRequest();
         }
+
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<ActionResult<CountryInfoDto>> ChangeCountryInfoByID(int id, [FromBody]CountryInfoDto countryInfoDto)
         {
