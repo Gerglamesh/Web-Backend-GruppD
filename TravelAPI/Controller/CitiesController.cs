@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
@@ -32,6 +33,7 @@ namespace TravelAPI.Controller
         }
 
         //GET: api/v1.0/cities/                                 Get all cities
+
         [HttpGet]
         public async Task<ActionResult<CityDto[]>> GetCities(
             [FromQuery] bool includeCountry = false,
@@ -125,6 +127,7 @@ namespace TravelAPI.Controller
         }
 
         //PUT: api/v1.0/city                                     POST City
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<CityDto>> PostEvent([FromBody] CityDto cityDto)
         {
@@ -146,6 +149,7 @@ namespace TravelAPI.Controller
         }
 
         //PUT: api/v1.0/flights/1                                 PUT City
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<ActionResult<CityDto>> ChangeCityByID(int id, [FromBody] CityDto cityDto)
         {
@@ -168,6 +172,7 @@ namespace TravelAPI.Controller
         }
 
         //Delete: api/v1.0/cities/1                                Delete City
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteCityByID(int id)
         {
@@ -249,8 +254,6 @@ namespace TravelAPI.Controller
 
             return links;
         }
-
-
 
         private IEnumerable<Link> CreateLinksForCityAttractions(CityModel citymodel)
         {
