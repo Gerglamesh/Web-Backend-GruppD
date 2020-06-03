@@ -1082,3 +1082,31 @@ What will Oscar K do today
 What will Oskar 2 do today
 
 * HATEOAS Get countries include attractions, Authentication
+
+
+
+# 2/6 Oskar M
+
+### Today
+
+What will all Do
+
+* njuta av sommaren som är här
+
+What will Eric do today
+
+* Fyll i enkäten
+
+What will Benjamin do today
+
+* Kommentera lite xml-kommentarer till swagger
+* Fyll i enkäten
+
+What will Oscar K do today
+
+* Fyll i enkäten
+
+What will Oskar 2 do today
+
+* Fyll i enkäten
+* Implementera auth
