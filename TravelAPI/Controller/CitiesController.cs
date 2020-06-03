@@ -32,8 +32,14 @@ namespace TravelAPI.Controller
             _mapper = mapper;
         }
 
-        //GET: api/v1.0/cities/                                 Get all cities
-
+        /// <summary>
+        /// Get all Cities.
+        /// </summary>
+        /// /// <remarks>
+        /// Use "?includeCountry" to get the relational data from the country where the city is located.<br/>
+        /// Use "minPopulation={int}" to get all cities with a population higher than the number entered.<br/>
+        /// Use "maxPopulation={int}" to get all cities with a population lower than the number entered.<br/>
+        /// </remarks>
         [HttpGet]
         public async Task<ActionResult<CityDto[]>> GetCities(
             [FromQuery] bool includeCountry = false,
@@ -61,7 +67,12 @@ namespace TravelAPI.Controller
             }
         }
 
-        //GET: api/v1.0/cities/1                                 Get cities by id
+        /// <summary>
+        /// Get one city by ID.
+        /// </summary>
+        /// /// /// <remarks>
+        /// Use "?includeCountry" to get the relational data from the country where the city is located.<br/>
+        /// </remarks>
         [HttpGet("{id}")]
         public async Task<ActionResult<CityDto>> GetCityById(int id, [FromQuery] bool includeCountries = false)
         {
@@ -86,7 +97,12 @@ namespace TravelAPI.Controller
             }
         }
 
-        //GET: api/v1.0/cities/barbados                                 Get cities by name
+        /// <summary>
+        /// Gets a city by name.
+        /// </summary>
+        /// /// /// <remarks>
+        /// Use "?includeCountry" to get the relational data from the country where the city is located.<br/>
+        /// </remarks>
         [HttpGet("{name}")]
         public async Task<ActionResult<CityDto>> GetCityByName(string name, bool includeCountries = false)
         {
@@ -106,7 +122,12 @@ namespace TravelAPI.Controller
             }
         }
 
-        //GET: api/v1.0/cities/search=barb                                  Search cities containing keyword
+        /// <summary>
+        /// Searches the database for cities containing keyword(s).
+        /// </summary>
+        /// /// /// <remarks>
+        /// Use "?includeCountry" to get the relational data from the country where the city is located.<br/>
+        /// </remarks>
         [HttpGet("search={keyword}")]
         public async Task<ActionResult<CityDto[]>> SearchCityByName(string keyword, bool includeCountries = false)
         {
@@ -126,7 +147,12 @@ namespace TravelAPI.Controller
             }
         }
 
-        //PUT: api/v1.0/city                                     POST City
+        /// <summary>
+        /// Add a new City to database.
+        /// </summary>
+        /// <remarks>
+        /// You need to get the authorization token to make this request.
+        /// </remarks>
         [Authorize]
         [HttpPost]
         public async Task<ActionResult<CityDto>> PostEvent([FromBody] CityDto cityDto)
@@ -148,7 +174,12 @@ namespace TravelAPI.Controller
             return BadRequest();
         }
 
-        //PUT: api/v1.0/flights/1                                 PUT City
+        /// <summary>
+        /// Change the content of a city by ID.
+        /// </summary>
+        /// <remarks>
+        /// You need to get the authorization token to make this request.
+        /// </remarks>
         [Authorize]
         [HttpPut("{id}")]
         public async Task<ActionResult<CityDto>> ChangeCityByID(int id, [FromBody] CityDto cityDto)
@@ -171,7 +202,12 @@ namespace TravelAPI.Controller
             return BadRequest();
         }
 
-        //Delete: api/v1.0/cities/1                                Delete City
+        /// <summary>
+        /// Delete a city by ID.
+        /// </summary>
+        /// <remarks>
+        /// You need to get the authorization token to make this request.
+        /// </remarks>
         [Authorize]
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteCityByID(int id)
