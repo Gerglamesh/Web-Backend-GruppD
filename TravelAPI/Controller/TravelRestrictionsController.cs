@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -22,6 +23,9 @@ namespace TravelAPI.Controller
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Show all Travel Restrictions.
+        /// </summary>
         [HttpGet]
         public async Task<ActionResult<TravelRestrictionModel[]>> GetTravelRestrictions()
         {
@@ -37,6 +41,13 @@ namespace TravelAPI.Controller
             
         }
 
+        /// <summary>
+        /// Add a new Travel Restriction.
+        /// </summary>
+        /// <remarks>
+        /// You need to get the authorization token to make this request.
+        /// </remarks>
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<TravelRestrictionDto>> PostTravelRestriction([FromBody] TravelRestrictionDto travelRestrictionDto)
         {
@@ -54,6 +65,13 @@ namespace TravelAPI.Controller
             return BadRequest();
         }
 
+        /// <summary>
+        /// Change the content of a Travel Restriction, selected with ID.
+        /// </summary>
+        /// <remarks>
+        /// You need to get the authorization token to make this request.
+        /// </remarks>
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<ActionResult<TravelRestrictionDto>> ChangeTravelRestrictionByID(int id, [FromBody] TravelRestrictionDto travelRestrictionDto)
         {
