@@ -93,7 +93,7 @@ namespace TravelAPI.Controller
 
 
         /// <summary>
-        /// Change the conten of a attraction by ID.
+        /// Change the content of a attraction by ID.
         /// </summary>
         /// <remarks>
         /// You need to get the authorization token to make this request.

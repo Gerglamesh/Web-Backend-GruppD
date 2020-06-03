@@ -25,6 +25,9 @@ namespace TravelAPI.Controller
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Show all Country Info.
+        /// </summary>
         [HttpGet]
         public async Task<ActionResult<CountryInfoDto[]>> GetCountryInfo()
         {
@@ -39,6 +42,9 @@ namespace TravelAPI.Controller
             }
         }
 
+        /// <summary>
+        /// Show a Country Info by ID.
+        /// </summary>
         [HttpGet("{id:int}")]
         public async Task<ActionResult<CountryInfoDto>> GetCountryInfoByID(int id)
         {
@@ -57,6 +63,12 @@ namespace TravelAPI.Controller
             }
         }
 
+        /// <summary>
+        /// Add a new Country Info.
+        /// </summary>
+        /// <remarks>
+        /// You need to get the authorization token to make this request.
+        /// </remarks>
         [Authorize]
         [HttpPost]
         public async Task<ActionResult<CountryInfoDto>> PostCountry(CountryInfoDto countryInfoDto)
@@ -79,6 +91,12 @@ namespace TravelAPI.Controller
             return BadRequest();
         }
 
+        /// <summary>
+        /// Change the content of a Country Info, selected with ID.
+        /// </summary>
+        /// <remarks>
+        /// You need to get the authorization token to make this request.
+        /// </remarks>
         [Authorize]
         [HttpPut("{id}")]
         public async Task<ActionResult<CountryInfoDto>> ChangeCountryInfoByID(int id, [FromBody]CountryInfoDto countryInfoDto)
