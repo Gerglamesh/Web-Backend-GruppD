@@ -13,14 +13,14 @@ namespace TravelAPI.Services
 
         private static IQueryable<CountryModel> CountryQuery(IQueryable<CountryModel> query, bool includeCities, bool includeTravelRestrictions, bool isRightHandTraffic = false, bool isLeftHandTraffic = false)
         {
-            if (includeCities)
+             if (includeCities)
             {
                 query = query.Include(c => c.Cities);
             }
 
             if (includeTravelRestrictions)
             {
-              query = query.Include(c => c.TravelRestriction);
+                query = query.Include(c => c.TravelRestriction);
             }
 
             if (isRightHandTraffic)
@@ -54,7 +54,7 @@ namespace TravelAPI.Services
                 .Countries.Where(c => c.CountryInfo.Language.Contains(language))
                 .Include(i => i.CountryInfo);
 
-            query = CountryQuery(query, includeCities, isRightHandTraffic, includeTravelRestrictions, isLeftHandTraffic);
+            query = CountryQuery(query, includeCities, includeTravelRestrictions, isRightHandTraffic, isLeftHandTraffic);
 
             query = query.OrderBy(c => c.Name);
             return await query.ToArrayAsync();

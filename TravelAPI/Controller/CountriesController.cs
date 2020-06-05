@@ -10,6 +10,7 @@ using System.Linq;
 using TravelAPI.Hateoas;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Http.Extensions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TravelAPI.Controller
 {
@@ -25,37 +26,53 @@ namespace TravelAPI.Controller
             _countryRepo = countryRepo;
             _mapper = mapper;
         }
-
-    [HttpGet]
-    public async Task<ActionResult<CountryDto[]>> GetCountries(
-            [FromQuery]bool includeCities = false,
-            [FromQuery]bool includeTravelRestrictions = false,
-            [FromQuery]bool isRightHandTraffic = false,
-            [FromQuery]bool isLeftHandTraffic = false,
-            [FromQuery]string language = "")
-    {
-        try
+        /// <summary>
+        /// Get all Countries
+        /// </summary>
+        /// <remarks>
+        /// Use "?includeCities" to get the relational data from which cities is located in country
+        /// Use "?includeTravelRestrictions" to get the relational data for which travelrestrictions are on country
+        /// Use "?isRightHandTraffic" to get countries where traffic is right hand/left hand
+        /// Use "?language" to get countries with a specific language
+        /// </remarks>
+        [HttpGet]
+        public async Task<ActionResult<CountryDto[]>> GetCountries(
+                [FromQuery]bool includeCities = false,
+                [FromQuery]bool includeTravelRestrictions = false,
+                [FromQuery]bool isRightHandTraffic = false,
+                [FromQuery]bool isLeftHandTraffic = false,
+                [FromQuery]string language = "")
         {
-            var countries = await _countryRepo.GetCountries(includeCities, includeTravelRestrictions, isRightHandTraffic, isLeftHandTraffic, language);
-            var mappedCountries = _mapper.Map<CountryDto[]>(countries);
-
-            for (var i = 0; i < mappedCountries.Count(); i++)
+            try
             {
-                var countryLinks = CreateLinksForCountries(mappedCountries[i].CountryId);
-                var attractionLinks = CreateLinksForCountryAttractions(countries[i]);
+                var countries = await _countryRepo.GetCountries(includeCities, includeTravelRestrictions, isRightHandTraffic, isLeftHandTraffic, language);
+                var mappedCountries = _mapper.Map<CountryDto[]>(countries);
+
+                for (var i = 0; i < mappedCountries.Count(); i++)
+                {
+                    var countryLinks = CreateLinksForCountries(mappedCountries[i].CountryId);
+                    var attractionLinks = CreateLinksForCountryAttractions(countries[i]);
 
                     mappedCountries[i].Add(countryLinks, attractionLinks);
+                }
+
+                return Ok(mappedCountries);
             }
-
-            return Ok(mappedCountries);
+            catch (Exception e)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
+            }
         }
-        catch (Exception e)
-        {
-            return this.StatusCode(StatusCodes.Status500InternalServerError, $"Database Failure: {e.Message}");
-        }
-    }
 
-    [HttpGet("search={name}")]
+        /// <summary>
+        /// Get one country by name
+        /// </summary>
+        /// <remarks>
+        /// Use "search={name}" to get a country by name
+        /// Use "?includeCities" to get the relational data from which cities is located in country
+        /// Use "?includeTravelRestrictions" to get the relational data for which travelrestrictions are on country
+        /// </remarks>
+        [HttpGet("search={name}")]
         public async Task<ActionResult<CountryDto[]>> GetCountryByName(
             string name = "",
             [FromQuery]bool includeCities = false,
@@ -79,6 +96,13 @@ namespace TravelAPI.Controller
             }
         }
 
+        /// <summary>
+        /// Get one country by ID
+        /// </summary>
+        /// <remarks>
+        /// Use "?includeCities" to get the relational data from which cities is located in country
+        /// Use "?includeTravelRestrictions" to get the relational data for which travelrestrictions are on country
+        /// </remarks>
         [HttpGet("{id}")]
         public async Task<ActionResult<CountryDto>> GetCountryById(
             int id,
@@ -108,6 +132,13 @@ namespace TravelAPI.Controller
             }
         }
 
+        /// <summary>
+        /// Add a new Country to database.
+        /// </summary>
+        /// <remarks>
+        /// You need to get the authorization token to make this request.
+        /// </remarks>
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<CountryDto>> PostCountry(CountryDto countryDto)
         {
@@ -129,6 +160,13 @@ namespace TravelAPI.Controller
             return BadRequest();
         }
 
+        /// <summary>
+        /// Change the content of a country by ID.
+        /// </summary>
+        /// <remarks>
+        /// You need to get the authorization token to make this request.
+        /// </remarks>
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<ActionResult<CountryDto>> ChangeCountryByID(int id, [FromBody]CountryDto countryDto)
         {
@@ -156,6 +194,13 @@ namespace TravelAPI.Controller
             return BadRequest();
         }
 
+        /// <summary>
+        /// Delete a country by ID.
+        /// </summary>
+        /// <remarks>
+        /// You need to get the authorization token to make this request.
+        /// </remarks>
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteCountryByID(int id)
         {
@@ -215,14 +260,16 @@ namespace TravelAPI.Controller
         private IEnumerable<Link> CreateLinksForCountryAttractions(CountryModel countrymodel)
         {
             var links = new List<Link>();
-
-            foreach(var city in countrymodel.Cities)
+            if(countrymodel.Cities != null)
             {
-                if(city.Attractions != null)
+                foreach(var city in countrymodel.Cities)
                 {
-                    foreach(var attraction in city.Attractions)
+                    if(city.Attractions != null)
                     {
-                        links.Add(new Link($"http://localhost:50615/attractions/{attraction.AttractionId}", "self", "GET"));
+                        foreach(var attraction in city.Attractions)
+                        {
+                            links.Add(new Link($"http://localhost:50615/attractions/{attraction.AttractionId}", "self", "GET"));
+                        }
                     }
                 }
             }
